@@ -61,11 +61,11 @@ class ConvImage(object):
         train_iter = ImageIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                                data_dir=self.data_params.dir, videos_classes= self.train_videos_classes,
                                classes_labels=self.classes_labels,ctx=self.ctx, data_name='data',
-                               label_name='label', mode='train', augmentation=self.train_params.augmentation)
+                               label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
         valid_iter = ImageIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                                data_dir=self.data_params.dir, videos_classes= self.test_videos_classes,
                                classes_labels=self.classes_labels,ctx=self.ctx, data_name='data',
-                               label_name='label', mode='train', augmentation=self.train_params.augmentation)
+                               label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
