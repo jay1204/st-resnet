@@ -6,6 +6,8 @@ import logging
 
 
 def get_model(prefix, code, model_dir):
+    if not os.path.exists(model_dir):
+        os.makedirs(model_dir)
     download(prefix + '-symbol.json', model_dir)
     download(prefix + '-%04d.params' % code, model_dir)
 

@@ -12,8 +12,8 @@ def get_ucf101_split(split_dir, split_id):
         - test_videos_classes: dict of {test_video_name: class_name}
     """
     classes_labels = read_label_file(split_dir + 'classInd.txt')
-    train_file_path = split_dir + 'trainlist%2d'%(split_id) + '.txt'
-    test_file_path = split_dir + 'testlist%2d'%(split_id) + '.txt'
+    train_file_path = split_dir + 'trainlist0%d'%(split_id) + '.txt'
+    test_file_path = split_dir + 'testlist0%d'%(split_id) + '.txt'
 
     train_videos_classes = read_file(train_file_path)
     test_videos_classes = read_file(test_file_path)

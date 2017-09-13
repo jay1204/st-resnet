@@ -26,7 +26,7 @@ train_flow.epoch = 10
 train_flow.drop_out = 1.0
 
 resnet_50 = ed()
-resnet_50.dir = 'pretrained_model/'
+resnet_50.dir = 'data/pretrained_model/'
 resnet_50.name = 'resnet-50'
 resnet_50.model_epoch = 0
 resnet_50.url_prefix = 'http://data.mxnet.io/models/imagenet/resnet/50-layers/resnet-50'

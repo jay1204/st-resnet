@@ -1,5 +1,5 @@
 import mxnet as mx
-from ..utils import load_pretrained_model
+from utils import load_pretrained_model
 from image_iter import ImageIter
 
 
@@ -54,7 +54,7 @@ class ConvImage(object):
 
         return net, new_arg_params
 
-    def train(self, ):
+    def train(self):
         net, args = self.configure_model()
 
         train_iter = ImageIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
