@@ -53,7 +53,7 @@ class ConvImage(object):
         new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
         new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc1' not in k})
 
-        return net, new_arg_params
+        return new_symbol, new_arg_params
 
     def train(self):
         net, args = self.configure_model()
@@ -72,7 +72,7 @@ class ConvImage(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
 
         lr_sch = mx.lr_scheduler.FactorScheduler(step=1000, factor=0.9)
-        mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', learning_rate),
+        mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
         metric = mx.metric.create('acc')
         count = 0
