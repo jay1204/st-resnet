@@ -1,0 +1,1 @@
+from config import ucf, train_image, resnet_50
