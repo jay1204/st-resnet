@@ -8,7 +8,7 @@ class ConvImage(object):
     This class takes a pre-trained model(e.g. resnet-50, resnet-101), and further tune it on our video image data
     """
     def __init__(self, model_params, data_params, train_params, train_videos_classes,
-                 test_videos_classes, classes_labels, ctx):
+                 test_videos_classes, classes_labels, num_classes, ctx):
         """
 
         :param model_params: a dict of the pre-trained network setting, including the model name, directory, etc.
@@ -23,6 +23,7 @@ class ConvImage(object):
         self.train_videos_classes = train_videos_classes
         self.test_videos_classes = test_videos_classes
         self.classes_labels = classes_labels
+        self.num_classes = num_classes
 
     def configure_model(self):
         # load pre-trained model
@@ -48,7 +49,7 @@ class ConvImage(object):
         """
         all_layers = symbol.get_internals()
         net = all_layers['flatten0_output']
-        net = mx.symbol.FullyConnected(data=net, num_hidden=self.data_params.num_classes, name='fc1')
+        net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
         new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
         new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc1' not in k})
 
