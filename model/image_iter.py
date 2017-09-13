@@ -57,7 +57,8 @@ class ImageIter(mx.io.DataIter):
         self.cur = 0
 
     def iter_next(self):
-        return self.cur + self.batch_size <= self.img_size
+        #return self.cur + self.batch_size <= self.img_size
+        return True
 
     def next(self):
         if self.iter_next():
@@ -87,7 +88,7 @@ class ImageIter(mx.io.DataIter):
         batch_label = nd.empty(self.batch_size)
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir, sample_videos[i], '')
-            frames = [f for f in os.listdir(video_path) if f.endwith('.jpg')]
+            frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             sample_frame_name = random.choice(frames)
             sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
             if sample_frame.shape != self.data_shape:
@@ -95,20 +96,22 @@ class ImageIter(mx.io.DataIter):
             batch_data[i][:] = sample_frame
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
-        return batch_data. batch_label
+        return batch_data, batch_label
 
     def getpad(self):
-        if self.cur + self.batch_size > self.img_size:
-            return self.cur + self.batch_size - self.img_size
-        else:
-            return 0
+        #if self.cur + self.batch_size > self.img_size:
+        #    return self.cur + self.batch_size - self.img_size
+        #else:
+        return 0
 
     def getindex(self):
         return self.cur/self.batch_size
 
     def pre_process_image(self, image):
         """Transforms input data with specified augmentation."""
+        #print type(self.augmentation)
         for process in self.augmentation:
+            #print process
             if process == 'rand_crop':
                 c, h, w = self.data_shape
                 image, _ = random_crop(image, (h, w))
@@ -134,3 +137,5 @@ class ImageIter(mx.io.DataIter):
         Transform the image to make it shape as (channel, height, width)
         """
         return nd.transpose(image, axes=(2, 0, 1))
+
+

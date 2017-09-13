@@ -75,7 +75,7 @@ class ConvImage(object):
         mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
         metric = mx.metric.create('acc')
-        count = 0
+        count = 1
         train_acc = []
         valid_acc = []
         valid_accuracy = 0.0
@@ -96,6 +96,7 @@ class ConvImage(object):
                     if valid_acc[-1] > valid_accuracy:
                         valid_accuracy = valid_acc[-1]
                         mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
+                count += 1
         return train_acc, valid_acc
 
 
