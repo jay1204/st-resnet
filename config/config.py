@@ -11,7 +11,7 @@ ucf.image.dir = 'data/ucf101_jpegs/'
 ucf.image.data_shape = (224, 224, 3)
 
 train_image = ed()
-train_image.batch_size = 256
+train_image.batch_size = 80
 train_image.epoch = 10
 train_image.drop_out = 0.0
 # augmentation option: 'borders25', 'rand_crop'
