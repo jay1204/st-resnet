@@ -17,7 +17,7 @@ train_image.drop_out = 0.0
 # augmentation option: 'borders25', 'rand_crop'
 train_image.augmentation = ['rand_crop']
 train_image.n_frames_per_video = 1
-train_image.learning_rate = 0.1
+train_image.learning_rate = 1
 
 
 train_flow = ed()
