@@ -55,7 +55,4 @@ def load_pretrained_model(prefix, model_name, epoch, model_dir, ctx=None):
     get_model(prefix, epoch, model_dir)
     sym, arg_params, aux_params = mx.model.load_checkpoint(model_dir + model_name, epoch)
     logging.info('The pretrained model has been loaded successfully!')
-    if ctx:
-        spec_context(arg_params, ctx)
-        spec_context(aux_params, ctx)
     return sym, arg_params, aux_params

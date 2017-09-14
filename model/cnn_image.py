@@ -90,7 +90,7 @@ class ConvImage(object):
                 if count%100==0:
                     train_acc.append(metric.get()[1])
                     print "The training accuracy of the %d-th iteration is %f"%(count, train_acc[-1])
-                    score = mod.score(valid_iter, ['acc'])
+                    score = mod.score(valid_iter, ['acc'], num_batch=1)
                     valid_acc.append(score[0][1])
                     print "The valid accuracy of the %d-th iteration is %f"%(count, valid_acc[-1])
                     if valid_acc[-1] > valid_accuracy:
