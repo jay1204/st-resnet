@@ -9,7 +9,7 @@ def main():
 
     cm = ConvImage(model_params=resnet_50, data_params=ucf.image, train_params=train_image,
                    train_videos_classes=train_videos_classes, test_videos_classes=test_videos_classes,
-                   classes_labels=classes_labels, num_classes=ucf.num_classes, ctx=ctx)
+                   classes_labels=classes_labels, num_classes=ucf.num_classes, ctx=ctx, dropout=)
     cm.train()
     return
 
