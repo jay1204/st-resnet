@@ -5,6 +5,7 @@ import mxnet as mx
 from mxnet.executor_manager import _split_input_slice
 import mxnet.ndarray as nd
 from mxnet.image import *
+from utils import horizon_flip
 
 
 class ImageIter(mx.io.DataIter):
@@ -110,32 +111,33 @@ class ImageIter(mx.io.DataIter):
     def pre_process_image(self, image):
         """Transforms input data with specified augmentation."""
         #print type(self.augmentation)
+        c, h, w = self.data_shape
+        image_h, image_w, _ = image.shape
         for process in self.augmentation:
             #print process
-            c, h, w = self.data_shape
             if process == 'rand_crop':
-                image, _ = random_crop(image, (h, w))
+                image, _ = mx.img.random_crop(image, (w, h))
             elif process == 'horizon_flip':
-                image.HorizontalFlipAug(p=0.5)
+                image = horizon_flip(image)
             elif process == 'corner_crop':
                 rw = np.random.randint(low=224, high=257)
                 rh = np.random.randint(low=168, high=193)
                 center_crop = np.random.randint(2)
                 if center_crop:
-                    image.CenterCropAug((rh, rw))
+                    image, _ = mx.img.center_crop(image, (rw, rh))
                 else:
                     which_corner = np.random.randint(4)
                     # left upper corner
                     if which_corner == 0:
-                        image = fixed_crop(image, x0=0, y0=0, w=rh, h=rw)
-                    # left bottom corner
+                        image = mx.img.fixed_crop(image, x0=0, y0=0, w=rw, h=rh)
+                    # right upper corner
                     elif which_corner == 1:
-                        image = fixed_crop(image, x0=h-rh, y0=0, w=rh, h=rw)
+                        image = mx.img.fixed_crop(image, x0=0, y0=image_h-rh, w=rw, h=rh)
                     elif which_corner == 2:
-                        image = fixed_crop(image, x0=0, y0=w-rw, w=rh, h=rw)
+                        image = mx.img.fixed_crop(image, x0=image_w-rw, y0=0, w=rw, h=rh)
                     else:
-                        image = fixed_crop(image, x0=h-rh, y0=w-rw, w=rh, h=rw)
-                image.ForeceResizeAug((h,w))
+                        image = mx.img.fixed_crop(image, x0=image_w-rw, y0=image_h-rh, w=rw, h=rh)
+                image = mx.img.imresize(image, w, h)
 
         return image
 
@@ -159,5 +161,6 @@ class ImageIter(mx.io.DataIter):
         Transform the image to make it shape as (channel, height, width)
         """
         return nd.transpose(image, axes=(2, 0, 1))
+
 
 
