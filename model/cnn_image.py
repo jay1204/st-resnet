@@ -49,10 +49,8 @@ class ConvImage(object):
         """
         all_layers = symbol.get_internals()
         net = all_layers['flatten0_output']
-        net = mx.symbol.FullyConnected(data=net, num_hidden=2048, name='fc1')
-        net = mx.symbol.Activation(data=net, name="ReLU1", act_type="relu")
         net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
-        net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc2')
+        net = mx.symbol.FullyConnected(data=net, num_hidden=2048, name='fc1')
         new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
         new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc1' not in k})
 
