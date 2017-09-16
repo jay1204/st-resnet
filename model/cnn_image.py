@@ -89,6 +89,8 @@ class ConvImage(object):
                 mod.backward()
                 mod.update()
                 if count%100==0:
+                    mod.forward(batch, is_train=False)
+                    mod.update_metric(metric, batch.label)
                     train_acc.append(metric.get()[1])
                     print "The training accuracy of the %d-th iteration is %f%%"%(count, train_acc[-1]*100)
                     score = mod.score(valid_iter, ['acc'], num_batch=1)
