@@ -73,7 +73,7 @@ class ConvImage(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
 
         lr_sch = mx.lr_scheduler.FactorScheduler(step=1000, factor=0.5)
-        mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
         metric = mx.metric.create('acc')
         count = 1

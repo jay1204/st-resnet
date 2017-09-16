@@ -112,9 +112,31 @@ class ImageIter(mx.io.DataIter):
         #print type(self.augmentation)
         for process in self.augmentation:
             #print process
+            c, h, w = self.data_shape
             if process == 'rand_crop':
-                c, h, w = self.data_shape
                 image, _ = random_crop(image, (h, w))
+            elif process == 'horizon_flip':
+                image.HorizontalFlipAug(p=0.5)
+            elif process == 'corner_crop':
+                rw = np.random.randint(low=224, high=257)
+                rh = np.random.randint(low=168, high=193)
+                center_crop = np.random.randint(2)
+                if center_crop:
+                    image.CenterCropAug((rh, rw))
+                else:
+                    which_corner = np.random.randint(4)
+                    # left upper corner
+                    if which_corner == 0:
+                        image = fixed_crop(image, x0=0, y0=0, w=rh, h=rw)
+                    # left bottom corner
+                    elif which_corner == 1:
+                        image = fixed_crop(image, x0=h-rh, y0=0, w=rh, h=rw)
+                    elif which_corner == 2:
+                        image = fixed_crop(image, x0=0, y0=w-rw, w=rh, h=rw)
+                    else:
+                        image = fixed_crop(image, x0=h-rh, y0=w-rw, w=rh, h=rw)
+                image.ForeceResizeAug((h,w))
+
         return image
 
     def next_image(self, img_path):
