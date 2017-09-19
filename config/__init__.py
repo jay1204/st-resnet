@@ -1,1 +1,1 @@
-from config import ucf, train_image, resnet_50
+from config import ucf, train_image, resnet_50,test_image

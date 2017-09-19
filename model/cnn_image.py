@@ -1,13 +1,13 @@
 import mxnet as mx
 from utils import load_pretrained_model
-from image_iter import ImageIter
+from video_iter import VideoIter
 
 
 class ConvImage(object):
     """
     This class takes a pre-trained model(e.g. resnet-50, resnet-101), and further tune it on our video image data
     """
-    def __init__(self, model_params, data_params, train_params, train_videos_classes,
+    def __init__(self, model_params, data_params, train_params, test_params, train_videos_classes,
                  test_videos_classes, classes_labels, num_classes, ctx):
         """
 
@@ -19,6 +19,7 @@ class ConvImage(object):
         self.model_params = model_params
         self.data_params = data_params
         self.train_params = train_params
+        self.test_params = test_params
         self.ctx = ctx
         self.train_videos_classes = train_videos_classes
         self.test_videos_classes = test_videos_classes
@@ -59,20 +60,22 @@ class ConvImage(object):
     def train(self):
         net, args = self.configure_model()
 
-        train_iter = ImageIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                               data_dir=self.data_params.dir, videos_classes= self.train_videos_classes,
-                               classes_labels=self.classes_labels,ctx=self.ctx, data_name='data',
+        train_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                               data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
+                               classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
-        valid_iter = ImageIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                               data_dir=self.data_params.dir, videos_classes= self.test_videos_classes,
-                               classes_labels=self.classes_labels,ctx=self.ctx, data_name='data',
+
+        valid_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                               data_dir=self.data_params.dir, videos_classes=self.test_videos_classes,
+                               classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
+                               #frame_per_video=self.test_params.frame_per_video)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
 
-        lr_sch = mx.lr_scheduler.FactorScheduler(step=1000, factor=0.5)
+        lr_sch = mx.lr_scheduler.FactorScheduler(step=3000, factor=0.5)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
         metric = mx.metric.create('acc')
@@ -93,7 +96,7 @@ class ConvImage(object):
                     mod.update_metric(metric, batch.label)
                     train_acc.append(metric.get()[1])
                     print "The training accuracy of the %d-th iteration is %f%%"%(count, train_acc[-1]*100)
-                    score = mod.score(valid_iter, ['acc'], num_batch=1)
+                    score = mod.score(valid_iter, ['acc'], num_batch=4)
                     valid_acc.append(score[0][1])
                     print "The valid accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1]*100)
                     if valid_acc[-1] > valid_accuracy:
@@ -101,6 +104,8 @@ class ConvImage(object):
                         mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
                 count += 1
         return train_acc, valid_acc
+
+
 
 
 
