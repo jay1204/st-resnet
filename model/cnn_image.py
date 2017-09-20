@@ -69,12 +69,6 @@ class CNN_Image(object):
                                classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
 
-        valid_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                               data_dir=self.data_params.dir, videos_classes=self.test_videos_classes,
-                               classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                               label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
-                               #frame_per_video=self.test_params.frame_per_video)
-
         mod = mx.mod.Module(symbol=net, context=self.ctx)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
@@ -126,7 +120,8 @@ class CNN_Image(object):
                                        augmentation=aug, frame_per_video=self.test_params.frame_per_video)
                 mod.forward(valid_iter.next(), is_train=False)
                 probs += mod.get_outputs()[0].asnumpy().sum(axis=0)
-                print probs
+                print mod.list_outputs()
+
             pred_label = np.argmax(probs) + 1
             print pred_label, self.classes_labels[video_class]
 
