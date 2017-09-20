@@ -71,8 +71,8 @@ class CNN_Image(object):
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
-        mod.set_params(arg_params=arg_params, aux_params=aux_params)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
+        mod.set_params(arg_params=arg_params, aux_params=aux_params)
 
         lr_sch = mx.lr_scheduler.FactorScheduler(step=20000, factor=0.1)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
