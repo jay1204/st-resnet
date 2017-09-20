@@ -130,7 +130,9 @@ class CNN_Image(object):
                     sample_frame = self.read_image(os.path.join(video_path, sample_frame_name), aug)
                     batch_data[j][:] = sample_frame
 
-                mod.forward(batch_data, is_train=False)
+                current_batch_data = mx.io.DataBatch(data=[batch_data])
+
+                mod.forward(current_batch_data, is_train=False)
                 result = mod.get_outputs()[0].asnumpy()
                 print result
 
