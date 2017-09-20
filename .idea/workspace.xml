@@ -76,8 +76,8 @@
       <file leaf-file-name="cnn_image.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/cnn_image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="125" column="57" lean-forward="true" selection-start-line="125" selection-start-column="57" selection-end-line="125" selection-end-column="57" />
+            <state relative-caret-position="340">
+              <caret line="128" column="27" lean-forward="false" selection-start-line="128" selection-start-column="27" selection-end-line="128" selection-end-column="27" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -110,8 +110,8 @@
       <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/video_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="44" />
+            <state relative-caret-position="-197">
+              <caret line="90" column="29" lean-forward="false" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -719,16 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="71" lean-forward="false" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -741,8 +731,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/video_iter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="44" />
+        <state relative-caret-position="-197">
+          <caret line="90" column="29" lean-forward="false" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="71" lean-forward="false" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -751,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/cnn_image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="125" column="57" lean-forward="true" selection-start-line="125" selection-start-column="57" selection-end-line="125" selection-end-column="57" />
+        <state relative-caret-position="340">
+          <caret line="128" column="27" lean-forward="false" selection-start-line="128" selection-start-column="27" selection-end-line="128" selection-end-column="27" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
