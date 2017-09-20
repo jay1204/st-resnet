@@ -1,9 +1,13 @@
 import mxnet as mx
 from utils import load_pretrained_model
 from video_iter import VideoIter
+import numpy as np
+import mxnet.ndarray as nd
+from utils import load_one_image, post_process_image, pre_process_image
+import os
 
 
-class ConvImage(object):
+class CNN_Image(object):
     """
     This class takes a pre-trained model(e.g. resnet-50, resnet-101), and further tune it on our video image data
     """
@@ -78,7 +82,8 @@ class ConvImage(object):
         lr_sch = mx.lr_scheduler.FactorScheduler(step=20000, factor=0.1)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
-        metric = mx.metric.create(['mse','acc'])
+
+        metric = mx.metric.create(['loss','acc'])
         count = 1
         train_acc = []
         valid_acc = []
@@ -91,21 +96,56 @@ class ConvImage(object):
                 mod.update_metric(metric, batch.label)
                 mod.backward()
                 mod.update()
-                if count%100==0:
+                if count%1==0:
                     mod.forward(batch, is_train=False)
                     mod.update_metric(metric, batch.label)
                     train_acc.append(metric.get()[1][1])
                     print "The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
                           (count, metric.get()[1][0], metric.get()[1][1]*100)
-                    score = mod.score(valid_iter, ['mse','acc'], num_batch=10)
-                    valid_acc.append(score[1][1])
-                    print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
-                          (count, score[0][1], score[1][1]*100)
-                    if valid_acc[-1] > valid_accuracy:
-                        valid_accuracy = valid_acc[-1]
-                        mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
+                    #score = mod.score(valid_iter, ['loss','acc'], num_batch=10)
+                    #valid_acc.append(score[1][1])
+                    #print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
+                    #      (count, score[0][1], score[1][1]*100)
+                    #if valid_acc[-1] > valid_accuracy:
+                    #    valid_accuracy = valid_acc[-1]
+                    #    mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
+                    self.evaluate(self.test_videos_classes, mod)
                 count += 1
         return train_acc, valid_acc
+
+    def evaluate(self, test_videos_classes, mod):
+        acc = []
+        c, h, w = self.model_params
+        for video, video_class in test_videos_classes.items():
+            video_path = os.path.join(self.data_params.dir, video, '')
+            batch_data = nd.empty((self.test_params.frame_per_video, c, h, w))
+            frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
+            sample_gap = float(len(frames) - 1) / self.test_params.frame_per_video
+            sample_frame_names = []
+            for i in xrange(self.test_params.frame_per_video):
+                sample_frame_names.append(frames[int(round(i * sample_gap))])
+
+            for aug in self.test_params.augmentation:
+                for j, sample_frame_name in enumerate(sample_frame_names):
+                    sample_frame = self.read_image(os.path.join(video_path, sample_frame_name), aug)
+                    batch_data[j][:] = sample_frame
+
+                mod.forward(batch_data, is_train=False)
+                result = mod.get_outputs()[0].asnumpy()
+                print result
+
+        return 0
+
+    @staticmethod
+    def read_image(img_path, augmentation):
+        image = load_one_image(img_path)
+        image = pre_process_image(image, augmentation)
+        image = post_process_image(image)
+
+        return image
+
+
+
 
 
 

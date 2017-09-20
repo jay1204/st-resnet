@@ -4,8 +4,7 @@ import random
 import mxnet as mx
 from mxnet.executor_manager import _split_input_slice
 import mxnet.ndarray as nd
-from mxnet.image import *
-from utils import horizon_flip
+from utils import load_one_image, post_process_image, pre_process_image
 
 
 class VideoIter(mx.io.DataIter):
@@ -25,7 +24,7 @@ class VideoIter(mx.io.DataIter):
         :param data_name:
         :param label_name:
         :param mode: string, indicating whehter it is in the training phrase or test phrase
-        :param augmentation: tuple of string, each string indicating one augmentation operation
+        :param augmentation: list of list, each list has strings indicating augmentation operations
         """
         super(VideoIter, self).__init__()
 
@@ -104,8 +103,6 @@ class VideoIter(mx.io.DataIter):
             frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             sample_frame_name = random.choice(frames)
             sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
-            if sample_frame.shape != self.data_shape:
-                raise AssertionError('The size of the image is not matched with the required data_shape!')
             batch_data[i][:] = sample_frame
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
@@ -128,8 +125,6 @@ class VideoIter(mx.io.DataIter):
             sample_frame_names = range(0, len(frames), sample_gap)
             for j, sample_frame_name in enumerate(sample_frame_names):
                 sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
-                if sample_frame.shape != self.data_shape:
-                    raise AssertionError('The size of the image is not matched with the required data_shape!')
                 batch_data[i * self.frame_per_video + j][:] = sample_frame
                 batch_label[i * self.frame_per_video + j][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
@@ -144,69 +139,14 @@ class VideoIter(mx.io.DataIter):
     def getindex(self):
         return self.cur/self.batch_videos
 
-    def pre_process_image(self, image):
-        """Transforms input data with specified augmentation."""
-        #print type(self.augmentation)
-        c, h, w = self.data_shape
-        image_h, image_w, _ = image.shape
-        for process in self.augmentation:
-            #print process
-            if process == 'rand_crop':
-                image, _ = mx.img.random_crop(image, (w, h))
-            elif process == 'horizon_flip':
-                image = horizon_flip(image)
-            elif process == 'corner_crop':
-                rw = np.random.randint(low=224, high=257)
-                rh = np.random.randint(low=168, high=193)
-                center_crop = np.random.randint(2)
-                if center_crop:
-                    image, _ = mx.img.center_crop(image, (rw, rh))
-                else:
-                    which_corner = np.random.randint(4)
-                    if which_corner == 0:
-                        image = mx.img.fixed_crop(image, x0=0, y0=0, w=rw, h=rh)
-                    elif which_corner == 1:
-                        image = mx.img.fixed_crop(image, x0=0, y0=image_h-rh, w=rw, h=rh)
-                    elif which_corner == 2:
-                        image = mx.img.fixed_crop(image, x0=image_w-rw, y0=0, w=rw, h=rh)
-                    else:
-                        image = mx.img.fixed_crop(image, x0=image_w-rw, y0=image_h-rh, w=rw, h=rh)
-                image = mx.img.imresize(image, w, h)
-            elif process == 'left_top_corner_crop':
-                image = mx.img.fixed_crop(image, x0=0, y0=0, w=w, h=h)
-            elif process == 'left_bottom_corner_crop':
-                image = mx.img.fixed_crop(image, x0=0, y0=image_h - h, w=w, h=h)
-            elif process == 'right_top_corner_crop':
-                image = mx.img.fixed_crop(image, x0=image_w - w, y0=0, w=w, h=h)
-            elif process == 'right_bottom_corner_crop':
-                image = mx.img.fixed_crop(image, x0=image_w-w, y0=image_h-h, w=w, h=h)
-            elif process == 'center_crop':
-                image, _ = mx.img.center_crop(image, (w, h))
-            else:
-                raise NotImplementedError("This augmentation operation has not been implemented!")
-
-        return image
-
     def next_image(self, img_path):
-        image = self.load_one_image(img_path)
-        image = self.pre_process_image(image)
-        image = self.post_process_image(image)
+        image = load_one_image(img_path)
+        image = pre_process_image(image, self.augmentation)
+        image = post_process_image(image)
 
         return image
 
-    @staticmethod
-    def load_one_image(img_path):
-        with open(img_path, 'rb') as fp:
-            image_info = fp.read()
 
-        return mx.img.imdecode(image_info)
-
-    @staticmethod
-    def post_process_image(image):
-        """
-        Transform the image to make it shape as (channel, height, width)
-        """
-        return nd.transpose(image, axes=(2, 0, 1))
 
 
 
