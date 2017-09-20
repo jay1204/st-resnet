@@ -124,7 +124,7 @@ class CNN_Image(object):
                                        label_name='softmax_label', mode='test',
                                        augmentation=aug, frame_per_video=self.test_params.frame_per_video)
 
-                mod.forward(valid_iter, is_train=False)
+                mod.forward(valid_iter.next(), is_train=False)
                 result = mod.get_outputs()[0].asnumpy()
                 print result
 
