@@ -121,8 +121,11 @@ class VideoIter(mx.io.DataIter):
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir, sample_videos[i], '')
             frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
-            sample_gap = (len(frames) - 1)/self.frame_per_video + 1
-            sample_frame_names = range(0, len(frames), sample_gap)
+            sample_gap = float(len(frames) - 1) / self.frame_per_video
+            sample_frame_names = []
+            for i in xrange(self.test_params.frame_per_video):
+                sample_frame_names.append(frames[int(round(i * sample_gap))])
+
             for j, sample_frame_name in enumerate(sample_frame_names):
                 sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
                 batch_data[i * self.frame_per_video + j][:] = sample_frame

@@ -113,26 +113,19 @@ class CNN_Image(object):
                 count += 1
         return train_acc, valid_acc
 
-    def evaluate(self, test_videos_classes, mod):
+    def evaluate(self, mod):
         acc = []
         c, h, w = self.model_params.data_shape
-        for video, video_class in test_videos_classes.items():
-            video_path = os.path.join(self.data_params.dir, video, '')
-            batch_data = nd.empty((self.test_params.frame_per_video, c, h, w))
-            frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
-            sample_gap = float(len(frames) - 1) / self.test_params.frame_per_video
-            sample_frame_names = []
-            for i in xrange(self.test_params.frame_per_video):
-                sample_frame_names.append(frames[int(round(i * sample_gap))])
-
+        for video, video_class in self.test_videos_classes.items():
             for aug in self.test_params.augmentation:
-                for j, sample_frame_name in enumerate(sample_frame_names):
-                    sample_frame = self.read_image(os.path.join(video_path, sample_frame_name), aug)
-                    batch_data[j][:] = sample_frame
+                valid_iter = VideoIter(batch_size=self.test_params.frame_per_video,
+                                       data_shape=self.model_params.data_shape,
+                                       data_dir=self.data_params.dir, videos_classes={video: video_class},
+                                       classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                                       label_name='softmax_label', mode='test',
+                                       augmentation=aug, frame_per_video=self.test_params.frame_per_video)
 
-                current_batch_data = mx.io.DataBatch(data=[batch_data])
-
-                mod.forward(current_batch_data, is_train=False)
+                mod.forward(valid_iter, is_train=False)
                 result = mod.get_outputs()[0].asnumpy()
                 print result
 
