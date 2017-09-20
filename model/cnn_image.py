@@ -99,7 +99,7 @@ class CNN_Image(object):
                           (count, metric.get()[1][0], metric.get()[1][1]*100)
                     #score = mod.score(valid_iter, ['loss','acc'], num_batch=10)
                     #valid_acc.append(score[1][1])
-                if count%500==0:
+                if count%1000==0:
                     va = self.evaluate(mod)
                     valid_acc.append(va)
                     print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
@@ -132,7 +132,6 @@ class CNN_Image(object):
 
             pred_label = np.argmax(probs)
             acc += (pred_label == label)
-            print pred_label, label
             count += 1
 
         return acc/count
