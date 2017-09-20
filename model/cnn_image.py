@@ -126,6 +126,7 @@ class CNN_Image(object):
 
                 mod.forward(valid_iter.next(), is_train=False)
                 result = mod.get_outputs()[0].asnumpy().sum(axis=1)
+                print mod.get_outputs()[1].asnumpy()
                 print result
 
         return 0
