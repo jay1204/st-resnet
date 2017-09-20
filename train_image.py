@@ -9,7 +9,7 @@ def main():
     classes_labels, train_videos_classes, test_videos_classes = get_ucf101_split(ucf.split_dir, ucf.split_id)
 
     videos = list(test_videos_classes.keys())
-    sample_videos= random.sample(videos, 10)
+    sample_videos= random.sample(videos, 500)
     test_videos_classes_samples = {}
     for video in sample_videos:
         test_videos_classes_samples[video] = test_videos_classes[video]

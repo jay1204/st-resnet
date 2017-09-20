@@ -90,7 +90,7 @@ class CNN_Image(object):
                 mod.update_metric(metric, batch.label)
                 mod.backward()
                 mod.update()
-                if count%1==0:
+                if count%100==0:
                     mod.forward(batch, is_train=False)
                     mod.update_metric(metric, batch.label)
                     train_acc.append(metric.get()[1][1])
@@ -98,17 +98,22 @@ class CNN_Image(object):
                           (count, metric.get()[1][0], metric.get()[1][1]*100)
                     #score = mod.score(valid_iter, ['loss','acc'], num_batch=10)
                     #valid_acc.append(score[1][1])
+                if count%500==0:
+                    va = self.evaluate(mod)
+                    valid_acc.append(va)
+                    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1])
                     #print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
                     #      (count, score[0][1], score[1][1]*100)
-                    #if valid_acc[-1] > valid_accuracy:
-                    #    valid_accuracy = valid_acc[-1]
-                    #    mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
-                    self.evaluate(mod)
+                    if valid_acc[-1] > valid_accuracy:
+                        valid_accuracy = valid_acc[-1]
+                        mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch, symbol=net)
+
                 count += 1
         return train_acc, valid_acc
 
     def evaluate(self, mod):
-        acc = []
+        acc = 0.0
+        count = 0
         for video, video_class in self.test_videos_classes.items():
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
@@ -120,12 +125,12 @@ class CNN_Image(object):
                                        augmentation=aug, frame_per_video=self.test_params.frame_per_video)
                 mod.forward(valid_iter.next(), is_train=False)
                 probs += mod.get_outputs()[0].asnumpy().sum(axis=0)
-                print mod.get_outputs()
 
             pred_label = np.argmax(probs) + 1
-            print pred_label, self.classes_labels[video_class]
+            acc += (pred_label == self.classes_labels[video_class])
+            count += 1
 
-        return 0
+        return acc/count
 
     def read_image(self, img_path, augmentation):
         image = load_one_image(img_path)
