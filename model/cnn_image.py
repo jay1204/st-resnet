@@ -125,7 +125,7 @@ class CNN_Image(object):
                                        augmentation=aug, frame_per_video=self.test_params.frame_per_video)
 
                 mod.forward(valid_iter.next(), is_train=False)
-                result = mod.get_outputs()[0].asnumpy()
+                result = mod.get_outputs()[0].asnumpy().sum(axis=1)
                 print result
 
         return 0
