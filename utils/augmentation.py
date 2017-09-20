@@ -138,7 +138,7 @@ def random_border25_crop(image, w, h):
             x0 = np.random.randint(max(int(image_w * 0.75), rw), image_w) - rw
         y0 = np.random.randint(image_h - rh)
 
-    image = mx.fixed_crop(image, x0=x0, y0=y0, w=rw, h=rh)
+    image = mx.img.fixed_crop(image, x0=x0, y0=y0, w=rw, h=rh)
     return mx.img.imresize(image, w, h)
 
 
