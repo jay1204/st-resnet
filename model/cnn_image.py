@@ -109,13 +109,12 @@ class CNN_Image(object):
                     #if valid_acc[-1] > valid_accuracy:
                     #    valid_accuracy = valid_acc[-1]
                     #    mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
-                    self.evaluate(self.test_videos_classes, mod)
+                    self.evaluate(mod)
                 count += 1
         return train_acc, valid_acc
 
     def evaluate(self, mod):
         acc = []
-        c, h, w = self.model_params.data_shape
         for video, video_class in self.test_videos_classes.items():
             for aug in self.test_params.augmentation:
                 valid_iter = VideoIter(batch_size=self.test_params.frame_per_video,
