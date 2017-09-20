@@ -128,14 +128,14 @@ def random_border25_crop(image, w, h):
         if top_border:
             y0 = np.random.randint(min(int(image_h * 0.25), image_h - rh))
         else:
-            y0 = np.random.randint(max(int(image_h * 0.75), rh), image_h) - rh
+            y0 = np.random.randint(max(int(image_h * 0.75), rh), image_h + 1) - rh
         x0 = np.random.randint(image_w - rw)
     else:  # has a maximum distance of 25% to the left or right borders
         left_border = np.random.randint(2)
         if left_border:
             x0 = np.random.randint(min(int(image_w * 0.25), image_w - rw))
         else:
-            x0 = np.random.randint(max(int(image_w * 0.75), rw), image_w) - rw
+            x0 = np.random.randint(max(int(image_w * 0.75), rw), image_w + 1) - rw
         y0 = np.random.randint(image_h - rh)
 
     image = mx.img.fixed_crop(image, x0=x0, y0=y0, w=rw, h=rh)
