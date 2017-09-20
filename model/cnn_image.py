@@ -136,10 +136,9 @@ class CNN_Image(object):
 
         return 0
 
-    @staticmethod
-    def read_image(img_path, augmentation):
+    def read_image(self, img_path, augmentation):
         image = load_one_image(img_path)
-        image = pre_process_image(image, augmentation)
+        image = pre_process_image(self.model_params.data_shape, image, augmentation)
         image = post_process_image(image)
 
         return image

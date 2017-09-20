@@ -141,7 +141,7 @@ class VideoIter(mx.io.DataIter):
 
     def next_image(self, img_path):
         image = load_one_image(img_path)
-        image = pre_process_image(image, self.augmentation)
+        image = pre_process_image(self.data_shape, image, self.augmentation)
         image = post_process_image(image)
 
         return image

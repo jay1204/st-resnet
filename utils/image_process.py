@@ -17,11 +17,11 @@ def post_process_image(image):
     return nd.transpose(image, axes=(2, 0, 1))
 
 
-def pre_process_image(self, image, augmentation):
+def pre_process_image(data_shape, image, augmentation):
     """
     Transforms input data with specified augmentation.
     """
-    c, h, w = self.data_shape
+    c, h, w = data_shape
     for process in augmentation:
         if process == 'random_crop':
             image = random_crop(image, w, h)
