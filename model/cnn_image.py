@@ -70,6 +70,7 @@ class CNN_Image(object):
                                label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
+        mod.set_params(arg_params=args)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
 
@@ -101,12 +102,12 @@ class CNN_Image(object):
                 if count%500==0:
                     va = self.evaluate(mod)
                     valid_acc.append(va)
-                    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1])
+                    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
                     #print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
                     #      (count, score[0][1], score[1][1]*100)
                     if valid_acc[-1] > valid_accuracy:
                         valid_accuracy = valid_acc[-1]
-                        mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch, symbol=net)
+                        mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch, net)
 
                 count += 1
         return train_acc, valid_acc
