@@ -78,7 +78,7 @@ class ConvImage(object):
         lr_sch = mx.lr_scheduler.FactorScheduler(step=20000, factor=0.1)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
-        metric = mx.metric.create('acc')
+        metric = mx.metric.create(['mse','acc'])
         count = 1
         train_acc = []
         valid_acc = []
@@ -94,11 +94,13 @@ class ConvImage(object):
                 if count%100==0:
                     mod.forward(batch, is_train=False)
                     mod.update_metric(metric, batch.label)
-                    train_acc.append(metric.get()[1])
-                    print "The training accuracy of the %d-th iteration is %f%%"%(count, train_acc[-1]*100)
-                    score = mod.score(valid_iter, ['acc'], num_batch=10)
-                    valid_acc.append(score[0][1])
-                    print "The valid accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1]*100)
+                    train_acc.append(metric.get()[1][1])
+                    print "The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
+                          (count, metric.get()[1][0], metric.get()[1][1]*100)
+                    score = mod.score(valid_iter, ['mse','acc'], num_batch=10)
+                    valid_acc.append(score[0][1][1])
+                    print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
+                          (count, score[0][1][0], score[0][1][1]*100)
                     if valid_acc[-1] > valid_accuracy:
                         valid_accuracy = valid_acc[-1]
                         mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
