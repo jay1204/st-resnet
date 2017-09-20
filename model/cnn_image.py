@@ -32,7 +32,7 @@ class CNN_Image(object):
 
     def configure_model(self):
         # load pre-trained model
-        symbol, arg_params, _ = load_pretrained_model(self.model_params.url_prefix,
+        symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix,
                                                    self.model_params.name,
                                                    self.model_params.model_epoch,
                                                    self.model_params.dir,
@@ -40,7 +40,7 @@ class CNN_Image(object):
 
         # adjust the network to satisfy the required input
         new_symbol, new_arg_params = self.refactor_model(symbol, arg_params)
-        return new_symbol, new_arg_params
+        return new_symbol, new_arg_params, aux_params
 
     def refactor_model(self, symbol, arg_params):
         """
@@ -62,7 +62,7 @@ class CNN_Image(object):
         return new_symbol, new_arg_params
 
     def train(self):
-        net, args = self.configure_model()
+        net, arg_params, aux_params = self.configure_model()
 
         train_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                                data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
@@ -70,7 +70,7 @@ class CNN_Image(object):
                                label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
-        mod.set_params(arg_params=args)
+        mod.set_params(arg_params=arg_params, aux_params=aux_params)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
 
