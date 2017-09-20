@@ -115,7 +115,7 @@ class CNN_Image(object):
 
     def evaluate(self, test_videos_classes, mod):
         acc = []
-        c, h, w = self.model_params
+        c, h, w = self.model_params.data_shape
         for video, video_class in test_videos_classes.items():
             video_path = os.path.join(self.data_params.dir, video, '')
             batch_data = nd.empty((self.test_params.frame_per_video, c, h, w))
