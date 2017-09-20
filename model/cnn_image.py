@@ -124,7 +124,6 @@ class CNN_Image(object):
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                        label_name='softmax_label', mode='test',
                                        augmentation=aug, frame_per_video=self.test_params.frame_per_video)
-                batch = valid_iter.next()
                 mod.forward(valid_iter.next(), is_train=False)
                 probs += mod.get_outputs()[0].asnumpy().sum(axis=0)
             pred_label = np.argmax(probs) + 1
