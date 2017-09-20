@@ -70,8 +70,8 @@ class CNN_Image(object):
                                label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
-        mod.set_params(arg_params=arg_params, aux_params=aux_params)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
+        mod.set_params(arg_params=arg_params, aux_params=aux_params)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
 
         lr_sch = mx.lr_scheduler.FactorScheduler(step=20000, factor=0.1)
