@@ -123,8 +123,8 @@ class VideoIter(mx.io.DataIter):
             frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             sample_gap = float(len(frames) - 1) / self.frame_per_video
             sample_frame_names = []
-            for i in xrange(self.frame_per_video):
-                sample_frame_names.append(frames[int(round(i * sample_gap))])
+            for k in xrange(self.frame_per_video):
+                sample_frame_names.append(frames[int(round(k * sample_gap))])
 
             for j, sample_frame_name in enumerate(sample_frame_names):
                 sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
