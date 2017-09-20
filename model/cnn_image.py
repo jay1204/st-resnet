@@ -127,7 +127,7 @@ class CNN_Image(object):
                                        augmentation=aug, frame_per_video=self.test_params.frame_per_video)
                 batch = valid_iter.next()
                 label = batch.label[0].asnumpy().astype(int)[0]
-                mod.forward(valid_iter.next(), is_train=False)
+                mod.forward(batch, is_train=False)
                 probs += mod.get_outputs()[0].asnumpy().sum(axis=0)
 
             pred_label = np.argmax(probs)
