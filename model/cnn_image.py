@@ -132,6 +132,7 @@ class CNN_Image(object):
 
             pred_label = np.argmax(probs)
             acc += (pred_label == label)
+            print pred_label, label
             count += 1
 
         return acc/count
