@@ -98,9 +98,9 @@ class ConvImage(object):
                     print "The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
                           (count, metric.get()[1][0], metric.get()[1][1]*100)
                     score = mod.score(valid_iter, ['mse','acc'], num_batch=10)
-                    valid_acc.append(score[0][1])
+                    valid_acc.append(score[1][1])
                     print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
-                          (count, score[0][0], score[0][1]*100)
+                          (count, score[0][1], score[1][1]*100)
                     if valid_acc[-1] > valid_accuracy:
                         valid_accuracy = valid_acc[-1]
                         mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
