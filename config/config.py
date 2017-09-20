@@ -13,7 +13,7 @@ ucf.image.data_shape = (224, 224, 3)
 train_image = ed()
 train_image.batch_size = 70
 train_image.epoch = 10
-train_image.drop_out = 0.0
+train_image.drop_out = 0.1
 # augmentation option: 'rand_crop', 'horizon_flip'
 train_image.augmentation = ['horizon_flip', 'corner_crop']
 train_image.n_frames_per_video = 1
