@@ -116,6 +116,7 @@ class CNN_Image(object):
         acc = 0.0
         count = 0
         for video, video_class in self.test_videos_classes.items():
+            label = 0
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
                 valid_iter = VideoIter(batch_size=self.test_params.frame_per_video,
@@ -124,11 +125,13 @@ class CNN_Image(object):
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                        label_name='softmax_label', mode='test',
                                        augmentation=aug, frame_per_video=self.test_params.frame_per_video)
+                batch = valid_iter.next()
+                label = batch.label[0].asnumpy().astype(int)[0]
                 mod.forward(valid_iter.next(), is_train=False)
                 probs += mod.get_outputs()[0].asnumpy().sum(axis=0)
 
-            pred_label = np.argmax(probs) + 1
-            acc += (pred_label == self.classes_labels[video_class])
+            pred_label = np.argmax(probs)
+            acc += (pred_label == label)
             count += 1
 
         return acc/count
