@@ -13,10 +13,10 @@ ucf.image.data_shape = (224, 224, 3)
 train_image = ed()
 train_image.batch_size = 90
 train_image.epoch = 10
-train_image.drop_out = 0.9
+train_image.drop_out = 0.8
 train_image.augmentation = ['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
-train_image.learning_rate = 0.0005
+train_image.learning_rate = 0.001
 
 test_image = ed()
 # batch_size should be identical to frame_per_video for testing
