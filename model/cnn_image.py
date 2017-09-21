@@ -68,13 +68,17 @@ class CNN_Image(object):
                                data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
                                classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
+        valid_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                               data_dir=self.data_params.dir, videos_classes=self.test_videos_classes,
+                               classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                               label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.FactorScheduler(step=20000, factor=0.1)
+        lr_sch = mx.lr_scheduler.FactorScheduler(step=4000, factor=0.1)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
 
@@ -97,14 +101,14 @@ class CNN_Image(object):
                     train_acc.append(metric.get()[1][1])
                     print "The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
                           (count, metric.get()[1][0], metric.get()[1][1]*100)
-                    #score = mod.score(valid_iter, ['loss','acc'], num_batch=10)
-                    #valid_acc.append(score[1][1])
-                if count%1000==0:
-                    va = self.evaluate(mod)
-                    valid_acc.append(va)
-                    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
-                    #print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
-                    #      (count, score[0][1], score[1][1]*100)
+                    score = mod.score(valid_iter, ['loss','acc'], num_batch=20)
+                    valid_acc.append(score[1][1])
+                #if count%100==0:
+                #    va = self.evaluate(mod)
+                #    valid_acc.append(va)
+                #    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
+                    print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
+                         (count, score[0][1], score[1][1]*100)
                     if valid_acc[-1] > valid_accuracy:
                         valid_accuracy = valid_acc[-1]
                         mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch, net)
