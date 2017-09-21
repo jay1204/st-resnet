@@ -5,7 +5,7 @@ import numpy as np
 import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
 import os
-import logger
+from logger import logger
 
 
 class CNN_Image(object):

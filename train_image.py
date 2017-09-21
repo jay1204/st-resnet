@@ -3,10 +3,12 @@ from config import ucf, train_image, resnet_50, test_image
 from model import CNN_Image
 from utils import get_ucf101_split
 import random
-import logger
+from logger import logger
+import time
 
 
 def main():
+    logger.info(time.asctime(time.localtime(time.time())))
     ctx = mx.gpu(0)
     classes_labels, train_videos_classes, test_videos_classes = get_ucf101_split(ucf.split_dir, ucf.split_id)
 
