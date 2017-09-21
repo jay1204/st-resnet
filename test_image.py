@@ -7,7 +7,7 @@ import time
 
 
 def main():
-    logger.info("Start testing spatial network training: ", time.asctime(time.localtime(time.time())))
+    logger.info("Start testing spatial network: ", time.asctime(time.localtime(time.time())))
     ctx = mx.gpu(0)
     classes_labels, train_videos_classes, test_videos_classes = get_ucf101_split(ucf.split_dir, ucf.split_id)
 
