@@ -1,1 +1,1 @@
-from cnn_image import CNN_Image
+from convnet import ConvNet

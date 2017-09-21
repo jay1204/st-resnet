@@ -8,7 +8,7 @@ import os
 from logger import logger
 
 
-class CNN_Image(object):
+class ConvNet(object):
     """
     This class takes a pre-trained model(e.g. resnet-50, resnet-101), and further tune it on our video image data
     """
@@ -31,7 +31,7 @@ class CNN_Image(object):
         self.classes_labels = classes_labels
         self.num_classes = num_classes
 
-    def configure_model(self):
+    def configure_model_spatial(self):
         # load pre-trained model
         symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix,
                                                    self.model_params.name,
@@ -40,10 +40,10 @@ class CNN_Image(object):
                                                    ctx = self.ctx)
 
         # adjust the network to satisfy the required input
-        new_symbol, new_arg_params = self.refactor_model(symbol, arg_params)
+        new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
         return new_symbol, new_arg_params, aux_params
 
-    def refactor_model(self, symbol, arg_params):
+    def refactor_model_spatial(self, symbol, arg_params):
         """
         Adjust the number of output classes
 
@@ -63,7 +63,7 @@ class CNN_Image(object):
         return new_symbol, new_arg_params
 
     def train(self):
-        net, arg_params, aux_params = self.configure_model()
+        net, arg_params, aux_params = self.configure_model_spatial()
 
         train_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                                data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
@@ -79,7 +79,7 @@ class CNN_Image(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.FactorScheduler(step=4000, factor=0.1)
+        lr_sch = mx.lr_scheduler.FactorScheduler(step=8000, factor=0.1)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
 
@@ -129,7 +129,7 @@ class CNN_Image(object):
                                        data_dir=self.data_params.dir, videos_classes={video: video_class},
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                        label_name='softmax_label', mode='test',
-                                       augmentation=aug, frame_per_video=self.test_params.frame_per_video)
+                                       augmentation=aug, clip_per_video=self.test_params.frame_per_video)
                 batch = valid_iter.next()
                 label = batch.label[0].asnumpy().astype(int)[0]
                 mod.forward(batch, is_train=False)
@@ -141,12 +141,15 @@ class CNN_Image(object):
 
         return acc/count
 
-    def read_image(self, img_path, augmentation):
-        image = load_one_image(img_path)
-        image = pre_process_image(self.model_params.data_shape, image, augmentation)
-        image = post_process_image(image)
+    def test_dataset_evaluation(self):
+        sym, arg_params, aux_params = mx.model.load_checkpoint(self.model_params.dir + self.model_params.name,
+                                                               self.test_params.load_epoch)
+        mod = mx.mod.Module(symbol=sym, context=self.ctx)
+        mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
+        test_accuracy = self.evaluate(mod)
+        logger.info('The testing accuracy is %f%%'%(test_accuracy))
 
-        return image
+
 
 
 

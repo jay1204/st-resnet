@@ -12,7 +12,7 @@ class VideoIter(mx.io.DataIter):
     This class is a wrapper of the basic mx.io.DataIter.
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
-                 label_name='label', mode='train', augmentation=None, frame_per_video=1):
+                 label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1):
         """
 
         :param batch_size:
@@ -28,7 +28,7 @@ class VideoIter(mx.io.DataIter):
         """
         super(VideoIter, self).__init__()
 
-        if batch_size%frame_per_video != 0:
+        if batch_size%clip_per_video != 0:
             raise ValueError('The batch size is not an integral multiple of (frames per video)')
 
         self.batch_size = batch_size
@@ -37,7 +37,8 @@ class VideoIter(mx.io.DataIter):
         self.videos_classes = videos_classes
         self.classes_labels = classes_labels
         self.augmentation = augmentation
-        self.frame_per_video = frame_per_video
+        self.clip_per_video = clip_per_video
+        self.frame_per_clip = frame_per_clip
 
         self.videos = np.asarray(list(videos_classes.keys()))
 
@@ -55,7 +56,7 @@ class VideoIter(mx.io.DataIter):
         self.provide_label = [(label_name, (batch_size, ))]
 
         self.video_size = self.videos.shape[0]
-        self.batch_videos = batch_size / frame_per_video
+        self.batch_videos = batch_size / clip_per_video
 
         self.cur = 0
         self.reset()
@@ -121,21 +122,21 @@ class VideoIter(mx.io.DataIter):
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir, sample_videos[i], '')
             frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
-            sample_gap = float(len(frames) - 1) / self.frame_per_video
+            sample_gap = float(len(frames) - 1) / self.clip_per_video
             sample_frame_names = []
-            for k in xrange(self.frame_per_video):
+            for k in xrange(self.clip_per_video):
                 sample_frame_names.append(frames[int(round(k * sample_gap))])
 
             for j, sample_frame_name in enumerate(sample_frame_names):
                 sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
-                batch_data[i * self.frame_per_video + j][:] = sample_frame
-                batch_label[i * self.frame_per_video + j][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
+                batch_data[i * self.clip_per_video + j][:] = sample_frame
+                batch_label[i * self.clip_per_video + j][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
         return batch_data, batch_label
 
     def getpad(self):
         if self.cur + self.batch_videos > self.video_size:
-            return (self.cur + self.batch_videos - self.video_size) * self.frame_per_video
+            return (self.cur + self.batch_videos - self.video_size) * self.clip_per_video
         else:
             return 0
 
