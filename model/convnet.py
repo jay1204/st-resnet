@@ -79,9 +79,11 @@ class ConvNet(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.FactorScheduler(step=8000, factor=0.1)
-        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('lr_scheduler', lr_sch)))
+        lr_sch = mx.lr_scheduler.FactorScheduler(step=10000, factor=0.1)
+        #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+                       #                                       ('lr_scheduler', lr_sch)))
+        mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+                                                              ('momentum', 0.9), ('wd',0.0005)))
 
         metric = mx.metric.create(['loss','acc'])
         count = 1

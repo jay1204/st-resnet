@@ -103,7 +103,7 @@ class VideoIter(mx.io.DataIter):
             video_path = os.path.join(self.data_dir, sample_videos[i], '')
             frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             sample_frame_name = random.choice(frames)
-            sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
+            sample_frame = self.next_clip(os.path.join(video_path, sample_frame_name))
             batch_data[i][:] = sample_frame
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
@@ -128,7 +128,7 @@ class VideoIter(mx.io.DataIter):
                 sample_frame_names.append(frames[int(round(k * sample_gap))])
 
             for j, sample_frame_name in enumerate(sample_frame_names):
-                sample_frame = self.next_image(os.path.join(video_path, sample_frame_name))
+                sample_frame = self.next_clip(os.path.join(video_path, sample_frame_name))
                 batch_data[i * self.clip_per_video + j][:] = sample_frame
                 batch_label[i * self.clip_per_video + j][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
@@ -143,7 +143,7 @@ class VideoIter(mx.io.DataIter):
     def getindex(self):
         return self.cur/self.batch_videos
 
-    def next_image(self, img_path):
+    def next_clip(self, img_path):
         image = load_one_image(img_path)
         image = pre_process_image(self.data_shape, image, self.augmentation)
         image = post_process_image(image)
