@@ -3,6 +3,8 @@ from config import ucf, train_image, resnet_50, test_image
 from model import CNN_Image
 from utils import get_ucf101_split
 import random
+import logger
+
 
 def main():
     ctx = mx.gpu(0)

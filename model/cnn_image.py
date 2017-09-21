@@ -5,6 +5,7 @@ import numpy as np
 import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
 import os
+import logger
 
 
 class CNN_Image(object):
@@ -99,16 +100,16 @@ class CNN_Image(object):
                     mod.forward(batch, is_train=False)
                     mod.update_metric(metric, batch.label)
                     train_acc.append(metric.get()[1][1])
-                    print "The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
-                          (count, metric.get()[1][0], metric.get()[1][1]*100)
+                    logger.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
+                          (count, metric.get()[1][0], metric.get()[1][1]*100))
                     score = mod.score(valid_iter, ['loss','acc'], num_batch=20)
                     valid_acc.append(score[1][1])
                 #if count%100==0:
                 #    va = self.evaluate(mod)
                 #    valid_acc.append(va)
                 #    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
-                    print "The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
-                         (count, score[0][1], score[1][1]*100)
+                    logger.info("The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
+                         (count, score[0][1], score[1][1]*100))
                     if valid_acc[-1] > valid_accuracy:
                         valid_accuracy = valid_acc[-1]
                         mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch, net)
