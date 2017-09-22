@@ -148,7 +148,7 @@ class ConvNet(object):
         #                                                       self.test_params.load_epoch)
         #mod = mx.mod.Module(symbol=sym, context=self.ctx)
         #mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
-        mod = mx.module.load(self.model_params.dir + self.model_params.name,
+        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name,
                              self.test_params.load_epoch)
         test_accuracy = self.evaluate(mod)
         logger.info("The testing accuracy is %f%%" % test_accuracy*100)
