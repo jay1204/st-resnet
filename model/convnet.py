@@ -126,12 +126,12 @@ class ConvNet(object):
             label = 0
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
-                valid_iter = VideoIter(batch_size=self.test_params.frame_per_video,
+                valid_iter = VideoIter(batch_size=self.test_params.clip_per_video,
                                        data_shape=self.model_params.data_shape,
                                        data_dir=self.data_params.dir, videos_classes={video: video_class},
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                        label_name='softmax_label', mode='test',
-                                       augmentation=aug, clip_per_video=self.test_params.frame_per_video)
+                                       augmentation=aug, clip_per_video=self.test_params.clip_per_video)
                 batch = valid_iter.next()
                 label = batch.label[0].asnumpy().astype(int)[0]
                 mod.forward(batch, is_train=False)
