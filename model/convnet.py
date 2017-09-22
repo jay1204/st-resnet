@@ -55,8 +55,8 @@ class ConvNet(object):
         """
         all_layers = symbol.get_internals()
         net = all_layers['flatten0_output']
-        net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
         net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
+        net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
         new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
         new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc1' not in k})
 
@@ -132,7 +132,8 @@ class ConvNet(object):
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                        label_name='softmax_label', mode='test',
                                        augmentation=aug, clip_per_video=self.test_params.clip_per_video)
-                mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
+                if not mod.binded:
+                    mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
                 batch = valid_iter.next()
                 label = batch.label[0].asnumpy().astype(int)[0]
                 mod.forward(batch, is_train=False)
@@ -145,20 +146,11 @@ class ConvNet(object):
         return acc/count
 
     def test_dataset_evaluation(self):
-        #sym, arg_params, aux_params = mx.model.load_checkpoint(self.model_params.dir + self.model_params.name,
-         #                                                      self.test_params.load_epoch)
-        #mod = mx.mod.Module(symbol=sym, context=self.ctx)
-        #mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
-
-        #mod._arg_params = arg_params
-        #mod._aux_params = aux_params
-        #mod.params_initialized = True
-
         mod = mx.module.Module.load(self.model_params.dir + self.model_params.name, self.test_params.load_epoch,
                                     context=self.ctx)
 
         test_accuracy = self.evaluate(mod)
-        logger.info("The testing accuracy is %f%%" % test_accuracy*100)
+        logger.info("The testing accuracy is %f%%" % (test_accuracy*100))
 
 
 
