@@ -22,6 +22,8 @@ def main():
                  train_videos_classes=train_videos_classes, test_videos_classes=test_videos_classes,
                  classes_labels=classes_labels, num_classes=ucf.num_classes, ctx=ctx)
     cm.train()
+    logger.info("Evaluation starts")
+    cm.test_dataset_evaluation()
     return
 
 if __name__ == '__main__':
