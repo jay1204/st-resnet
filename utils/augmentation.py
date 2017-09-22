@@ -101,7 +101,7 @@ def random_corner_crop(image, w, h, w_range=(224, 257), h_range=(168, 193)):
     elif which_corner == 2:
         image = right_top_corner_crop(image, w=rw, h=rh)
     elif which_corner == 3:
-        image = mx.img.fixed_crop(image, w=rw, h=rh)
+        image = right_bottom_corner_crop(image, w=rw, h=rh)
     else:
         image = centre_crop(image, rw, rh)
 
