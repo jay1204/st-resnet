@@ -146,7 +146,7 @@ class ConvNet(object):
 
     def test_dataset_evaluation(self):
         #sym, arg_params, aux_params = mx.model.load_checkpoint(self.model_params.dir + self.model_params.name,
-                                                               self.test_params.load_epoch)
+         #                                                      self.test_params.load_epoch)
         #mod = mx.mod.Module(symbol=sym, context=self.ctx)
         #mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
