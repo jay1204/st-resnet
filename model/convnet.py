@@ -13,7 +13,7 @@ class ConvNet(object):
     This class takes a pre-trained model(e.g. resnet-50, resnet-101), and further tune it on our video image data
     """
     def __init__(self, model_params, data_params, train_params, test_params, train_videos_classes,
-                 test_videos_classes, classes_labels, num_classes, ctx):
+                 test_videos_classes, classes_labels, num_classes, ctx, mode='spatial'):
         """
 
         :param model_params: a dict of the pre-trained network setting, including the model name, directory, etc.
@@ -30,8 +30,9 @@ class ConvNet(object):
         self.test_videos_classes = test_videos_classes
         self.classes_labels = classes_labels
         self.num_classes = num_classes
+        self.mode = mode
 
-    def configure_model_spatial(self):
+    def configure_model(self):
         # load pre-trained model
         if self.train_params.resume:
             new_symbol, new_arg_params,aux_params = mx.model.load_checkpoint(
@@ -42,7 +43,12 @@ class ConvNet(object):
                                                                    ctx = self.ctx)
 
             # adjust the network to satisfy the required input
-            new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
+            if self.mode == 'spatial':
+                new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
+            elif self.mode == 'temporal':
+                new_symbol, new_arg_params = self.refactor_model_temporal(symbol, arg_params)
+            else:
+                raise NotImplementedError('The refactoring method-{} for the model has not be implemented yet'.format(self.mode))
 
         return new_symbol, new_arg_params, aux_params
 
@@ -65,8 +71,12 @@ class ConvNet(object):
 
         return new_symbol, new_arg_params
 
+    def refactor_model_temporal(self):
+        pass
+
+
     def train(self):
-        net, arg_params, aux_params = self.configure_model_spatial()
+        net, arg_params, aux_params = self.configure_model()
 
         train_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                                data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
@@ -82,7 +92,7 @@ class ConvNet(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[4000, 14000, 20000], factor=0.1)
+        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[8000, 14000, 20000], factor=0.1)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
