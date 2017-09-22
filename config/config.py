@@ -17,6 +17,8 @@ train_image.drop_out = 0.9
 train_image.augmentation = ['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
 train_image.learning_rate = 0.01
+train_image.resume = True
+train_image.load_epoch = 1
 
 test_image = ed()
 # batch_size should be identical to frame_per_video for testing

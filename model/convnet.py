@@ -33,14 +33,17 @@ class ConvNet(object):
 
     def configure_model_spatial(self):
         # load pre-trained model
-        symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix,
-                                                   self.model_params.name,
-                                                   self.model_params.model_epoch,
-                                                   self.model_params.dir,
-                                                   ctx = self.ctx)
+        if self.train_params.resume:
+            new_symbol, new_arg_params,aux_params = mx.model.load_checkpoint(
+                self.model_params.dir + self.model_params.name, self.train_params.load_epoch)
+        else:
+            symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix, self.model_params.name,
+                                                                   self.model_params.model_epoch, self.model_params.dir,
+                                                                   ctx = self.ctx)
 
-        # adjust the network to satisfy the required input
-        new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
+            # adjust the network to satisfy the required input
+            new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
+
         return new_symbol, new_arg_params, aux_params
 
     def refactor_model_spatial(self, symbol, arg_params):
@@ -79,11 +82,12 @@ class ConvNet(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.FactorScheduler(step=6000, factor=0.1)
+        lr_sch = mx.lr_scheduler.FactorScheduler(step=[4000, 10000], factor=0.1)
         #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                        #                                       ('lr_scheduler', lr_sch)))
         mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('momentum', 0.9), ('wd',0.0005)))
+                                                              ('momentum', 0.9), ('wd',0.0005),
+                                                              ('lr_scheduler', lr_sch)))
 
         metric = mx.metric.create(['loss','acc'])
         count = 1
