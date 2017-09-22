@@ -132,6 +132,7 @@ class ConvNet(object):
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                        label_name='softmax_label', mode='test',
                                        augmentation=aug, clip_per_video=self.test_params.clip_per_video)
+                mod.bin(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
                 batch = valid_iter.next()
                 label = batch.label[0].asnumpy().astype(int)[0]
                 mod.forward(batch, is_train=False)
@@ -144,12 +145,12 @@ class ConvNet(object):
         return acc/count
 
     def test_dataset_evaluation(self):
-        #sym, arg_params, aux_params = mx.model.load_checkpoint(self.model_params.dir + self.model_params.name,
-        #                                                       self.test_params.load_epoch)
-        #mod = mx.mod.Module(symbol=sym, context=self.ctx)
-        #mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
-        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name,
-                             self.test_params.load_epoch)
+        sym, arg_params, aux_params = mx.model.load_checkpoint(self.model_params.dir + self.model_params.name,
+                                                               self.test_params.load_epoch)
+        mod = mx.mod.Module(symbol=sym, context=self.ctx)
+        mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
+
+        mod.bin()
         test_accuracy = self.evaluate(mod)
         logger.info("The testing accuracy is %f%%" % test_accuracy*100)
 
