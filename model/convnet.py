@@ -132,7 +132,7 @@ class ConvNet(object):
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                                        label_name='softmax_label', mode='test',
                                        augmentation=aug, clip_per_video=self.test_params.clip_per_video)
-                #mod.bin(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
+                mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
                 batch = valid_iter.next()
                 label = batch.label[0].asnumpy().astype(int)[0]
                 mod.forward(batch, is_train=False)
