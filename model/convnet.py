@@ -114,7 +114,7 @@ class ConvNet(object):
                          (count, score[0][1], score[1][1]*100))
                     if valid_acc[-1] > valid_accuracy:
                         valid_accuracy = valid_acc[-1]
-                        mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch, net)
+                        mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
 
                 count += 1
         return train_acc, valid_acc
