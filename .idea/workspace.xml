@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91a9948f-cac9-47d2-8635-65c5f0e0bba6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.py" afterPath="$PROJECT_DIR$/config/config.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/convnet.py" afterPath="$PROJECT_DIR$/model/convnet.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="300">
+              <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -28,8 +29,8 @@
       <file leaf-file-name="data_helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/data_helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -40,7 +41,7 @@
       <file leaf-file-name="augmentation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/augmentation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1680">
+            <state relative-caret-position="845">
               <caret line="112" column="26" lean-forward="false" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -52,7 +53,7 @@
       <file leaf-file-name="model_helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/model_helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
+            <state relative-caret-position="830">
               <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="38" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -64,8 +65,8 @@
       <file leaf-file-name="convnet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/convnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="84" column="71" lean-forward="false" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
+            <state relative-caret-position="490">
+              <caret line="84" column="70" lean-forward="false" selection-start-line="84" selection-start-column="70" selection-end-line="84" selection-end-column="70" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -88,8 +89,8 @@
       <file leaf-file-name="train_image.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="12" column="109" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="109" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -100,7 +101,7 @@
       <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/video_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-158">
+            <state relative-caret-position="-1002">
               <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -122,8 +123,8 @@
       <file leaf-file-name="image_process.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/image_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+            <state relative-caret-position="645">
+              <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="37" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -171,15 +172,16 @@
         <option value="$PROJECT_DIR$/test_image.py" />
         <option value="$PROJECT_DIR$/train_flow.py" />
         <option value="$PROJECT_DIR$/train_image.py" />
-        <option value="$PROJECT_DIR$/config/config.py" />
         <option value="$PROJECT_DIR$/model/convnet.py" />
+        <option value="$PROJECT_DIR$/config/config.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-3840" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="845" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -266,10 +268,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="845" extended-state="0" />
+    <frame x="-3840" y="23" width="1920" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16597222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -645,40 +647,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/data_helper.py">
+    <entry file="file://$PROJECT_DIR$/train_image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/model_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="38" />
+        <state relative-caret-position="180">
+          <caret line="12" column="109" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="109" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/augmentation.py">
+    <entry file="file://$PROJECT_DIR$/test_image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="112" column="26" lean-forward="false" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/image_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+        <state relative-caret-position="240">
+          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="32" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -693,20 +675,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_image.py">
+    <entry file="file://$PROJECT_DIR$/utils/model_helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="32" />
+        <state relative-caret-position="830">
+          <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="38" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_image.py">
+    <entry file="file://$PROJECT_DIR$/utils/data_helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/augmentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="845">
+          <caret line="112" column="26" lean-forward="false" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/image_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="37" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -715,7 +717,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/video_iter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-158">
+        <state relative-caret-position="-1002">
           <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -725,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="300">
+          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -735,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/convnet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="84" column="71" lean-forward="false" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
+        <state relative-caret-position="490">
+          <caret line="84" column="70" lean-forward="false" selection-start-line="84" selection-start-column="70" selection-end-line="84" selection-end-column="70" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

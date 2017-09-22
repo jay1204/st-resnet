@@ -82,45 +82,47 @@ class ConvNet(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[4000, 10000], factor=0.1)
-        #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                       #                                       ('lr_scheduler', lr_sch)))
-        mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('momentum', 0.9), ('wd',0.0005),
+        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[4000, 4000], factor=0.1)
+        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
+        #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+                     #                                         ('momentum', 0.9), ('wd',0.0005),
+                      #                                        ('lr_scheduler', lr_sch)))
 
         metric = mx.metric.create(['loss','acc'])
         count = 1
         train_acc = []
         valid_acc = []
         valid_accuracy = 0.0
-        for epoch in range(1, self.train_params.epoch + 1):
-            train_iter.reset()
-            metric.reset()
-            for batch in train_iter:
-                mod.forward(batch, is_train=True)
-                mod.update_metric(metric, batch.label)
-                mod.backward()
-                mod.update()
-                if count%100==0:
-                    mod.forward(batch, is_train=False)
-                    mod.update_metric(metric, batch.label)
-                    train_acc.append(metric.get()[1][1])
-                    logger.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
-                          (count, metric.get()[1][0], metric.get()[1][1]*100))
-                    score = mod.score(valid_iter, ['loss','acc'], num_batch=20)
-                    valid_acc.append(score[1][1])
-                #if count%100==0:
-                #    va = self.evaluate(mod)
-                #    valid_acc.append(va)
-                #    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
-                    logger.info("The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
-                         (count, score[0][1], score[1][1]*100))
-                    if valid_acc[-1] > valid_accuracy:
-                        valid_accuracy = valid_acc[-1]
-                        mod.save_checkpoint(self.model_params.dir + self.model_params.name, epoch)
 
-                count += 1
+        train_iter.reset()
+        metric.reset()
+        for batch in train_iter:
+            mod.forward(batch, is_train=True)
+            mod.update_metric(metric, batch.label)
+            mod.backward()
+            mod.update()
+            if count%100==0:
+                mod.forward(batch, is_train=False)
+                mod.update_metric(metric, batch.label)
+                train_acc.append(metric.get()[1][1])
+                logger.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
+                      (count, metric.get()[1][0], metric.get()[1][1]*100))
+                score = mod.score(valid_iter, ['loss','acc'], num_batch=20)
+                valid_acc.append(score[1][1])
+            #if count%100==0:
+            #    va = self.evaluate(mod)
+            #    valid_acc.append(va)
+            #    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
+                logger.info("The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
+                     (count, score[0][1], score[1][1]*100))
+                if valid_acc[-1] > valid_accuracy:
+                    valid_accuracy = valid_acc[-1]
+                    mod.save_checkpoint(self.model_params.dir + self.model_params.name, self.train_params.load_epoch)
+            count += 1
+            if count > self.train_params.iteration:
+                break
+
         return train_acc, valid_acc
 
     def evaluate(self, mod):

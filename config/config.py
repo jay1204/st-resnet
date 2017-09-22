@@ -12,13 +12,14 @@ ucf.image.data_shape = (224, 224, 3)
 
 train_image = ed()
 train_image.batch_size = 90
-train_image.epoch = 10
-train_image.drop_out = 0.9
+#train_image.epoch = 10
+train_image.drop_out = 0.5
 train_image.augmentation = ['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
 train_image.learning_rate = 0.01
 train_image.resume = True
-train_image.load_epoch = 1
+train_image.load_epoch = 2
+train_image.iteration = 20000
 
 test_image = ed()
 # batch_size should be identical to frame_per_video for testing
@@ -33,8 +34,8 @@ test_image.load_epoch = 1
 #                           ['right_bottom_corner_crop', 'horizon_flip'], ['centre_crop', 'horizon_flip']]
 
 train_flow = ed()
-train_flow.batch_size = 20
-train_flow.epoch = 10
+train_flow.batch_size = 60
+#train_flow.epoch = 10
 train_flow.drop_out = 0.8
 train_flow.augmentation = []
 
