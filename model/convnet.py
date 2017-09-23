@@ -106,6 +106,9 @@ class ConvNet(object):
 
         train_iter.reset()
         metric.reset()
+
+        logger.info("The dropout rate is {}, learning rate is {} and saving epoch is {}".
+                    format(self.train_params.drop_out, self.train_params.learning_rate, self.train_params.load_epoch))
         for batch in train_iter:
             mod.forward(batch, is_train=True)
             mod.update_metric(metric, batch.label)
