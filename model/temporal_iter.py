@@ -100,7 +100,7 @@ class TemporalIter(mx.io.DataIter):
         :return:
         """
         c, h, w = self.data_shape
-        batch_data = nd.empty((self.batch_size, c * 2 * self.frame_per_clip, h, w))
+        batch_data = nd.empty((self.batch_size, c, h, w))
         batch_label = nd.empty(self.batch_size)
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir_horizontal, sample_videos[i], '')
