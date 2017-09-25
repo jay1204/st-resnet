@@ -156,7 +156,7 @@ class ConvNet(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[10000, 16000, 10000], factor=0.1)
+        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[10000, 16000, 20000], factor=0.1)
         #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
         #                                                     ('lr_scheduler', lr_sch)))
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,

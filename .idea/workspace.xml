@@ -50,8 +50,8 @@
       <file leaf-file-name="convnet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/convnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="103" column="93" lean-forward="true" selection-start-line="103" selection-start-column="93" selection-end-line="103" selection-end-column="93" />
+            <state relative-caret-position="619">
+              <caret line="158" column="75" lean-forward="false" selection-start-line="158" selection-start-column="75" selection-end-line="158" selection-end-column="75" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -735,8 +735,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/convnet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="103" column="93" lean-forward="true" selection-start-line="103" selection-start-column="93" selection-end-line="103" selection-end-column="93" />
+        <state relative-caret-position="619">
+          <caret line="158" column="75" lean-forward="false" selection-start-line="158" selection-start-column="75" selection-end-line="158" selection-end-column="75" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
