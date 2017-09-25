@@ -8,11 +8,11 @@ ucf.num_classes = 101
 
 ucf.image = ed()
 ucf.image.dir = 'data/jpegs_256/'
-ucf.flow.dir_horizontal = 'data/tvl1_flow/u'
-ucf.flow.dir_vertical = 'data/tvl1_flow/v'
 ucf.image.data_shape = (224, 224, 3)
 ucf.flow = ed()
 ucf.flow.data_shape = ()
+ucf.flow.dir_horizontal = 'data/tvl1_flow/u'
+ucf.flow.dir_vertical = 'data/tvl1_flow/v'
 
 train_image = ed()
 train_image.batch_size = 90

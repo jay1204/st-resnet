@@ -108,7 +108,7 @@ class ConvNet(object):
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
-                                                      momentum=0.9, wd=0.00005, lr_scheduler=lr_sch)
+                #                                      momentum=0.9, wd=0.00005, lr_scheduler=lr_sch)
         #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
         #                                                      ('momentum', 0.9), ('wd',0.00005),
         #                                                      ('lr_scheduler', lr_sch)))
