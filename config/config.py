@@ -8,6 +8,8 @@ ucf.num_classes = 101
 
 ucf.image = ed()
 ucf.image.dir = 'data/jpegs_256/'
+ucf.flow.dir_horizontal = 'data/tvl1_flow/u'
+ucf.flow.dir_vertical = 'data/tvl1_flow/v'
 ucf.image.data_shape = (224, 224, 3)
 ucf.flow = ed()
 ucf.flow.data_shape = ()
@@ -15,12 +17,12 @@ ucf.flow.data_shape = ()
 train_image = ed()
 train_image.batch_size = 90
 #train_image.epoch = 10
-train_image.drop_out = 0.95
+train_image.drop_out = 0.9
 train_image.augmentation = ['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
-train_image.learning_rate = 0.01
+train_image.learning_rate = 0.0005
 train_image.resume = False
-train_image.load_epoch = 3
+train_image.load_epoch = 2
 train_image.iteration = 20000
 
 test_image = ed()

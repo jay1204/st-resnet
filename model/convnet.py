@@ -35,8 +35,7 @@ class ConvNet(object):
     def configure_model(self):
         # load pre-trained model
         if self.train_params.resume:
-            new_symbol, new_arg_params,aux_params = mx.model.load_checkpoint(
-                self.model_params.dir + self.model_params.name, self.train_params.load_epoch)
+            return self.resume_training()
         else:
             symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix, self.model_params.name,
                                                                    self.model_params.model_epoch, self.model_params.dir,
@@ -65,14 +64,28 @@ class ConvNet(object):
         all_layers = symbol.get_internals()
         net = all_layers['flatten0_output']
         net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
+        net = mx.symbol.FullyConnected(data=net, num_hidden=2048, name='fc2')
+        net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
         net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
         new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
         new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc1' not in k})
 
         return new_symbol, new_arg_params
 
-    def refactor_model_temporal(self):
+    def refactor_model_temporal(self, symbol, arg_params):
+        """
+        Adjust the input to accomodate the flow frames
+        :param symbol:
+        :param arg_params:
+        :return:
+        """
         pass
+
+
+
+    def resume_training(self):
+        return mx.model.load_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
+                                        self.train_params.load_epoch)
 
     def train(self):
         net, arg_params, aux_params = self.configure_model()
@@ -92,11 +105,15 @@ class ConvNet(object):
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[10000, 16000, 20000], factor=0.1)
-        #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-        #                                                      ('lr_scheduler', lr_sch)))
-        mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('momentum', 0.9), ('wd',0.00005),
+        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('lr_scheduler', lr_sch)))
+        #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
+                                                      momentum=0.9, wd=0.00005, lr_scheduler=lr_sch)
+        #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+        #                                                      ('momentum', 0.9), ('wd',0.00005),
+        #                                                      ('lr_scheduler', lr_sch)))
+        #mod.init_optimizer(optimizer=sgd)
+
 
         metric = mx.metric.create(['loss','acc'])
         count = 1
@@ -115,6 +132,7 @@ class ConvNet(object):
             mod.backward()
             mod.update()
             if count%100==0:
+                logger.info('Current optimizer parameters: ')
                 mod.forward(batch, is_train=False)
                 mod.update_metric(metric, batch.label)
                 train_acc.append(metric.get()[1][1])
@@ -130,7 +148,8 @@ class ConvNet(object):
                      (count, score[0][1], score[1][1]*100))
                 if valid_acc[-1] > valid_accuracy:
                     valid_accuracy = valid_acc[-1]
-                    mod.save_checkpoint(self.model_params.dir + self.model_params.name, self.train_params.load_epoch)
+                    mod.save_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
+                                        self.train_params.load_epoch)
             count += 1
             if count > self.train_params.iteration:
                 break
