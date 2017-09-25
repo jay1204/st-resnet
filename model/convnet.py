@@ -192,8 +192,9 @@ class ConvNet(object):
             mod.update_metric(metric, batch.label)
             mod.backward()
             mod.update()
+            logger.info('The current iteration is %d'%(count))
             if count%100==0:
-                logger.info('Current optimizer parameters: ')
+                #logger.info('Current optimizer parameters: ')
                 mod.forward(batch, is_train=False)
                 mod.update_metric(metric, batch.label)
                 train_acc.append(metric.get()[1][1])
