@@ -1,6 +1,7 @@
 import mxnet as mx
 from utils import load_pretrained_model
-from video_iter import VideoIter
+from spatial_iter import SpatialIter
+from temporal_iter import TemporalIter
 import numpy as np
 import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
@@ -82,7 +83,7 @@ class ConvNet(object):
             new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
             new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc8' not in k})
         else:
-            raise NotImplementedError('This model has not been implemented!')
+            raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
 
         return new_symbol, new_arg_params
 
@@ -93,9 +94,22 @@ class ConvNet(object):
         :param arg_params:
         :return:
         """
-        pass
+        if self.model_params.name == 'resnet-50':
+            all_layers = symbol.get_internals()
+            net = all_layers['flatten0_output']
+            net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
+            # net = mx.symbol.FullyConnected(data=net, num_hidden=2048, name='fc2')
+            # net = mx.symbol.Activation(name='relu_fc2', data=net, act_type='relu')
+            # net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
+            net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
+            new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
+            new_arg_params = dict({k: arg_params[k] for k in arg_params if 'fc1' not in k})
+            new_arg_params['conv0_weight'] = mx.ndarray.repeat(new_arg_params['conv0_weight'],
+                                                               repeats=self.train_params.frame_per_clip * 2, axis=1)
+        else:
+            raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
 
-
+        return new_symbol, new_arg_params
 
     def resume_training(self):
         return mx.model.load_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
@@ -103,22 +117,41 @@ class ConvNet(object):
 
     def train(self):
         net, arg_params, aux_params = self.configure_model()
-
-        train_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                               data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
-                               classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                               label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
-        valid_iter = VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                               data_dir=self.data_params.dir, videos_classes=self.test_videos_classes,
-                               classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                               label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation)
+        if self.mode == 'spatial':
+            train_iter = SpatialIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                                     data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
+                                     classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                                     label_name='softmax_label', mode='train',
+                                     augmentation=self.train_params.augmentation)
+            valid_iter = SpatialIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                                     data_dir=self.data_params.dir, videos_classes=self.test_videos_classes,
+                                     classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                                     label_name='softmax_label', mode='train',
+                                     augmentation=self.train_params.augmentation)
+        elif self.mode == 'temporal':
+            train_iter = TemporalIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                                      data_dir_horizontal=self.data_params.dir_horizontal,
+                                      data_dir_vertical=self.data_params.dir_vertical,
+                                      videos_classes=self.train_videos_classes, classes_labels=self.classes_labels,
+                                      ctx=self.ctx, data_name='data', label_name='softmax_label', mode='train',
+                                      augmentation=self.train_params.augmentation,
+                                      frame_per_clip=self.train_params.frame_per_clip)
+            valid_iter = TemporalIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                                      data_dir_horizontal=self.data_params.dir_horizontal,
+                                      data_dir_vertical=self.data_params.dir_vertical,
+                                      videos_classes=self.test_videos_classes, classes_labels=self.classes_labels,
+                                      ctx=self.ctx, data_name='data', label_name='softmax_label', mode='train',
+                                      augmentation=self.train_params.augmentation,
+                                      frame_per_clip=self.train_params.frame_per_clip)
+        else:
+            raise NotImplementedError('The iter for {} has not been implemented'.format(self.mode))
 
         mod = mx.mod.Module(symbol=net, context=self.ctx)
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[4000, 8000, 10000], factor=0.1)
+        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[10000, 16000, 10000], factor=0.1)
         #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
         #                                                     ('lr_scheduler', lr_sch)))
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
@@ -177,12 +210,12 @@ class ConvNet(object):
             label = 0
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
-                valid_iter = VideoIter(batch_size=self.test_params.clip_per_video,
-                                       data_shape=self.model_params.data_shape,
-                                       data_dir=self.data_params.dir, videos_classes={video: video_class},
-                                       classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                       label_name='softmax_label', mode='test',
-                                       augmentation=aug, clip_per_video=self.test_params.clip_per_video)
+                valid_iter = SpatialIter(batch_size=self.test_params.clip_per_video,
+                                         data_shape=self.model_params.data_shape,
+                                         data_dir=self.data_params.dir, videos_classes={video: video_class},
+                                         classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                                         label_name='softmax_label', mode='test',
+                                         augmentation=aug, clip_per_video=self.test_params.clip_per_video)
                 if not mod.binded:
                     mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
                 batch = valid_iter.next()
@@ -202,6 +235,17 @@ class ConvNet(object):
 
         test_accuracy = self.evaluate(mod)
         logger.info("The testing accuracy is %f%%" % (test_accuracy*100))
+
+    #def refactor_resnet_50_with_new_input_shape(self, data):
+    #    w, h, c = self.data_params.shape
+    #    if self.mode == 'temporal':
+    #        c = c * self.train_params.clip_per_video * 2
+    #    bn_data = mx.symbol.BatchNorm(name='bn_data', data=data, use_global_stats=False, momentum=0.9,
+    #                                   eps=2e-05, fix_gamma=True)
+    #    conv0 = mx.symbol.Convolution(name='conv0', cudnn_tune='limited_workspace', dilate=(1,1),
+    #                                  data=bn_data, num_filter=64, pad=(3,3), kernel=(7,7), stride=(2,2),
+    #                                  num_group=1, workspace=512, no_bias=True)
+
 
 
 

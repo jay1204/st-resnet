@@ -1,1 +1,1 @@
-from config import ucf, train_image, resnet_50,test_image, vgg_16
+from config import ucf, train_image, resnet_50,test_image, vgg_16, train_flow, test_flow

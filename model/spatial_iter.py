@@ -7,7 +7,7 @@ import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
 
 
-class VideoIter(mx.io.DataIter):
+class SpatialIter(mx.io.DataIter):
     """
     This class is a wrapper of the basic mx.io.DataIter.
     """
@@ -26,7 +26,7 @@ class VideoIter(mx.io.DataIter):
         :param mode: string, indicating whehter it is in the training phrase or test phrase
         :param augmentation: list of list, each list has strings indicating augmentation operations
         """
-        super(VideoIter, self).__init__()
+        super(SpatialIter, self).__init__()
 
         if batch_size%clip_per_video != 0:
             raise ValueError('The batch size is not an integral multiple of (frames per video)')
