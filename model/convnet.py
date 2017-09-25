@@ -79,6 +79,8 @@ class ConvNet(object):
             net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc8')
             new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
             new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc8' not in k})
+        else:
+            raise NotImplementedError('This model has not been implemented!')
 
         return new_symbol, new_arg_params
 
