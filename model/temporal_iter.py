@@ -157,7 +157,7 @@ class TemporalIter(mx.io.DataIter):
             frame_path = os.path.join(vertical_video_path, frames_name[i])
             frames.append(load_one_image(frame_path))
 
-        clip = mx.ndarray.Concat(frames, dim=2)
+        clip = mx.ndarray.concatenate(frames, axis=2)
         clip = pre_process_image(self.data_shape, clip, self.augmentation)
         clip = post_process_image(clip)
 
