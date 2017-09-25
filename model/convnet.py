@@ -46,7 +46,7 @@ class ConvNet(object):
             if self.mode == 'spatial':
                 new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
             elif self.mode == 'temporal':
-                new_symbol, new_arg_params = self.refactor_model_temporal(symbol, arg_params)
+                new_symbol, new_arg_params, new_aux_params = self.refactor_model_temporal(symbol, arg_params, aux_params)
             else:
                 raise NotImplementedError('The refactoring method-{} for the model has not be implemented yet'.format(self.mode))
 
@@ -87,7 +87,7 @@ class ConvNet(object):
 
         return new_symbol, new_arg_params
 
-    def refactor_model_temporal(self, symbol, arg_params):
+    def refactor_model_temporal(self, symbol, arg_params, aux_params):
         """
         Adjust the input to accomodate the flow frames
         :param symbol:
@@ -111,10 +111,16 @@ class ConvNet(object):
 
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(new_arg_params['conv0_weight'],
                                                                repeats=self.train_params.frame_per_clip * 2, axis=1)
+            aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(aux_params['bn_data_moving_mean'],
+                                                                repeats=self.train_params.frame_per_clip * 2)
+            aux_params['bn_data_moving_var'] = mx.ndarray.repeat(aux_params['bn_data_moving_var'],
+                                                                repeats=self.train_params.frame_per_clip * 2)
+
+
         else:
             raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
 
-        return new_symbol, new_arg_params
+        return new_symbol, new_arg_params, aux_params
 
     def resume_training(self):
         return mx.model.load_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
