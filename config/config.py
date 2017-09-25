@@ -15,15 +15,16 @@ ucf.flow.dir_horizontal = 'data/tvl1_flow/u'
 ucf.flow.dir_vertical = 'data/tvl1_flow/v'
 
 train_image = ed()
-train_image.batch_size = 70
+train_image.batch_size = 90
 #train_image.epoch = 10
 train_image.drop_out = 0.9
 train_image.augmentation = ['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
 train_image.learning_rate = 0.01
 train_image.resume = False
-train_image.load_epoch = 1
-train_image.iteration = 20000
+train_image.load_epoch = 2
+train_image.iteration = 30000
+train_image.schedule_steps = [15000, 25000, 30000]
 
 test_image = ed()
 # batch_size should be identical to frame_per_video for testing
@@ -48,6 +49,7 @@ train_flow.resume = False
 train_flow.load_epoch = 1
 train_flow.iteration = 20000
 train_flow.frame_per_clip = 10
+train_flow.schedule_steps = [10000, 15000, 20000]
 
 test_flow = ed()
 test_flow.batch_size = 25

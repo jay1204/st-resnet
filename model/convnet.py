@@ -6,7 +6,7 @@ import numpy as np
 import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
 import os
-from logger import logger
+import logging
 
 
 class ConvNet(object):
@@ -165,7 +165,7 @@ class ConvNet(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[10000, 16000, 20000], factor=0.1)
+        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=self.train_params.schedule_steps, factor=0.1)
         #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
         #                                                     ('lr_scheduler', lr_sch)))
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
@@ -174,8 +174,6 @@ class ConvNet(object):
                                                               ('momentum', 0.9), ('wd',0.0005),
                                                               ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
-
-
         metric = mx.metric.create(['loss','acc'])
         count = 1
         train_acc = []
@@ -185,20 +183,20 @@ class ConvNet(object):
         train_iter.reset()
         metric.reset()
 
-        logger.info("The dropout rate is {}, learning rate is {} and saving epoch is {}".
+        logging.info("The dropout rate is {}, learning rate is {} and saving epoch is {}".
                     format(self.train_params.drop_out, self.train_params.learning_rate, self.train_params.load_epoch))
         for batch in train_iter:
             mod.forward(batch, is_train=True)
             mod.update_metric(metric, batch.label)
             mod.backward()
             mod.update()
-            logger.info('The current iteration is %d'%(count))
+            #logging.info('The current iteration is %d'%(count))
             if count%100==0:
                 #logger.info('Current optimizer parameters: ')
                 mod.forward(batch, is_train=False)
                 mod.update_metric(metric, batch.label)
                 train_acc.append(metric.get()[1][1])
-                logger.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
+                logging.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
                       (count, metric.get()[1][0], metric.get()[1][1]*100))
                 score = mod.score(valid_iter, ['loss','acc'], num_batch=20)
                 valid_acc.append(score[1][1])
@@ -206,7 +204,7 @@ class ConvNet(object):
             #    va = self.evaluate(mod)
             #    valid_acc.append(va)
             #    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
-                logger.info("The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
+                logging.info("The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
                      (count, score[0][1], score[1][1]*100))
                 if valid_acc[-1] > valid_accuracy:
                     valid_accuracy = valid_acc[-1]
@@ -249,7 +247,7 @@ class ConvNet(object):
                                     context=self.ctx)
 
         test_accuracy = self.evaluate(mod)
-        logger.info("The testing accuracy is %f%%" % (test_accuracy*100))
+        logging.info("The testing accuracy is %f%%" % (test_accuracy*100))
 
     #def refactor_resnet_50_with_new_input_shape(self, data):
     #    w, h, c = self.data_params.shape
@@ -260,15 +258,5 @@ class ConvNet(object):
     #    conv0 = mx.symbol.Convolution(name='conv0', cudnn_tune='limited_workspace', dilate=(1,1),
     #                                  data=bn_data, num_filter=64, pad=(3,3), kernel=(7,7), stride=(2,2),
     #                                  num_group=1, workspace=512, no_bias=True)
-
-
-
-
-
-
-
-
-
-
 
 
