@@ -46,7 +46,7 @@ class ConvNet(object):
             if self.mode == 'spatial':
                 new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
             elif self.mode == 'temporal':
-                new_symbol, new_arg_params, new_aux_params = self.refactor_model_temporal(symbol, arg_params, aux_params)
+                new_symbol, new_arg_params, aux_params = self.refactor_model_temporal(symbol, arg_params, aux_params)
             else:
                 raise NotImplementedError('The refactoring method-{} for the model has not be implemented yet'.format(self.mode))
 
