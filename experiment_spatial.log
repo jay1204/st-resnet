@@ -1,0 +1,39 @@
+INFO:root:Start training image network: Mon Sep 25 02:57:14 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training image network: Mon Sep 25 02:59:21 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.9, learning rate is 0.0001 and saving epoch is 2
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.230552%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 1.357143%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.060820%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 1.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 1.041961%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 1.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 1.011315%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 1.428571%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 1.009901%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 1.500000%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 1.011315%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 1.000000%
+INFO:root:Start training image network: Mon Sep 25 03:16:48 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training image network: Mon Sep 25 03:17:19 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.9, learning rate is 0.01 and saving epoch is 1
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.145686%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 1.857143%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0001.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.612447%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 5.500000%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0001.params"

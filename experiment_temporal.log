@@ -1,0 +1,7 @@
+INFO:root:Start training flow network: Mon Sep 25 03:07:12 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training flow network: Mon Sep 25 03:07:18 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training flow network: Mon Sep 25 03:08:37 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 0.01 and saving epoch is 1

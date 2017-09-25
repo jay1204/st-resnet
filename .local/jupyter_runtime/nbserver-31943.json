@@ -1,0 +1,11 @@
+{
+  "base_url": "/", 
+  "hostname": "localhost", 
+  "notebook_dir": "/home/zchen22/src/st-resnet", 
+  "password": false, 
+  "pid": 31943, 
+  "port": 8892, 
+  "secure": false, 
+  "token": "6773b6cb20181e05d9d24c4ffc0b71b2f313899e6defe6b3", 
+  "url": "http://localhost:8892/"
+}

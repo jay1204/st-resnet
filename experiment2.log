@@ -1,0 +1,177 @@
+INFO:root:Start training image network: Sun Sep 24 23:38:51 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training image network: Sun Sep 24 23:49:18 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training image network: Sun Sep 24 23:52:36 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training image network: Sun Sep 24 23:53:10 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training image network: Sun Sep 24 23:53:56 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:Start training image network: Sun Sep 24 23:55:40 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.9, learning rate is 0.001 and saving epoch is 2
+INFO:root:Start training image network: Sun Sep 24 23:57:18 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.9, learning rate is 0.001 and saving epoch is 2
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.018388%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 1.000000%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.166902%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 1.714286%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 1.173975%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 0.928571%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 1.177511%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 1.142857%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 1.230552%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 1.642857%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 1.268270%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 1.285714%
+INFO:root:Start training image network: Mon Sep 25 00:16:52 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.9, learning rate is 0.001 and saving epoch is 2
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.060820%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 0.714286%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.039604%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 1.285714%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 0.990099%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 0.857143%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 0.972419%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 1.357143%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 0.973126%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 2.357143%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0002.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 0.999529%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 1.571429%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 700-th iteration is 0.009901, accuracy  is 1.008285%
+INFO:root:The valid loss of the 700-th iteration is 0.009901, accuracy is 0.571429%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 800-th iteration is 0.009901, accuracy  is 1.014851%
+INFO:root:The valid loss of the 800-th iteration is 0.009901, accuracy is 1.642857%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 900-th iteration is 0.009901, accuracy  is 1.012101%
+INFO:root:The valid loss of the 900-th iteration is 0.009901, accuracy is 1.214286%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1000-th iteration is 0.009901, accuracy  is 1.025460%
+INFO:root:The valid loss of the 1000-th iteration is 0.009901, accuracy is 2.071429%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1100-th iteration is 0.009901, accuracy  is 1.040247%
+INFO:root:The valid loss of the 1100-th iteration is 0.009901, accuracy is 1.285714%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1200-th iteration is 0.009901, accuracy  is 1.046676%
+INFO:root:The valid loss of the 1200-th iteration is 0.009901, accuracy is 1.071429%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1300-th iteration is 0.009901, accuracy  is 1.070613%
+INFO:root:The valid loss of the 1300-th iteration is 0.009901, accuracy is 0.785714%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1400-th iteration is 0.009901, accuracy  is 1.080016%
+INFO:root:The valid loss of the 1400-th iteration is 0.009901, accuracy is 1.357143%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1500-th iteration is 0.009901, accuracy  is 1.083451%
+INFO:root:The valid loss of the 1500-th iteration is 0.009901, accuracy is 1.500000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1600-th iteration is 0.009901, accuracy  is 1.095297%
+INFO:root:The valid loss of the 1600-th iteration is 0.009901, accuracy is 1.928571%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1700-th iteration is 0.009901, accuracy  is 1.114069%
+INFO:root:The valid loss of the 1700-th iteration is 0.009901, accuracy is 1.071429%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1800-th iteration is 0.009901, accuracy  is 1.129970%
+INFO:root:The valid loss of the 1800-th iteration is 0.009901, accuracy is 1.571429%
+INFO:root:Start training image network: Mon Sep 25 01:08:35 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.9, learning rate is 0.01 and saving epoch is 1
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 100-th iteration is nan, accuracy  is 0.056577%
+INFO:root:The valid loss of the 100-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 200-th iteration is nan, accuracy  is 0.028289%
+INFO:root:The valid loss of the 200-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 300-th iteration is nan, accuracy  is 0.018859%
+INFO:root:The valid loss of the 300-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 400-th iteration is nan, accuracy  is 0.014144%
+INFO:root:The valid loss of the 400-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 500-th iteration is nan, accuracy  is 0.011315%
+INFO:root:The valid loss of the 500-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 600-th iteration is nan, accuracy  is 0.009430%
+INFO:root:The valid loss of the 600-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 700-th iteration is nan, accuracy  is 0.008082%
+INFO:root:The valid loss of the 700-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 800-th iteration is nan, accuracy  is 0.007072%
+INFO:root:The valid loss of the 800-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 900-th iteration is nan, accuracy  is 0.006286%
+INFO:root:The valid loss of the 900-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1000-th iteration is nan, accuracy  is 0.005658%
+INFO:root:The valid loss of the 1000-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1100-th iteration is nan, accuracy  is 0.005143%
+INFO:root:The valid loss of the 1100-th iteration is nan, accuracy is 0.000000%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1200-th iteration is nan, accuracy  is 0.004715%
+INFO:root:The valid loss of the 1200-th iteration is nan, accuracy is 0.000000%
+INFO:root:Start training image network: Mon Sep 25 01:42:42 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.9, learning rate is 0.0005 and saving epoch is 1
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 0.975955%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 2.000000%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0001.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 0.997171%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 1.142857%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 1.037247%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 1.785714%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 1.043140%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 2.142857%
+INFO:root:Saved checkpoint to "data/pretrained_model/vgg16-spatial-0001.params"
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 1.055163%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 0.928571%
+                                         INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 1.023102%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 0.928571%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 700-th iteration is 0.009901, accuracy  is 1.040614%
+INFO:root:The valid loss of the 700-th iteration is 0.009901, accuracy is 1.142857%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 800-th iteration is 0.009901, accuracy  is 1.043140%
+INFO:root:The valid loss of the 800-th iteration is 0.009901, accuracy is 0.714286%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 900-th iteration is 0.009901, accuracy  is 1.038818%
+INFO:root:The valid loss of the 900-th iteration is 0.009901, accuracy is 0.714286%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1000-th iteration is 0.009901, accuracy  is 1.045262%
+INFO:root:The valid loss of the 1000-th iteration is 0.009901, accuracy is 1.071429%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1100-th iteration is 0.009901, accuracy  is 1.044104%
+INFO:root:The valid loss of the 1100-th iteration is 0.009901, accuracy is 1.214286%
+INFO:root:Current optimizer parameters: 
+INFO:root:The training loss of the 1200-th iteration is 0.009901, accuracy  is 1.067893%
+INFO:root:The valid loss of the 1200-th iteration is 0.009901, accuracy is 0.785714%
