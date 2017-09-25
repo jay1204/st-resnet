@@ -46,7 +46,8 @@ class TemporalIter(mx.io.DataIter):
 
         if not isinstance(data_shape, tuple):
             data_shape = tuple(data_shape)
-        self.data_shape = data_shape
+        c, h, w = data_shape
+        self.data_shape = (c * 2 * self.frame_per_clip, h, w)
         self.ctx = ctx
         if self.ctx is None:
             self.ctx = [mx.cpu()]
