@@ -151,10 +151,10 @@ class TemporalIter(mx.io.DataIter):
         vertical_video_path = os.path.join(self.data_dir_vertical, video_name, '')
         frames = []
         for i in xrange(start_frame_index, start_frame_index+self.frame_per_clip):
-            frame_path = os.path.join(horizontal_video_path, frames_name[i], '')
+            frame_path = os.path.join(horizontal_video_path, frames_name[i])
             frames.append(load_one_image(frame_path))
         for i in xrange(start_frame_index, start_frame_index+self.frame_per_clip):
-            frame_path = os.path.join(vertical_video_path, frames_name[i], '')
+            frame_path = os.path.join(vertical_video_path, frames_name[i])
             frames.append(load_one_image(frame_path))
 
         clip = mx.ndarray.concat(frames, dim=2)
