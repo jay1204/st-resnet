@@ -45,7 +45,7 @@ class ConvNet(object):
             # adjust the network to satisfy the required input
             if self.mode == 'spatial':
                 new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
-                new_aug_params = aux_params
+                new_aux_params = aux_params
             elif self.mode == 'temporal':
                 new_symbol, new_arg_params, new_aux_params = self.refactor_model_temporal(symbol, arg_params, aux_params)
             else:
