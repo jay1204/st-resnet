@@ -61,14 +61,24 @@ class ConvNet(object):
             - new_symbol
             - new_arg_params
         """
-        all_layers = symbol.get_internals()
-        net = all_layers['flatten0_output']
-        net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
-        net = mx.symbol.FullyConnected(data=net, num_hidden=2048, name='fc2')
-        net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
-        net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
-        new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
-        new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc1' not in k})
+        if self.model_params.name=='resnet-50':
+            all_layers = symbol.get_internals()
+            net = all_layers['flatten0_output']
+            net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
+            net = mx.symbol.FullyConnected(data=net, num_hidden=2048, name='fc2')
+            net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
+            net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
+            new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
+            new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc1' not in k})
+        elif self.model_params.name=='vgg16':
+            all_layers = symbol.get_internals()
+            net = all_layers['fc6']
+            net = mx.symbol.Dropout(net, p=self.train_params.drop_out)
+            net = mx.symbol.FullyConnected(data=net, num_hidden=4096, name='fc7')
+            net = mx.symbol.Dropout(net, p = self.train_params.drou_out)
+            net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc8')
+            new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
+            new_arg_params = dict({k:arg_params[k] for k in arg_params if 'fc8' not in k})
 
         return new_symbol, new_arg_params
 
@@ -104,11 +114,11 @@ class ConvNet(object):
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
-        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[10000, 16000, 20000], factor=0.1)
-        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('lr_scheduler', lr_sch)))
-        #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
-                #                                      momentum=0.9, wd=0.00005, lr_scheduler=lr_sch)
+        lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=[4000, 8000, 10000], factor=0.1)
+        #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+        #                                                     ('lr_scheduler', lr_sch)))
+        sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
+                                                      momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
         #                                                      ('momentum', 0.9), ('wd',0.00005),
         #                                                      ('lr_scheduler', lr_sch)))

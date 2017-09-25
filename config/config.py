@@ -43,7 +43,7 @@ train_flow.batch_size = 60
 train_flow.drop_out = 0.8
 train_flow.augmentation = ['random_horizon_flip', 'random_corner_crop', 'random_border25_crop']
 train_flow.clip_per_video = 1
-train_flow.learning_rate = 0.0005
+train_flow.learning_rate = 0.001
 train_flow.resume = False
 train_flow.load_epoch = 1
 train_flow.iteration = 20000
@@ -62,6 +62,12 @@ resnet_50.name = 'resnet-50'
 resnet_50.model_epoch = 0
 resnet_50.url_prefix = 'http://data.mxnet.io/models/imagenet/resnet/50-layers/resnet-50'
 resnet_50.data_shape = (3, 224, 224)
+
+vgg_16=ed()
+vgg_16.dir = 'data/pretrained_model/'
+vgg_16.name = 'vgg16'
+vgg_16.model_epoch = 0
+vgg_16.url_prefix = 'http://data.dmlc.ml/models/imagenet/vgg/vgg16'
 
 
 
