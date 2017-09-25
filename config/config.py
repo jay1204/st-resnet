@@ -15,12 +15,12 @@ ucf.flow.dir_horizontal = 'data/tvl1_flow/u'
 ucf.flow.dir_vertical = 'data/tvl1_flow/v'
 
 train_image = ed()
-train_image.batch_size = 90
+train_image.batch_size = 70
 #train_image.epoch = 10
 train_image.drop_out = 0.9
 train_image.augmentation = ['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
-train_image.learning_rate = 0.0005
+train_image.learning_rate = 0.001
 train_image.resume = False
 train_image.load_epoch = 2
 train_image.iteration = 20000
