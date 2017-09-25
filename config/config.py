@@ -68,6 +68,7 @@ vgg_16.dir = 'data/pretrained_model/'
 vgg_16.name = 'vgg16'
 vgg_16.model_epoch = 0
 vgg_16.url_prefix = 'http://data.dmlc.ml/models/imagenet/vgg/vgg16'
+vgg_16.data_shape = (3, 224, 224)
 
 
 
