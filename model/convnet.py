@@ -166,13 +166,14 @@ class ConvNet(object):
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=self.train_params.schedule_steps, factor=0.1)
-        #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-        #                                                     ('lr_scheduler', lr_sch)))
+        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+                                                             ('lr_scheduler', lr_sch)))
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
-        mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('momentum', 0.9), ('wd',0.0005),
-                                                              ('lr_scheduler', lr_sch)))
+        #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+        #                                                      ('momentum', 0.9), ('wd',0.0005),
+        #                                                       ('rescale_grad', 1.0), ('clip_gradient', None),
+        #                                                      ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
         metric = mx.metric.create(['loss','acc'])
         count = 1
