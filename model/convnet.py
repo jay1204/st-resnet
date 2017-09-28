@@ -277,7 +277,9 @@ class ConvNet(object):
         for param in json_file['nodes']:
             if param['op'] == 'BatchNorm':
                 param['param']['use_global_stats'] = True
-        json.dump(json_file, self.model_params.dir+self.model_params.name+'-symbol.json')
-        return 
+
+        with open(self.model_params.dir + self.model_params.name + '-symbol.json', 'w') as f:
+            json.dump(json_file, f)
+        return
 
 
