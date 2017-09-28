@@ -7,6 +7,7 @@ import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
 import os
 import logging
+import json
 
 
 class ConvNet(object):
@@ -38,10 +39,11 @@ class ConvNet(object):
         if self.train_params.resume:
             return self.resume_training()
         else:
+            if self.train_params.use_global_stats:
+                self.change_use_global_stats_to_true_json()
             symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix, self.model_params.name,
                                                                    self.model_params.model_epoch, self.model_params.dir,
-                                                                   ctx = self.ctx)
-
+                                                                   ctx=self.ctx)
             # adjust the network to satisfy the required input
             if self.mode == 'spatial':
                 new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
@@ -169,10 +171,7 @@ class ConvNet(object):
         adam = mx.optimizer.Optimizer.create_optimizer('adam', learning_rate=self.train_params.learning_rate,
                                                        lr_scheduler=lr_sch,
                                                        rescale_grad=1.0/self.train_params.batch_size)
-        freeze_lr_params = {}
-        for param_name in net.list_auxiliary_states():
-            freeze_lr_params[param_name] = 0.0
-        adam.set_lr_mult(freeze_lr_params)
+
         mod.init_optimizer(optimizer=adam)
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
@@ -272,5 +271,9 @@ class ConvNet(object):
 
     def freeze_mean_variance_batch_normalization_layers(self, symbol):
         pass
+
+    def change_use_global_stats_to_true_json(self):
+        json_file = json.loads(open(self.model_params.dir+self.model_params.name+'-symbol.son').read())
+        print json_file
 
 

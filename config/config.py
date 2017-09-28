@@ -25,6 +25,7 @@ train_image.resume = False
 train_image.load_epoch = 5
 train_image.iteration = 30000
 train_image.schedule_steps = [10000, 20000, 30000]
+train_image.use_global_stats = True
 
 test_image = ed()
 # batch_size should be identical to frame_per_video for testing
