@@ -277,12 +277,15 @@ class ConvNet(object):
         json_file = json.loads(open(self.model_params.dir+self.model_params.name+'-symbol.json').read())
         if self.train_params.use_global_stats:
             operator = "True"
+            momentum = "1.0"
         else:
             operator = "False"
+            momentum = "0.9"
 
         for param in json_file['nodes']:
             if param['op'] == 'BatchNorm':
                 param['param']['use_global_stats'] = operator
+                param['param']['momentum'] = momentum
 
         with open(self.model_params.dir + self.model_params.name + '-symbol.json', 'w') as f:
             json.dump(json_file, f)
