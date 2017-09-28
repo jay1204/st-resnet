@@ -23,7 +23,7 @@ train_image.clip_per_video = 1
 train_image.learning_rate = 0.0005
 train_image.resume = False
 train_image.load_epoch = 5
-train_image.iteration = 20000
+train_image.iteration = 30000
 train_image.schedule_steps = [10000, 20000, 30000]
 
 test_image = ed()

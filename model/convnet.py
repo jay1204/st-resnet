@@ -160,7 +160,7 @@ class ConvNet(object):
         else:
             raise NotImplementedError('The iter for {} has not been implemented'.format(self.mode))
 
-        mod = mx.mod.Module(symbol=net, context=self.ctx, fixed_params_names=net.list_auxiliary_states())
+        mod = mx.mod.Module(symbol=net, context=self.ctx) # , fixed_params_names=net.list_auxiliary_states())
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
@@ -190,12 +190,14 @@ class ConvNet(object):
             mod.forward(batch, is_train=True)
             mod.update_metric(metric, batch.label)
             mod.backward()
+            mod.get_input_grads()
             mod.update()
             #logging.info('The current iteration is %d'%(count))
             if count%100==0:
                 #logger.info('Current optimizer parameters: ')
                 mod.forward(batch, is_train=False)
                 mod.update_metric(metric, batch.label)
+                print mod.get_outputs()
                 train_acc.append(metric.get()[1][1])
                 logging.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
                       (count, metric.get()[1][0], metric.get()[1][1]*100))
