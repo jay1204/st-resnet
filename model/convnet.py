@@ -190,7 +190,7 @@ class ConvNet(object):
             mod.forward(batch, is_train=True)
             mod.update_metric(metric, batch.label)
             mod.backward()
-            mod.get_input_grads()
+            print mod.get_input_grads()[0].asnumpy()
             mod.update()
             #logging.info('The current iteration is %d'%(count))
             if count%100==0:
