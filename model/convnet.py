@@ -160,7 +160,7 @@ class ConvNet(object):
         else:
             raise NotImplementedError('The iter for {} has not been implemented'.format(self.mode))
 
-        mod = mx.mod.Module(symbol=net, context=self.ctx)
+        mod = mx.mod.Module(symbol=net, context=self.ctx, fixed_params_names=net.list_auxiliary_states())
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
         mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
@@ -259,5 +259,8 @@ class ConvNet(object):
     #    conv0 = mx.symbol.Convolution(name='conv0', cudnn_tune='limited_workspace', dilate=(1,1),
     #                                  data=bn_data, num_filter=64, pad=(3,3), kernel=(7,7), stride=(2,2),
     #                                  num_group=1, workspace=512, no_bias=True)
+
+    def freeze_mean_variance_batch_normalization_layers(self, symbol):
+        pass
 
 

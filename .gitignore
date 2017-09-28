@@ -1,3 +1,11 @@
 data/
 *.pyc
 *.swp
+.ipynb_checkpoints/
+.local/
+*.ipynb
+*.swk
+*.swm
+*.swn
+*.swo
+*.swl
