@@ -172,7 +172,7 @@ class ConvNet(object):
         for param_name in net.list_auxiliary_states():
             freeze_lr_params[param_name] = 0.0
         adam.set_lr_mult(freeze_lr_params)
-        #mod.init_optimizer(optimizer=adam)
+        mod.init_optimizer(optimizer=adam)
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
