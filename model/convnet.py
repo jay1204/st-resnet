@@ -273,7 +273,7 @@ class ConvNet(object):
         pass
 
     def change_use_global_stats_to_true_json(self):
-        json_file = json.loads(open(self.model_params.dir+self.model_params.name+'-symbol.son').read())
+        json_file = json.loads(open(self.model_params.dir+self.model_params.name+'-symbol.json').read())
         print json_file
 
 
