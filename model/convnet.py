@@ -167,7 +167,8 @@ class ConvNet(object):
 
         lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=self.train_params.schedule_steps, factor=0.1)
         adam = mx.optimizer.Optimizer.create_optimizer('adam', learning_rate=self.train_params.learning_rate,
-                                                       lr_scheduler=lr_sch, rescale_grad=1.0)
+                                                       lr_scheduler=lr_sch,
+                                                       rescale_grad=1.0/self.train_params.batch_size)
         freeze_lr_params = {}
         for param_name in net.list_auxiliary_states():
             freeze_lr_params[param_name] = 0.0
