@@ -53,6 +53,7 @@ class ConvNet(object):
             else:
                 raise NotImplementedError('The refactoring method-{} for the model has not be implemented yet'.format(self.mode))
 
+            new_symbol.save(self.model_params.dir + self.model_params.name + '-' + self.mode + '-symbol.json')
             return new_symbol, new_arg_params, new_aux_params
 
     def refactor_model_spatial(self, symbol, arg_params):
@@ -168,11 +169,11 @@ class ConvNet(object):
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=self.train_params.schedule_steps, factor=0.1)
-        adam = mx.optimizer.Optimizer.create_optimizer('adam', learning_rate=self.train_params.learning_rate,
-                                                       lr_scheduler=lr_sch,
-                                                       rescale_grad=1.0/self.train_params.batch_size)
+        #adam = mx.optimizer.Optimizer.create_optimizer('adam', learning_rate=self.train_params.learning_rate,
+         #                                              lr_scheduler=lr_sch,
+         #                                              rescale_grad=1.0/self.train_params.batch_size)
 
-        mod.init_optimizer(optimizer=adam)
+        #mod.init_optimizer(optimizer=adam)
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
@@ -180,8 +181,8 @@ class ConvNet(object):
         #                                                       ('rescale_grad', 1.0), ('clip_gradient', None),
         #                                                      ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
-        #mod.init_optimizer(optimizer='adam', optimizer_params=(('lr_mult', freeze_lr_params),
-        #    ('learning_rate', self.train_params.learning_rate), ('lr_scheduler', lr_sch)))
+        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
+                                                               ('lr_scheduler', lr_sch)))
         metric = mx.metric.create(['loss','acc'])
         count = 1
         train_acc = []
@@ -278,7 +279,7 @@ class ConvNet(object):
             operator = "True"
         else:
             operator = "False"
-            
+
         for param in json_file['nodes']:
             if param['op'] == 'BatchNorm':
                 param['param']['use_global_stats'] = operator
