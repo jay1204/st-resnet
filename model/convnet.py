@@ -166,8 +166,13 @@ class ConvNet(object):
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=self.train_params.schedule_steps, factor=0.1)
-        mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                             ('lr_scheduler', lr_sch)))
+        adam = mx.optimizer.Optimizer.create_optimizer(
+            'adam', optimizer_params=(('learning_rate', self.train_params.learning_rate), ('lr_scheduler', lr_sch)))
+        freeze_lr_params = {}
+        for param_name in net.list_auxiliary_states():
+            freeze_lr_params[param_name] = 0.0
+        adam.set_lr_mult(freeze_lr_params)
+        mod.init_optimizer(optimizer=adam)
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
@@ -190,7 +195,7 @@ class ConvNet(object):
             mod.forward(batch, is_train=True)
             mod.update_metric(metric, batch.label)
             mod.backward()
-            print mod.get_input_grads()[0].asnumpy()
+            #print mod.get_input_grads()[0].asnumpy()
             mod.update()
             #logging.info('The current iteration is %d'%(count))
             if count%100==0:
