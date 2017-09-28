@@ -39,11 +39,11 @@ class ConvNet(object):
         if self.train_params.resume:
             return self.resume_training()
         else:
-            if self.train_params.use_global_stats:
-                self.change_use_global_stats_to_true_json()
             symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix, self.model_params.name,
                                                                    self.model_params.model_epoch, self.model_params.dir,
                                                                    ctx=self.ctx)
+            if self.train_params.use_global_stats:
+                self.change_use_global_stats_to_true_json()
             # adjust the network to satisfy the required input
             if self.mode == 'spatial':
                 new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
