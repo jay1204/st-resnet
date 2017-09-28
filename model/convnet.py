@@ -42,8 +42,8 @@ class ConvNet(object):
             symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix, self.model_params.name,
                                                                    self.model_params.model_epoch, self.model_params.dir,
                                                                    ctx=self.ctx)
-            if self.train_params.use_global_stats:
-                self.change_use_global_stats_to_true_json()
+            self.set_use_global_stats_json()
+            symbol = mx.symbol.load(self.model_params.dir + self.model_params.name + '-symbol.json')
             # adjust the network to satisfy the required input
             if self.mode == 'spatial':
                 new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
@@ -272,11 +272,16 @@ class ConvNet(object):
     def freeze_mean_variance_batch_normalization_layers(self, symbol):
         pass
 
-    def change_use_global_stats_to_true_json(self):
+    def set_use_global_stats_json(self):
         json_file = json.loads(open(self.model_params.dir+self.model_params.name+'-symbol.json').read())
+        if self.train_params.use_global_stats:
+            operator = "True"
+        else:
+            operator = "False"
+            
         for param in json_file['nodes']:
             if param['op'] == 'BatchNorm':
-                param['param']['use_global_stats'] = "True"
+                param['param']['use_global_stats'] = operator
 
         with open(self.model_params.dir + self.model_params.name + '-symbol.json', 'w') as f:
             json.dump(json_file, f)
