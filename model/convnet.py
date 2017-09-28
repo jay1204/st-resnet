@@ -166,8 +166,8 @@ class ConvNet(object):
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         lr_sch = mx.lr_scheduler.MultiFactorScheduler(step=self.train_params.schedule_steps, factor=0.1)
-        adam = mx.optimizer.Optimizer.create_optimizer(
-            'adam', optimizer_params=(('learning_rate', self.train_params.learning_rate), ('lr_scheduler', lr_sch)))
+        adam = mx.optimizer.Optimizer.create_optimizer('adam', learning_rate=self.train_params.learning_rate,
+                                                       lr_scheduler=lr_sch)
         freeze_lr_params = {}
         for param_name in net.list_auxiliary_states():
             freeze_lr_params[param_name] = 0.0
@@ -180,6 +180,8 @@ class ConvNet(object):
         #                                                       ('rescale_grad', 1.0), ('clip_gradient', None),
         #                                                      ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
+        #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate',
+        # self.train_params.learning_rate), ('lr_scheduler', lr_sch)))
         metric = mx.metric.create(['loss','acc'])
         count = 1
         train_acc = []
