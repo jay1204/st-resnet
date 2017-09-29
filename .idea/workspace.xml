@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91a9948f-cac9-47d2-8635-65c5f0e0bba6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.experiment.log.swk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.experiment.log.swl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.experiment.log.swm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.experiment.log.swn" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.experiment.log.swo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/kernel-e38dfc1f-fb2f-4695-86e7-342873695aa8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/nbserver-31892.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/nbserver-31915.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/nbserver-31925.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/nbserver-31934.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/nbserver-31943.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/nbserver-32036.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.local/jupyter_runtime/notebook_cookie_secret" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +41,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+            <state relative-caret-position="30">
+              <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -279,9 +292,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="23" width="1325" height="821" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18037736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18037736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -775,8 +787,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        <state relative-caret-position="30">
+          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
           <folding />
         </state>
       </provider>
