@@ -9,3 +9,5 @@ data/
 *.swn
 *.swo
 *.swl
+.idea/
+.DS_Store
