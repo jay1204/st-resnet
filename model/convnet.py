@@ -262,8 +262,10 @@ class ConvNet(object):
             all_layers = sym.get_internals()
             sym = all_layers['fc1_output']
 
-        mod = mx.mod.Module(symbol=sym, context=self.ctx)
-        mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
+        mod = mx.module.Module(symbol=sym, context=self.ctx)
+        mod._arg_params = args
+        mod._aux_params = auxs
+        #mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
         mod.params_initialized = True
 
         test_accuracy = self.evaluate(mod)
