@@ -178,7 +178,7 @@ class ConvNet(object):
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         #mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
         #                                                      ('momentum', 0.9), ('wd',0.0005),
-        #                                                       ('rescale_grad', 1.0), ('clip_gradient', None),
+        #                                                       ('rescale_grad', 1.0),
         #                                                      ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
@@ -187,7 +187,7 @@ class ConvNet(object):
         count = 1
         train_acc = []
         valid_acc = []
-        valid_accuracy = 0.0
+        valid_accuracy = 0.778889
 
         train_iter.reset()
         metric.reset()
@@ -254,7 +254,7 @@ class ConvNet(object):
         return acc/count
 
     def test_dataset_evaluation(self):
-        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name, self.test_params.load_epoch,
+        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch,
                                     context=self.ctx)
 
         test_accuracy = self.evaluate(mod)

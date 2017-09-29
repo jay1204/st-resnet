@@ -37,3 +37,886 @@ INFO:root:Current optimizer parameters:
 INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.612447%
 INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 5.500000%
 INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0001.params"
+INFO:root:Start training image network: Thu Sep 28 02:49:33 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 0.0001 and saving epoch is 5
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.155116%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 1.111111%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:Start training image network: Thu Sep 28 02:55:00 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 0.0001 and saving epoch is 5
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.386139%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 0.944444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.738174%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 3.722222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 2.665933%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 8.000000%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 4.161166%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 14.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 6.583058%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 25.277778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 9.715805%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 37.777778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 700-th iteration is 0.009901, accuracy  is 13.905391%
+INFO:root:The valid loss of the 700-th iteration is 0.009901, accuracy is 45.944444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 800-th iteration is 0.009901, accuracy  is 18.344334%
+INFO:root:The valid loss of the 800-th iteration is 0.009901, accuracy is 49.722222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 900-th iteration is 0.009901, accuracy  is 22.597482%
+INFO:root:The valid loss of the 900-th iteration is 0.009901, accuracy is 55.611111%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1000-th iteration is 0.009901, accuracy  is 26.707371%
+INFO:root:The valid loss of the 1000-th iteration is 0.009901, accuracy is 56.222222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1100-th iteration is 0.009901, accuracy  is 30.446045%
+INFO:root:The valid loss of the 1100-th iteration is 0.009901, accuracy is 59.777778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1200-th iteration is 0.009901, accuracy  is 33.809131%
+INFO:root:The valid loss of the 1200-th iteration is 0.009901, accuracy is 58.222222%
+INFO:root:The training loss of the 1300-th iteration is 0.009901, accuracy  is 36.261318%
+INFO:root:The valid loss of the 1300-th iteration is 0.009901, accuracy is 59.500000%
+INFO:root:The training loss of the 1400-th iteration is 0.009901, accuracy  is 38.701084%
+INFO:root:The valid loss of the 1400-th iteration is 0.009901, accuracy is 57.666667%
+INFO:root:The training loss of the 1500-th iteration is 0.009901, accuracy  is 41.113311%
+INFO:root:The valid loss of the 1500-th iteration is 0.009901, accuracy is 59.833333%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1600-th iteration is 0.009901, accuracy  is 41.837871%
+INFO:root:The valid loss of the 1600-th iteration is 0.009901, accuracy is 50.222222%
+INFO:root:The training loss of the 1700-th iteration is 0.009901, accuracy  is 41.527212%
+INFO:root:The valid loss of the 1700-th iteration is 0.009901, accuracy is 42.000000%
+INFO:root:The training loss of the 1800-th iteration is 0.009901, accuracy  is 42.483193%
+INFO:root:The valid loss of the 1800-th iteration is 0.009901, accuracy is 54.888889%
+INFO:root:The training loss of the 1900-th iteration is 0.009901, accuracy  is 43.992820%
+INFO:root:The valid loss of the 1900-th iteration is 0.009901, accuracy is 55.388889%
+INFO:root:The training loss of the 2000-th iteration is 0.009901, accuracy  is 45.594059%
+INFO:root:The valid loss of the 2000-th iteration is 0.009901, accuracy is 61.777778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 2100-th iteration is 0.009901, accuracy  is 46.213002%
+INFO:root:The valid loss of the 2100-th iteration is 0.009901, accuracy is 42.444444%
+INFO:root:The training loss of the 2200-th iteration is 0.009901, accuracy  is 44.932493%
+INFO:root:The valid loss of the 2200-th iteration is 0.009901, accuracy is 1.111111%
+INFO:root:The training loss of the 2300-th iteration is 0.009901, accuracy  is 43.027694%
+INFO:root:The valid loss of the 2300-th iteration is 0.009901, accuracy is 1.000000%
+INFO:root:The training loss of the 2400-th iteration is 0.009901, accuracy  is 41.285295%
+INFO:root:The valid loss of the 2400-th iteration is 0.009901, accuracy is 0.944444%
+INFO:root:The training loss of the 2500-th iteration is 0.009901, accuracy  is 39.679648%
+INFO:root:The valid loss of the 2500-th iteration is 0.009901, accuracy is 1.555556%
+INFO:root:The training loss of the 2600-th iteration is 0.009901, accuracy  is 38.188627%
+INFO:root:The valid loss of the 2600-th iteration is 0.009901, accuracy is 1.500000%
+INFO:root:The training loss of the 2700-th iteration is 0.009901, accuracy  is 36.812941%
+INFO:root:The valid loss of the 2700-th iteration is 0.009901, accuracy is 0.722222%
+INFO:root:The training loss of the 2800-th iteration is 0.009901, accuracy  is 35.537089%
+INFO:root:The valid loss of the 2800-th iteration is 0.009901, accuracy is 0.944444%
+INFO:root:The training loss of the 2900-th iteration is 0.009901, accuracy  is 34.349607%
+INFO:root:The valid loss of the 2900-th iteration is 0.009901, accuracy is 1.111111%
+INFO:root:The training loss of the 3000-th iteration is 0.009901, accuracy  is 33.242024%
+INFO:root:The valid loss of the 3000-th iteration is 0.009901, accuracy is 0.777778%
+INFO:root:The training loss of the 3100-th iteration is 0.009901, accuracy  is 32.212286%
+INFO:root:The valid loss of the 3100-th iteration is 0.009901, accuracy is 0.944444%
+INFO:root:The training loss of the 3200-th iteration is 0.009901, accuracy  is 31.250344%
+INFO:root:The valid loss of the 3200-th iteration is 0.009901, accuracy is 1.833333%
+INFO:root:The training loss of the 3300-th iteration is 0.009901, accuracy  is 30.341367%
+INFO:root:The valid loss of the 3300-th iteration is 0.009901, accuracy is 1.222222%
+INFO:root:The training loss of the 3400-th iteration is 0.009901, accuracy  is 29.481330%
+INFO:root:The valid loss of the 3400-th iteration is 0.009901, accuracy is 1.055556%
+INFO:root:The training loss of the 3500-th iteration is 0.009901, accuracy  is 28.673896%
+INFO:root:The valid loss of the 3500-th iteration is 0.009901, accuracy is 1.055556%
+INFO:root:The training loss of the 3600-th iteration is 0.009901, accuracy  is 27.913764%
+INFO:root:The valid loss of the 3600-th iteration is 0.009901, accuracy is 1.500000%
+INFO:root:The training loss of the 3700-th iteration is 0.009901, accuracy  is 27.189070%
+INFO:root:The valid loss of the 3700-th iteration is 0.009901, accuracy is 1.388889%
+INFO:root:The training loss of the 3800-th iteration is 0.009901, accuracy  is 26.507151%
+INFO:root:The valid loss of the 3800-th iteration is 0.009901, accuracy is 1.500000%
+INFO:root:The training loss of the 3900-th iteration is 0.009901, accuracy  is 25.863022%
+INFO:root:The valid loss of the 3900-th iteration is 0.009901, accuracy is 1.277778%
+INFO:root:The training loss of the 4000-th iteration is 0.009901, accuracy  is 25.241749%
+INFO:root:The valid loss of the 4000-th iteration is 0.009901, accuracy is 1.055556%
+INFO:root:The training loss of the 4100-th iteration is 0.009901, accuracy  is 24.656149%
+INFO:root:The valid loss of the 4100-th iteration is 0.009901, accuracy is 1.111111%
+INFO:root:The training loss of the 4200-th iteration is 0.009901, accuracy  is 24.101315%
+INFO:root:The valid loss of the 4200-th iteration is 0.009901, accuracy is 1.611111%
+INFO:root:The training loss of the 4300-th iteration is 0.009901, accuracy  is 23.570752%
+INFO:root:The valid loss of the 4300-th iteration is 0.009901, accuracy is 1.944444%
+INFO:root:The training loss of the 4400-th iteration is 0.009901, accuracy  is 23.066807%
+INFO:root:The valid loss of the 4400-th iteration is 0.009901, accuracy is 2.000000%
+INFO:root:The training loss of the 4500-th iteration is 0.009901, accuracy  is 22.584036%
+INFO:root:The valid loss of the 4500-th iteration is 0.009901, accuracy is 2.388889%
+INFO:root:The training loss of the 4600-th iteration is 0.009901, accuracy  is 22.119625%
+INFO:root:The valid loss of the 4600-th iteration is 0.009901, accuracy is 1.666667%
+INFO:root:The training loss of the 4700-th iteration is 0.009901, accuracy  is 21.671465%
+INFO:root:The valid loss of the 4700-th iteration is 0.009901, accuracy is 3.222222%
+INFO:root:The training loss of the 4800-th iteration is 0.009901, accuracy  is 21.245416%
+INFO:root:The valid loss of the 4800-th iteration is 0.009901, accuracy is 1.444444%
+INFO:root:The training loss of the 4900-th iteration is 0.009901, accuracy  is 20.846411%
+INFO:root:The valid loss of the 4900-th iteration is 0.009901, accuracy is 2.666667%
+INFO:root:The training loss of the 5000-th iteration is 0.009901, accuracy  is 20.456106%
+INFO:root:The valid loss of the 5000-th iteration is 0.009901, accuracy is 2.666667%
+INFO:root:The training loss of the 5100-th iteration is 0.009901, accuracy  is 20.083263%
+INFO:root:The valid loss of the 5100-th iteration is 0.009901, accuracy is 0.888889%
+INFO:root:The training loss of the 5200-th iteration is 0.009901, accuracy  is 19.729204%
+INFO:root:The valid loss of the 5200-th iteration is 0.009901, accuracy is 1.944444%
+INFO:root:The training loss of the 5300-th iteration is 0.009901, accuracy  is 19.384561%
+INFO:root:The valid loss of the 5300-th iteration is 0.009901, accuracy is 3.666667%
+INFO:root:The training loss of the 5400-th iteration is 0.009901, accuracy  is 19.052683%
+INFO:root:The valid loss of the 5400-th iteration is 0.009901, accuracy is 1.055556%
+INFO:root:The training loss of the 5500-th iteration is 0.009901, accuracy  is 18.739274%
+INFO:root:The valid loss of the 5500-th iteration is 0.009901, accuracy is 2.333333%
+INFO:root:The training loss of the 5600-th iteration is 0.009901, accuracy  is 18.436272%
+INFO:root:The valid loss of the 5600-th iteration is 0.009901, accuracy is 1.166667%
+INFO:root:The training loss of the 5700-th iteration is 0.009901, accuracy  is 18.136375%
+INFO:root:The valid loss of the 5700-th iteration is 0.009901, accuracy is 0.888889%
+INFO:root:The training loss of the 5800-th iteration is 0.009901, accuracy  is 17.843595%
+INFO:root:The valid loss of the 5800-th iteration is 0.009901, accuracy is 1.888889%
+INFO:root:The training loss of the 5900-th iteration is 0.009901, accuracy  is 17.564282%
+INFO:root:The valid loss of the 5900-th iteration is 0.009901, accuracy is 2.888889%
+INFO:root:The training loss of the 6000-th iteration is 0.009901, accuracy  is 17.302164%
+INFO:root:The valid loss of the 6000-th iteration is 0.009901, accuracy is 2.166667%
+INFO:root:The training loss of the 6100-th iteration is 0.009901, accuracy  is 17.044852%
+INFO:root:The valid loss of the 6100-th iteration is 0.009901, accuracy is 2.944444%
+INFO:root:The training loss of the 6200-th iteration is 0.009901, accuracy  is 16.801696%
+INFO:root:The valid loss of the 6200-th iteration is 0.009901, accuracy is 2.444444%
+INFO:root:The training loss of the 6300-th iteration is 0.009901, accuracy  is 16.564863%
+INFO:root:The valid loss of the 6300-th iteration is 0.009901, accuracy is 3.277778%
+INFO:root:The training loss of the 6400-th iteration is 0.009901, accuracy  is 16.339040%
+INFO:root:The valid loss of the 6400-th iteration is 0.009901, accuracy is 3.000000%
+INFO:root:The training loss of the 6500-th iteration is 0.009901, accuracy  is 16.116612%
+INFO:root:The valid loss of the 6500-th iteration is 0.009901, accuracy is 3.222222%
+INFO:root:The training loss of the 6600-th iteration is 0.009901, accuracy  is 15.905424%
+INFO:root:The valid loss of the 6600-th iteration is 0.009901, accuracy is 3.666667%
+INFO:root:The training loss of the 6700-th iteration is 0.009901, accuracy  is 15.696764%
+INFO:root:The valid loss of the 6700-th iteration is 0.009901, accuracy is 2.555556%
+INFO:root:The training loss of the 6800-th iteration is 0.009901, accuracy  is 15.498285%
+INFO:root:The valid loss of the 6800-th iteration is 0.009901, accuracy is 3.777778%
+INFO:root:The training loss of the 6900-th iteration is 0.009901, accuracy  is 15.300776%
+INFO:root:The valid loss of the 6900-th iteration is 0.009901, accuracy is 2.833333%
+INFO:root:The training loss of the 7000-th iteration is 0.009901, accuracy  is 15.110011%
+INFO:root:The valid loss of the 7000-th iteration is 0.009901, accuracy is 2.722222%
+INFO:root:The training loss of the 7100-th iteration is 0.009901, accuracy  is 14.930817%
+INFO:root:The valid loss of the 7100-th iteration is 0.009901, accuracy is 3.055556%
+INFO:root:The training loss of the 7200-th iteration is 0.009901, accuracy  is 14.749267%
+INFO:root:The valid loss of the 7200-th iteration is 0.009901, accuracy is 3.222222%
+INFO:root:The training loss of the 7300-th iteration is 0.009901, accuracy  is 14.577060%
+INFO:root:The valid loss of the 7300-th iteration is 0.009901, accuracy is 3.277778%
+INFO:root:The training loss of the 7400-th iteration is 0.009901, accuracy  is 14.408319%
+INFO:root:The valid loss of the 7400-th iteration is 0.009901, accuracy is 3.611111%
+INFO:root:The training loss of the 7500-th iteration is 0.009901, accuracy  is 14.247011%
+INFO:root:The valid loss of the 7500-th iteration is 0.009901, accuracy is 2.666667%
+INFO:root:The training loss of the 7600-th iteration is 0.009901, accuracy  is 14.089659%
+INFO:root:The valid loss of the 7600-th iteration is 0.009901, accuracy is 3.277778%
+INFO:root:The training loss of the 7700-th iteration is 0.009901, accuracy  is 13.938251%
+INFO:root:The valid loss of the 7700-th iteration is 0.009901, accuracy is 3.000000%
+INFO:root:The training loss of the 7800-th iteration is 0.009901, accuracy  is 13.789879%
+INFO:root:The valid loss of the 7800-th iteration is 0.009901, accuracy is 2.777778%
+INFO:root:The training loss of the 7900-th iteration is 0.009901, accuracy  is 13.642617%
+INFO:root:The valid loss of the 7900-th iteration is 0.009901, accuracy is 3.055556%
+INFO:root:The training loss of the 8000-th iteration is 0.009901, accuracy  is 13.500688%
+INFO:root:The valid loss of the 8000-th iteration is 0.009901, accuracy is 2.611111%
+INFO:root:The training loss of the 8100-th iteration is 0.009901, accuracy  is 13.360768%
+INFO:root:The valid loss of the 8100-th iteration is 0.009901, accuracy is 3.833333%
+INFO:root:The training loss of the 8200-th iteration is 0.009901, accuracy  is 13.226408%
+INFO:root:The valid loss of the 8200-th iteration is 0.009901, accuracy is 3.555556%
+INFO:root:The training loss of the 8300-th iteration is 0.009901, accuracy  is 13.094093%
+INFO:root:The valid loss of the 8300-th iteration is 0.009901, accuracy is 3.388889%
+INFO:root:Start training image network: Thu Sep 28 07:12:43 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 5e-05 and saving epoch is 5
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.254125%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 3.388889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 2.970297%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 10.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 5.460213%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 20.444444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 9.752475%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 32.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 14.730473%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 44.833333%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 20.045838%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 51.944444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 700-th iteration is 0.009901, accuracy  is 24.827911%
+INFO:root:The valid loss of the 700-th iteration is 0.009901, accuracy is 55.555556%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 800-th iteration is 0.009901, accuracy  is 29.257426%
+INFO:root:The valid loss of the 800-th iteration is 0.009901, accuracy is 59.722222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 900-th iteration is 0.009901, accuracy  is 33.297885%
+INFO:root:The valid loss of the 900-th iteration is 0.009901, accuracy is 60.222222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1000-th iteration is 0.009901, accuracy  is 36.933993%
+INFO:root:The valid loss of the 1000-th iteration is 0.009901, accuracy is 61.388889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1100-th iteration is 0.009901, accuracy  is 40.181018%
+INFO:root:The valid loss of the 1100-th iteration is 0.009901, accuracy is 65.944444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1200-th iteration is 0.009901, accuracy  is 43.208654%
+INFO:root:The valid loss of the 1200-th iteration is 0.009901, accuracy is 65.111111%
+INFO:root:The training loss of the 1300-th iteration is 0.009901, accuracy  is 45.978675%
+INFO:root:The valid loss of the 1300-th iteration is 0.009901, accuracy is 66.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1400-th iteration is 0.009901, accuracy  is 48.402483%
+INFO:root:The valid loss of the 1400-th iteration is 0.009901, accuracy is 67.555556%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1500-th iteration is 0.009901, accuracy  is 50.718005%
+INFO:root:The valid loss of the 1500-th iteration is 0.009901, accuracy is 69.055556%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 1600-th iteration is 0.009901, accuracy  is 52.717272%
+INFO:root:The valid loss of the 1600-th iteration is 0.009901, accuracy is 67.500000%
+INFO:root:The training loss of the 1700-th iteration is 0.009901, accuracy  is 54.609461%
+INFO:root:The valid loss of the 1700-th iteration is 0.009901, accuracy is 68.777778%
+INFO:root:The training loss of the 1800-th iteration is 0.009901, accuracy  is 56.387972%
+INFO:root:The valid loss of the 1800-th iteration is 0.009901, accuracy is 67.555556%
+INFO:root:The training loss of the 1900-th iteration is 0.009901, accuracy  is 57.996063%
+INFO:root:The valid loss of the 1900-th iteration is 0.009901, accuracy is 68.722222%
+INFO:root:The training loss of the 2000-th iteration is 0.009901, accuracy  is 59.457646%
+INFO:root:The valid loss of the 2000-th iteration is 0.009901, accuracy is 70.833333%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0005.params"
+INFO:root:The training loss of the 2100-th iteration is 0.009901, accuracy  is 60.814081%
+INFO:root:The valid loss of the 2100-th iteration is 0.009901, accuracy is 68.777778%
+INFO:root:The training loss of the 2200-th iteration is 0.009901, accuracy  is 62.099210%
+INFO:root:The valid loss of the 2200-th iteration is 0.009901, accuracy is 67.944444%
+INFO:root:The training loss of the 2300-th iteration is 0.009901, accuracy  is 63.241976%
+INFO:root:The valid loss of the 2300-th iteration is 0.009901, accuracy is 70.833333%
+INFO:root:The training loss of the 2400-th iteration is 0.009901, accuracy  is 64.278970%
+INFO:root:The valid loss of the 2400-th iteration is 0.009901, accuracy is 68.111111%
+INFO:root:The training loss of the 2500-th iteration is 0.009901, accuracy  is 65.259846%
+INFO:root:The valid loss of the 2500-th iteration is 0.009901, accuracy is 66.055556%
+INFO:root:The training loss of the 2600-th iteration is 0.009901, accuracy  is 65.905052%
+INFO:root:The valid loss of the 2600-th iteration is 0.009901, accuracy is 68.555556%
+INFO:root:The training loss of the 2700-th iteration is 0.009901, accuracy  is 66.504910%
+INFO:root:The valid loss of the 2700-th iteration is 0.009901, accuracy is 39.666667%
+INFO:root:The training loss of the 2800-th iteration is 0.009901, accuracy  is 64.410655%
+INFO:root:The valid loss of the 2800-th iteration is 0.009901, accuracy is 1.944444%
+INFO:root:The training loss of the 2900-th iteration is 0.009901, accuracy  is 62.241948%
+INFO:root:The valid loss of the 2900-th iteration is 0.009901, accuracy is 2.055556%
+INFO:root:The training loss of the 3000-th iteration is 0.009901, accuracy  is 60.228456%
+INFO:root:The valid loss of the 3000-th iteration is 0.009901, accuracy is 3.111111%
+INFO:root:The training loss of the 3100-th iteration is 0.009901, accuracy  is 58.410518%
+INFO:root:The valid loss of the 3100-th iteration is 0.009901, accuracy is 6.611111%
+INFO:root:The training loss of the 3200-th iteration is 0.009901, accuracy  is 56.852310%
+INFO:root:The valid loss of the 3200-th iteration is 0.009901, accuracy is 14.444444%
+INFO:root:The training loss of the 3300-th iteration is 0.009901, accuracy  is 55.912591%
+INFO:root:The valid loss of the 3300-th iteration is 0.009901, accuracy is 34.222222%
+INFO:root:The training loss of the 3400-th iteration is 0.009901, accuracy  is 55.934446%
+INFO:root:The valid loss of the 3400-th iteration is 0.009901, accuracy is 50.166667%
+INFO:root:The training loss of the 3500-th iteration is 0.009901, accuracy  is 55.291529%
+INFO:root:The valid loss of the 3500-th iteration is 0.009901, accuracy is 28.777778%
+INFO:root:The training loss of the 3600-th iteration is 0.009901, accuracy  is 55.014974%
+INFO:root:The valid loss of the 3600-th iteration is 0.009901, accuracy is 47.500000%
+INFO:root:The training loss of the 3700-th iteration is 0.009901, accuracy  is 55.402135%
+INFO:root:The valid loss of the 3700-th iteration is 0.009901, accuracy is 57.000000%
+INFO:root:The training loss of the 3800-th iteration is 0.009901, accuracy  is 55.900932%
+INFO:root:The valid loss of the 3800-th iteration is 0.009901, accuracy is 55.777778%
+INFO:root:The training loss of the 3900-th iteration is 0.009901, accuracy  is 56.508702%
+INFO:root:The valid loss of the 3900-th iteration is 0.009901, accuracy is 65.777778%
+INFO:root:The training loss of the 4000-th iteration is 0.009901, accuracy  is 57.222222%
+INFO:root:The valid loss of the 4000-th iteration is 0.009901, accuracy is 64.055556%
+INFO:root:The training loss of the 4100-th iteration is 0.009901, accuracy  is 57.836271%
+INFO:root:The valid loss of the 4100-th iteration is 0.009901, accuracy is 58.444444%
+INFO:root:The training loss of the 4200-th iteration is 0.009901, accuracy  is 58.484206%
+INFO:root:The valid loss of the 4200-th iteration is 0.009901, accuracy is 56.666667%
+INFO:root:The training loss of the 4300-th iteration is 0.009901, accuracy  is 59.130146%
+INFO:root:The valid loss of the 4300-th iteration is 0.009901, accuracy is 65.500000%
+INFO:root:The training loss of the 4400-th iteration is 0.009901, accuracy  is 59.533203%
+INFO:root:The valid loss of the 4400-th iteration is 0.009901, accuracy is 55.666667%
+INFO:root:The training loss of the 4500-th iteration is 0.009901, accuracy  is 59.272216%
+INFO:root:The valid loss of the 4500-th iteration is 0.009901, accuracy is 35.277778%
+INFO:root:The training loss of the 4600-th iteration is 0.009901, accuracy  is 58.930741%
+INFO:root:The valid loss of the 4600-th iteration is 0.009901, accuracy is 2.944444%
+INFO:root:The training loss of the 4700-th iteration is 0.009901, accuracy  is 57.729092%
+INFO:root:The valid loss of the 4700-th iteration is 0.009901, accuracy is 6.111111%
+INFO:root:The training loss of the 4800-th iteration is 0.009901, accuracy  is 56.643977%
+INFO:root:The valid loss of the 4800-th iteration is 0.009901, accuracy is 11.055556%
+INFO:root:The training loss of the 4900-th iteration is 0.009901, accuracy  is 55.743921%
+INFO:root:The valid loss of the 4900-th iteration is 0.009901, accuracy is 18.777778%
+INFO:root:The training loss of the 5000-th iteration is 0.009901, accuracy  is 55.161276%
+INFO:root:The valid loss of the 5000-th iteration is 0.009901, accuracy is 31.833333%
+INFO:root:The training loss of the 5100-th iteration is 0.009901, accuracy  is 54.952868%
+INFO:root:The valid loss of the 5100-th iteration is 0.009901, accuracy is 44.222222%
+INFO:root:The training loss of the 5200-th iteration is 0.009901, accuracy  is 55.013751%
+INFO:root:The valid loss of the 5200-th iteration is 0.009901, accuracy is 49.611111%
+INFO:root:The training loss of the 5300-th iteration is 0.009901, accuracy  is 55.283434%
+INFO:root:The valid loss of the 5300-th iteration is 0.009901, accuracy is 49.944444%
+INFO:root:The training loss of the 5400-th iteration is 0.009901, accuracy  is 55.658640%
+INFO:root:The valid loss of the 5400-th iteration is 0.009901, accuracy is 58.833333%
+INFO:root:The training loss of the 5500-th iteration is 0.009901, accuracy  is 56.120012%
+INFO:root:The valid loss of the 5500-th iteration is 0.009901, accuracy is 56.277778%
+INFO:root:Start training image network: Thu Sep 28 10:06:51 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 0.01 and saving epoch is 6
+INFO:root:The training loss of the 100-th iteration is nan, accuracy  is 0.033003%
+INFO:root:The valid loss of the 100-th iteration is nan, accuracy is 0.000000%
+INFO:root:The training loss of the 200-th iteration is nan, accuracy  is 0.016502%
+INFO:root:The valid loss of the 200-th iteration is nan, accuracy is 0.000000%
+INFO:root:Start training image network: Thu Sep 28 10:15:28 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 0.001 and saving epoch is 6
+INFO:root:The training loss of the 100-th iteration is nan, accuracy  is 0.011001%
+INFO:root:The valid loss of the 100-th iteration is nan, accuracy is 0.000000%
+INFO:root:The training loss of the 200-th iteration is nan, accuracy  is 0.005501%
+INFO:root:The valid loss of the 200-th iteration is nan, accuracy is 0.000000%
+INFO:root:Start training image network: Thu Sep 28 10:24:54 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 0.0001 and saving epoch is 6
+INFO:root:The training loss of the 100-th iteration is nan, accuracy  is 0.066007%
+INFO:root:The valid loss of the 100-th iteration is nan, accuracy is 0.000000%
+INFO:root:Start training image network: Thu Sep 28 10:30:56 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 1e-05 and saving epoch is 6
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.012101%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 1.111111%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.116612%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 2.888889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 1.133113%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 1.000000%
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 1.190869%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 2.000000%
+INFO:root:Start training image network: Thu Sep 28 10:44:15 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 5e-05 and saving epoch is 6
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 1.210121%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 1.222222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.215622%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 1.555556%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 1.224789%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 1.500000%
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 1.226623%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 1.222222%
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 1.223322%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 1.222222%
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 1.263293%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 0.666667%
+INFO:root:The training loss of the 700-th iteration is 0.009901, accuracy  is 1.258840%
+INFO:root:The valid loss of the 700-th iteration is 0.009901, accuracy is 1.222222%
+INFO:root:The training loss of the 800-th iteration is 0.009901, accuracy  is 1.245875%
+INFO:root:The valid loss of the 800-th iteration is 0.009901, accuracy is 1.444444%
+INFO:root:Start training image network: Thu Sep 28 11:15:51 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 0.001 and saving epoch is 6
+INFO:root:The training loss of the 100-th iteration is nan, accuracy  is 0.022002%
+INFO:root:The valid loss of the 100-th iteration is nan, accuracy is 0.000000%
+INFO:root:The training loss of the 200-th iteration is nan, accuracy  is 0.011001%
+INFO:root:The valid loss of the 200-th iteration is nan, accuracy is 0.000000%
+INFO:root:Start training image network: Thu Sep 28 11:26:00 2017
+INFO:root:The pretrained model has been loaded successfully!
+INFO:root:The dropout rate is 0.8, learning rate is 1e-05 and saving epoch is 6
+INFO:root:The training loss of the 100-th iteration is 0.009901, accuracy  is 0.979098%
+INFO:root:The valid loss of the 100-th iteration is 0.009901, accuracy is 2.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 200-th iteration is 0.009901, accuracy  is 1.556656%
+INFO:root:The valid loss of the 200-th iteration is 0.009901, accuracy is 4.888889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 300-th iteration is 0.009901, accuracy  is 2.291896%
+INFO:root:The valid loss of the 300-th iteration is 0.009901, accuracy is 9.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 400-th iteration is 0.009901, accuracy  is 3.635864%
+INFO:root:The valid loss of the 400-th iteration is 0.009901, accuracy is 18.444444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 500-th iteration is 0.009901, accuracy  is 5.650165%
+INFO:root:The valid loss of the 500-th iteration is 0.009901, accuracy is 26.833333%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 600-th iteration is 0.009901, accuracy  is 7.895123%
+INFO:root:The valid loss of the 600-th iteration is 0.009901, accuracy is 32.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 700-th iteration is 0.009901, accuracy  is 10.256168%
+INFO:root:The valid loss of the 700-th iteration is 0.009901, accuracy is 37.944444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 800-th iteration is 0.009901, accuracy  is 12.769527%
+INFO:root:The valid loss of the 800-th iteration is 0.009901, accuracy is 44.555556%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 900-th iteration is 0.009901, accuracy  is 15.245080%
+INFO:root:The valid loss of the 900-th iteration is 0.009901, accuracy is 46.055556%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1000-th iteration is 0.009901, accuracy  is 17.578658%
+INFO:root:The valid loss of the 1000-th iteration is 0.009901, accuracy is 49.777778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1100-th iteration is 0.009901, accuracy  is 19.901990%
+INFO:root:The valid loss of the 1100-th iteration is 0.009901, accuracy is 52.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1200-th iteration is 0.009901, accuracy  is 22.134213%
+INFO:root:The valid loss of the 1200-th iteration is 0.009901, accuracy is 57.000000%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1300-th iteration is 0.009901, accuracy  is 24.219345%
+INFO:root:The valid loss of the 1300-th iteration is 0.009901, accuracy is 56.611111%
+INFO:root:The training loss of the 1400-th iteration is 0.009901, accuracy  is 26.197548%
+INFO:root:The valid loss of the 1400-th iteration is 0.009901, accuracy is 58.833333%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1500-th iteration is 0.009901, accuracy  is 28.077008%
+INFO:root:The valid loss of the 1500-th iteration is 0.009901, accuracy is 61.222222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1600-th iteration is 0.009901, accuracy  is 29.931931%
+INFO:root:The valid loss of the 1600-th iteration is 0.009901, accuracy is 61.277778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1700-th iteration is 0.009901, accuracy  is 31.607455%
+INFO:root:The valid loss of the 1700-th iteration is 0.009901, accuracy is 61.666667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1800-th iteration is 0.009901, accuracy  is 33.333333%
+INFO:root:The valid loss of the 1800-th iteration is 0.009901, accuracy is 63.944444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 1900-th iteration is 0.009901, accuracy  is 34.885067%
+INFO:root:The valid loss of the 1900-th iteration is 0.009901, accuracy is 63.666667%
+INFO:root:The training loss of the 2000-th iteration is 0.009901, accuracy  is 36.396040%
+INFO:root:The valid loss of the 2000-th iteration is 0.009901, accuracy is 63.722222%
+INFO:root:The training loss of the 2100-th iteration is 0.009901, accuracy  is 37.821782%
+INFO:root:The valid loss of the 2100-th iteration is 0.009901, accuracy is 66.333333%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 2200-th iteration is 0.009901, accuracy  is 39.187919%
+INFO:root:The valid loss of the 2200-th iteration is 0.009901, accuracy is 65.777778%
+INFO:root:The training loss of the 2300-th iteration is 0.009901, accuracy  is 40.468264%
+INFO:root:The valid loss of the 2300-th iteration is 0.009901, accuracy is 67.722222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 2400-th iteration is 0.009901, accuracy  is 41.716172%
+INFO:root:The valid loss of the 2400-th iteration is 0.009901, accuracy is 67.444444%
+INFO:root:The training loss of the 2500-th iteration is 0.009901, accuracy  is 42.930693%
+INFO:root:The valid loss of the 2500-th iteration is 0.009901, accuracy is 67.111111%
+INFO:root:The training loss of the 2600-th iteration is 0.009901, accuracy  is 44.077177%
+INFO:root:The valid loss of the 2600-th iteration is 0.009901, accuracy is 67.611111%
+INFO:root:The training loss of the 2700-th iteration is 0.009901, accuracy  is 45.197409%
+INFO:root:The valid loss of the 2700-th iteration is 0.009901, accuracy is 67.888889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 2800-th iteration is 0.009901, accuracy  is 46.302845%
+INFO:root:The valid loss of the 2800-th iteration is 0.009901, accuracy is 67.944444%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 2900-th iteration is 0.009901, accuracy  is 47.341148%
+INFO:root:The valid loss of the 2900-th iteration is 0.009901, accuracy is 70.777778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 3000-th iteration is 0.009901, accuracy  is 48.334067%
+INFO:root:The valid loss of the 3000-th iteration is 0.009901, accuracy is 69.722222%
+INFO:root:The training loss of the 3100-th iteration is 0.009901, accuracy  is 49.276766%
+INFO:root:The valid loss of the 3100-th iteration is 0.009901, accuracy is 70.500000%
+INFO:root:The training loss of the 3200-th iteration is 0.009901, accuracy  is 50.163298%
+INFO:root:The valid loss of the 3200-th iteration is 0.009901, accuracy is 70.500000%
+INFO:root:The training loss of the 3300-th iteration is 0.009901, accuracy  is 51.054105%
+INFO:root:The valid loss of the 3300-th iteration is 0.009901, accuracy is 70.444444%
+INFO:root:The training loss of the 3400-th iteration is 0.009901, accuracy  is 51.912250%
+INFO:root:The valid loss of the 3400-th iteration is 0.009901, accuracy is 70.722222%
+INFO:root:The training loss of the 3500-th iteration is 0.009901, accuracy  is 52.721986%
+INFO:root:The valid loss of the 3500-th iteration is 0.009901, accuracy is 71.611111%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 3600-th iteration is 0.009901, accuracy  is 53.519435%
+INFO:root:The valid loss of the 3600-th iteration is 0.009901, accuracy is 71.388889%
+INFO:root:The training loss of the 3700-th iteration is 0.009901, accuracy  is 54.277941%
+INFO:root:The valid loss of the 3700-th iteration is 0.009901, accuracy is 72.555556%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 3800-th iteration is 0.009901, accuracy  is 54.998552%
+INFO:root:The valid loss of the 3800-th iteration is 0.009901, accuracy is 71.777778%
+INFO:root:The training loss of the 3900-th iteration is 0.009901, accuracy  is 55.713802%
+INFO:root:The valid loss of the 3900-th iteration is 0.009901, accuracy is 72.055556%
+INFO:root:The training loss of the 4000-th iteration is 0.009901, accuracy  is 56.407591%
+INFO:root:The valid loss of the 4000-th iteration is 0.009901, accuracy is 72.388889%
+INFO:root:The training loss of the 4100-th iteration is 0.009901, accuracy  is 57.084977%
+INFO:root:The valid loss of the 4100-th iteration is 0.009901, accuracy is 72.055556%
+INFO:root:The training loss of the 4200-th iteration is 0.009901, accuracy  is 57.731940%
+INFO:root:The valid loss of the 4200-th iteration is 0.009901, accuracy is 72.166667%
+INFO:root:The training loss of the 4300-th iteration is 0.009901, accuracy  is 58.350603%
+INFO:root:The valid loss of the 4300-th iteration is 0.009901, accuracy is 72.277778%
+INFO:root:The training loss of the 4400-th iteration is 0.009901, accuracy  is 58.974397%
+INFO:root:The valid loss of the 4400-th iteration is 0.009901, accuracy is 72.888889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 4500-th iteration is 0.009901, accuracy  is 59.552377%
+INFO:root:The valid loss of the 4500-th iteration is 0.009901, accuracy is 73.388889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 4600-th iteration is 0.009901, accuracy  is 60.119577%
+INFO:root:The valid loss of the 4600-th iteration is 0.009901, accuracy is 70.666667%
+INFO:root:The training loss of the 4700-th iteration is 0.009901, accuracy  is 60.675280%
+INFO:root:The valid loss of the 4700-th iteration is 0.009901, accuracy is 72.944444%
+INFO:root:The training loss of the 4800-th iteration is 0.009901, accuracy  is 61.211038%
+INFO:root:The valid loss of the 4800-th iteration is 0.009901, accuracy is 74.111111%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 4900-th iteration is 0.009901, accuracy  is 61.737725%
+INFO:root:The valid loss of the 4900-th iteration is 0.009901, accuracy is 72.944444%
+INFO:root:The training loss of the 5000-th iteration is 0.009901, accuracy  is 62.251045%
+INFO:root:The valid loss of the 5000-th iteration is 0.009901, accuracy is 71.055556%
+INFO:root:The training loss of the 5100-th iteration is 0.009901, accuracy  is 62.744019%
+INFO:root:The valid loss of the 5100-th iteration is 0.009901, accuracy is 72.277778%
+INFO:root:The training loss of the 5200-th iteration is 0.009901, accuracy  is 63.225015%
+INFO:root:The valid loss of the 5200-th iteration is 0.009901, accuracy is 73.944444%
+INFO:root:The training loss of the 5300-th iteration is 0.009901, accuracy  is 63.698030%
+INFO:root:The valid loss of the 5300-th iteration is 0.009901, accuracy is 72.333333%
+INFO:root:The training loss of the 5400-th iteration is 0.009901, accuracy  is 64.160861%
+INFO:root:The valid loss of the 5400-th iteration is 0.009901, accuracy is 71.944444%
+INFO:root:The training loss of the 5500-th iteration is 0.009901, accuracy  is 64.619662%
+INFO:root:The valid loss of the 5500-th iteration is 0.009901, accuracy is 72.388889%
+INFO:root:The training loss of the 5600-th iteration is 0.009901, accuracy  is 65.055202%
+INFO:root:The valid loss of the 5600-th iteration is 0.009901, accuracy is 71.555556%
+INFO:root:The training loss of the 5700-th iteration is 0.009901, accuracy  is 65.487233%
+INFO:root:The valid loss of the 5700-th iteration is 0.009901, accuracy is 72.111111%
+INFO:root:The training loss of the 5800-th iteration is 0.009901, accuracy  is 65.899814%
+INFO:root:The valid loss of the 5800-th iteration is 0.009901, accuracy is 72.611111%
+INFO:root:The training loss of the 5900-th iteration is 0.009901, accuracy  is 66.306054%
+INFO:root:The valid loss of the 5900-th iteration is 0.009901, accuracy is 71.166667%
+INFO:root:The training loss of the 6000-th iteration is 0.009901, accuracy  is 66.703154%
+INFO:root:The valid loss of the 6000-th iteration is 0.009901, accuracy is 73.444444%
+INFO:root:The training loss of the 6100-th iteration is 0.009901, accuracy  is 67.100218%
+INFO:root:The valid loss of the 6100-th iteration is 0.009901, accuracy is 73.277778%
+INFO:root:The training loss of the 6200-th iteration is 0.009901, accuracy  is 67.471344%
+INFO:root:The valid loss of the 6200-th iteration is 0.009901, accuracy is 71.666667%
+INFO:root:The training loss of the 6300-th iteration is 0.009901, accuracy  is 67.846753%
+INFO:root:The valid loss of the 6300-th iteration is 0.009901, accuracy is 74.166667%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 6400-th iteration is 0.009901, accuracy  is 68.207336%
+INFO:root:The valid loss of the 6400-th iteration is 0.009901, accuracy is 71.277778%
+INFO:root:The training loss of the 6500-th iteration is 0.009901, accuracy  is 68.561056%
+INFO:root:The valid loss of the 6500-th iteration is 0.009901, accuracy is 73.222222%
+INFO:root:The training loss of the 6600-th iteration is 0.009901, accuracy  is 68.903057%
+INFO:root:The valid loss of the 6600-th iteration is 0.009901, accuracy is 74.888889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 6700-th iteration is 0.009901, accuracy  is 69.241417%
+INFO:root:The valid loss of the 6700-th iteration is 0.009901, accuracy is 72.166667%
+INFO:root:The training loss of the 6800-th iteration is 0.009901, accuracy  is 69.564162%
+INFO:root:The valid loss of the 6800-th iteration is 0.009901, accuracy is 75.722222%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 6900-th iteration is 0.009901, accuracy  is 69.884887%
+INFO:root:The valid loss of the 6900-th iteration is 0.009901, accuracy is 72.666667%
+INFO:root:The training loss of the 7000-th iteration is 0.009901, accuracy  is 70.201477%
+INFO:root:The valid loss of the 7000-th iteration is 0.009901, accuracy is 73.222222%
+INFO:root:The training loss of the 7100-th iteration is 0.009901, accuracy  is 70.506051%
+INFO:root:The valid loss of the 7100-th iteration is 0.009901, accuracy is 72.777778%
+INFO:root:The training loss of the 7200-th iteration is 0.009901, accuracy  is 70.802928%
+INFO:root:The valid loss of the 7200-th iteration is 0.009901, accuracy is 74.111111%
+INFO:root:The training loss of the 7300-th iteration is 0.009901, accuracy  is 71.094986%
+INFO:root:The valid loss of the 7300-th iteration is 0.009901, accuracy is 75.888889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 7400-th iteration is 0.009901, accuracy  is 71.385098%
+INFO:root:The valid loss of the 7400-th iteration is 0.009901, accuracy is 71.166667%
+INFO:root:The training loss of the 7500-th iteration is 0.009901, accuracy  is 71.666007%
+INFO:root:The valid loss of the 7500-th iteration is 0.009901, accuracy is 72.000000%
+INFO:root:The training loss of the 7600-th iteration is 0.009901, accuracy  is 71.948642%
+INFO:root:The valid loss of the 7600-th iteration is 0.009901, accuracy is 73.833333%
+INFO:root:The training loss of the 7700-th iteration is 0.009901, accuracy  is 72.224794%
+INFO:root:The valid loss of the 7700-th iteration is 0.009901, accuracy is 73.388889%
+INFO:root:The training loss of the 7800-th iteration is 0.009901, accuracy  is 72.491185%
+INFO:root:The valid loss of the 7800-th iteration is 0.009901, accuracy is 74.722222%
+INFO:root:The training loss of the 7900-th iteration is 0.009901, accuracy  is 72.758491%
+INFO:root:The valid loss of the 7900-th iteration is 0.009901, accuracy is 74.000000%
+INFO:root:The training loss of the 8000-th iteration is 0.009901, accuracy  is 73.020490%
+INFO:root:The valid loss of the 8000-th iteration is 0.009901, accuracy is 72.722222%
+INFO:root:The training loss of the 8100-th iteration is 0.009901, accuracy  is 73.271537%
+INFO:root:The valid loss of the 8100-th iteration is 0.009901, accuracy is 72.055556%
+INFO:root:The training loss of the 8200-th iteration is 0.009901, accuracy  is 73.517669%
+INFO:root:The valid loss of the 8200-th iteration is 0.009901, accuracy is 73.666667%
+INFO:root:The training loss of the 8300-th iteration is 0.009901, accuracy  is 73.760521%
+INFO:root:The valid loss of the 8300-th iteration is 0.009901, accuracy is 72.833333%
+INFO:root:The training loss of the 8400-th iteration is 0.009901, accuracy  is 73.997852%
+INFO:root:The valid loss of the 8400-th iteration is 0.009901, accuracy is 72.000000%
+INFO:root:The training loss of the 8500-th iteration is 0.009901, accuracy  is 74.223516%
+INFO:root:The valid loss of the 8500-th iteration is 0.009901, accuracy is 72.444444%
+INFO:root:The training loss of the 8600-th iteration is 0.009901, accuracy  is 74.450840%
+INFO:root:The valid loss of the 8600-th iteration is 0.009901, accuracy is 72.166667%
+INFO:root:The training loss of the 8700-th iteration is 0.009901, accuracy  is 74.671042%
+INFO:root:The valid loss of the 8700-th iteration is 0.009901, accuracy is 75.055556%
+INFO:root:The training loss of the 8800-th iteration is 0.009901, accuracy  is 74.888989%
+INFO:root:The valid loss of the 8800-th iteration is 0.009901, accuracy is 74.555556%
+INFO:root:The training loss of the 8900-th iteration is 0.009901, accuracy  is 75.102656%
+INFO:root:The valid loss of the 8900-th iteration is 0.009901, accuracy is 74.166667%
+INFO:root:The training loss of the 9000-th iteration is 0.009901, accuracy  is 75.313654%
+INFO:root:The valid loss of the 9000-th iteration is 0.009901, accuracy is 74.777778%
+INFO:root:The training loss of the 9100-th iteration is 0.009901, accuracy  is 75.520618%
+INFO:root:The valid loss of the 9100-th iteration is 0.009901, accuracy is 72.000000%
+INFO:root:The training loss of the 9200-th iteration is 0.009901, accuracy  is 75.726312%
+INFO:root:The valid loss of the 9200-th iteration is 0.009901, accuracy is 73.000000%
+INFO:root:The training loss of the 9300-th iteration is 0.009901, accuracy  is 75.924388%
+INFO:root:The valid loss of the 9300-th iteration is 0.009901, accuracy is 74.000000%
+INFO:root:The training loss of the 9400-th iteration is 0.009901, accuracy  is 76.121644%
+INFO:root:The valid loss of the 9400-th iteration is 0.009901, accuracy is 75.000000%
+INFO:root:The training loss of the 9500-th iteration is 0.009901, accuracy  is 76.314400%
+INFO:root:The valid loss of the 9500-th iteration is 0.009901, accuracy is 73.444444%
+INFO:root:The training loss of the 9600-th iteration is 0.009901, accuracy  is 76.505546%
+INFO:root:The valid loss of the 9600-th iteration is 0.009901, accuracy is 72.277778%
+INFO:root:The training loss of the 9700-th iteration is 0.009901, accuracy  is 76.689690%
+INFO:root:The valid loss of the 9700-th iteration is 0.009901, accuracy is 72.888889%
+INFO:root:The training loss of the 9800-th iteration is 0.009901, accuracy  is 76.871197%
+INFO:root:The valid loss of the 9800-th iteration is 0.009901, accuracy is 73.000000%
+INFO:root:The training loss of the 9900-th iteration is 0.009901, accuracy  is 77.055817%
+INFO:root:The valid loss of the 9900-th iteration is 0.009901, accuracy is 72.500000%
+INFO:root:The training loss of the 10000-th iteration is 0.009901, accuracy  is 77.228053%
+INFO:root:The valid loss of the 10000-th iteration is 0.009901, accuracy is 70.777778%
+INFO:root:Update[10001]: Change learning rate to 1.00000e-06
+INFO:root:The training loss of the 10100-th iteration is 0.009901, accuracy  is 77.403740%
+INFO:root:The valid loss of the 10100-th iteration is 0.009901, accuracy is 74.444444%
+INFO:root:The training loss of the 10200-th iteration is 0.009901, accuracy  is 77.585043%
+INFO:root:The valid loss of the 10200-th iteration is 0.009901, accuracy is 74.666667%
+INFO:root:The training loss of the 10300-th iteration is 0.009901, accuracy  is 77.756737%
+INFO:root:The valid loss of the 10300-th iteration is 0.009901, accuracy is 73.944444%
+INFO:root:The training loss of the 10400-th iteration is 0.009901, accuracy  is 77.929995%
+INFO:root:The valid loss of the 10400-th iteration is 0.009901, accuracy is 76.388889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 10500-th iteration is 0.009901, accuracy  is 78.097648%
+INFO:root:The valid loss of the 10500-th iteration is 0.009901, accuracy is 74.722222%
+INFO:root:The training loss of the 10600-th iteration is 0.009901, accuracy  is 78.263902%
+INFO:root:The valid loss of the 10600-th iteration is 0.009901, accuracy is 76.166667%
+INFO:root:The training loss of the 10700-th iteration is 0.009901, accuracy  is 78.429002%
+INFO:root:The valid loss of the 10700-th iteration is 0.009901, accuracy is 75.166667%
+INFO:root:The training loss of the 10800-th iteration is 0.009901, accuracy  is 78.587988%
+INFO:root:The valid loss of the 10800-th iteration is 0.009901, accuracy is 76.000000%
+INFO:root:The training loss of the 10900-th iteration is 0.009901, accuracy  is 78.749205%
+INFO:root:The valid loss of the 10900-th iteration is 0.009901, accuracy is 72.888889%
+INFO:root:The training loss of the 11000-th iteration is 0.009901, accuracy  is 78.906691%
+INFO:root:The valid loss of the 11000-th iteration is 0.009901, accuracy is 74.444444%
+INFO:root:The training loss of the 11100-th iteration is 0.009901, accuracy  is 79.060546%
+INFO:root:The valid loss of the 11100-th iteration is 0.009901, accuracy is 75.722222%
+INFO:root:The training loss of the 11200-th iteration is 0.009901, accuracy  is 79.213618%
+INFO:root:The valid loss of the 11200-th iteration is 0.009901, accuracy is 74.055556%
+INFO:root:The training loss of the 11300-th iteration is 0.009901, accuracy  is 79.362715%
+INFO:root:The valid loss of the 11300-th iteration is 0.009901, accuracy is 76.055556%
+INFO:root:The training loss of the 11400-th iteration is 0.009901, accuracy  is 79.506591%
+INFO:root:The valid loss of the 11400-th iteration is 0.009901, accuracy is 76.222222%
+INFO:root:The training loss of the 11500-th iteration is 0.009901, accuracy  is 79.651122%
+INFO:root:The valid loss of the 11500-th iteration is 0.009901, accuracy is 75.166667%
+INFO:root:The training loss of the 11600-th iteration is 0.009901, accuracy  is 79.792307%
+INFO:root:The valid loss of the 11600-th iteration is 0.009901, accuracy is 75.277778%
+INFO:root:The training loss of the 11700-th iteration is 0.009901, accuracy  is 79.932583%
+INFO:root:The valid loss of the 11700-th iteration is 0.009901, accuracy is 76.277778%
+INFO:root:The training loss of the 11800-th iteration is 0.009901, accuracy  is 80.070202%
+INFO:root:The valid loss of the 11800-th iteration is 0.009901, accuracy is 75.111111%
+INFO:root:The training loss of the 11900-th iteration is 0.009901, accuracy  is 80.201810%
+INFO:root:The valid loss of the 11900-th iteration is 0.009901, accuracy is 75.055556%
+INFO:root:The training loss of the 12000-th iteration is 0.009901, accuracy  is 80.334433%
+INFO:root:The valid loss of the 12000-th iteration is 0.009901, accuracy is 75.055556%
+INFO:root:The training loss of the 12100-th iteration is 0.009901, accuracy  is 80.463774%
+INFO:root:The valid loss of the 12100-th iteration is 0.009901, accuracy is 73.611111%
+INFO:root:The training loss of the 12200-th iteration is 0.009901, accuracy  is 80.596133%
+INFO:root:The valid loss of the 12200-th iteration is 0.009901, accuracy is 77.111111%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 12300-th iteration is 0.009901, accuracy  is 80.725357%
+INFO:root:The valid loss of the 12300-th iteration is 0.009901, accuracy is 75.666667%
+INFO:root:The training loss of the 12400-th iteration is 0.009901, accuracy  is 80.849125%
+INFO:root:The valid loss of the 12400-th iteration is 0.009901, accuracy is 74.500000%
+INFO:root:The training loss of the 12500-th iteration is 0.009901, accuracy  is 80.970473%
+INFO:root:The valid loss of the 12500-th iteration is 0.009901, accuracy is 75.055556%
+INFO:root:The training loss of the 12600-th iteration is 0.009901, accuracy  is 81.092252%
+INFO:root:The valid loss of the 12600-th iteration is 0.009901, accuracy is 74.166667%
+INFO:root:The training loss of the 12700-th iteration is 0.009901, accuracy  is 81.210468%
+INFO:root:The valid loss of the 12700-th iteration is 0.009901, accuracy is 75.888889%
+INFO:root:The training loss of the 12800-th iteration is 0.009901, accuracy  is 81.331735%
+INFO:root:The valid loss of the 12800-th iteration is 0.009901, accuracy is 75.111111%
+INFO:root:The training loss of the 12900-th iteration is 0.009901, accuracy  is 81.445238%
+INFO:root:The valid loss of the 12900-th iteration is 0.009901, accuracy is 75.388889%
+INFO:root:The training loss of the 13000-th iteration is 0.009901, accuracy  is 81.558602%
+INFO:root:The valid loss of the 13000-th iteration is 0.009901, accuracy is 76.000000%
+INFO:root:The training loss of the 13100-th iteration is 0.009901, accuracy  is 81.671327%
+INFO:root:The valid loss of the 13100-th iteration is 0.009901, accuracy is 75.888889%
+INFO:root:The training loss of the 13200-th iteration is 0.009901, accuracy  is 81.783345%
+INFO:root:The valid loss of the 13200-th iteration is 0.009901, accuracy is 74.111111%
+INFO:root:The training loss of the 13300-th iteration is 0.009901, accuracy  is 81.891610%
+INFO:root:The valid loss of the 13300-th iteration is 0.009901, accuracy is 75.222222%
+INFO:root:The training loss of the 13400-th iteration is 0.009901, accuracy  is 82.000230%
+INFO:root:The valid loss of the 13400-th iteration is 0.009901, accuracy is 75.722222%
+INFO:root:The training loss of the 13500-th iteration is 0.009901, accuracy  is 82.107648%
+INFO:root:The valid loss of the 13500-th iteration is 0.009901, accuracy is 75.444444%
+INFO:root:The training loss of the 13600-th iteration is 0.009901, accuracy  is 82.213971%
+INFO:root:The valid loss of the 13600-th iteration is 0.009901, accuracy is 75.000000%
+INFO:root:The training loss of the 13700-th iteration is 0.009901, accuracy  is 82.317860%
+INFO:root:The valid loss of the 13700-th iteration is 0.009901, accuracy is 76.333333%
+INFO:root:The training loss of the 13800-th iteration is 0.009901, accuracy  is 82.420242%
+INFO:root:The valid loss of the 13800-th iteration is 0.009901, accuracy is 73.555556%
+INFO:root:The training loss of the 13900-th iteration is 0.009901, accuracy  is 82.519885%
+INFO:root:The valid loss of the 13900-th iteration is 0.009901, accuracy is 74.666667%
+INFO:root:The training loss of the 14000-th iteration is 0.009901, accuracy  is 82.618733%
+INFO:root:The valid loss of the 14000-th iteration is 0.009901, accuracy is 75.277778%
+INFO:root:The training loss of the 14100-th iteration is 0.009901, accuracy  is 82.719066%
+INFO:root:The valid loss of the 14100-th iteration is 0.009901, accuracy is 74.055556%
+INFO:root:The training loss of the 14200-th iteration is 0.009901, accuracy  is 82.815197%
+INFO:root:The valid loss of the 14200-th iteration is 0.009901, accuracy is 72.944444%
+INFO:root:The training loss of the 14300-th iteration is 0.009901, accuracy  is 82.910522%
+INFO:root:The valid loss of the 14300-th iteration is 0.009901, accuracy is 76.277778%
+INFO:root:The training loss of the 14400-th iteration is 0.009901, accuracy  is 83.002613%
+INFO:root:The valid loss of the 14400-th iteration is 0.009901, accuracy is 75.000000%
+INFO:root:The training loss of the 14500-th iteration is 0.009901, accuracy  is 83.095406%
+INFO:root:The valid loss of the 14500-th iteration is 0.009901, accuracy is 75.222222%
+INFO:root:The training loss of the 14600-th iteration is 0.009901, accuracy  is 83.188887%
+INFO:root:The valid loss of the 14600-th iteration is 0.009901, accuracy is 76.666667%
+INFO:root:The training loss of the 14700-th iteration is 0.009901, accuracy  is 83.281321%
+INFO:root:The valid loss of the 14700-th iteration is 0.009901, accuracy is 75.388889%
+INFO:root:The training loss of the 14800-th iteration is 0.009901, accuracy  is 83.369384%
+INFO:root:The valid loss of the 14800-th iteration is 0.009901, accuracy is 74.444444%
+INFO:root:The training loss of the 14900-th iteration is 0.009901, accuracy  is 83.457225%
+INFO:root:The valid loss of the 14900-th iteration is 0.009901, accuracy is 76.000000%
+INFO:root:The training loss of the 15000-th iteration is 0.009901, accuracy  is 83.546608%
+INFO:root:The valid loss of the 15000-th iteration is 0.009901, accuracy is 74.055556%
+INFO:root:The training loss of the 15100-th iteration is 0.009901, accuracy  is 83.633204%
+INFO:root:The valid loss of the 15100-th iteration is 0.009901, accuracy is 74.222222%
+INFO:root:The training loss of the 15200-th iteration is 0.009901, accuracy  is 83.717938%
+INFO:root:The valid loss of the 15200-th iteration is 0.009901, accuracy is 74.611111%
+INFO:root:The training loss of the 15300-th iteration is 0.009901, accuracy  is 83.801995%
+INFO:root:The valid loss of the 15300-th iteration is 0.009901, accuracy is 76.277778%
+INFO:root:The training loss of the 15400-th iteration is 0.009901, accuracy  is 83.883960%
+INFO:root:The valid loss of the 15400-th iteration is 0.009901, accuracy is 74.277778%
+INFO:root:The training loss of the 15500-th iteration is 0.009901, accuracy  is 83.964867%
+INFO:root:The valid loss of the 15500-th iteration is 0.009901, accuracy is 74.388889%
+INFO:root:The training loss of the 15600-th iteration is 0.009901, accuracy  is 84.045231%
+INFO:root:The valid loss of the 15600-th iteration is 0.009901, accuracy is 75.333333%
+INFO:root:The training loss of the 15700-th iteration is 0.009901, accuracy  is 84.125903%
+INFO:root:The valid loss of the 15700-th iteration is 0.009901, accuracy is 74.388889%
+INFO:root:The training loss of the 15800-th iteration is 0.009901, accuracy  is 84.204718%
+INFO:root:The valid loss of the 15800-th iteration is 0.009901, accuracy is 77.277778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 15900-th iteration is 0.009901, accuracy  is 84.281365%
+INFO:root:The valid loss of the 15900-th iteration is 0.009901, accuracy is 75.444444%
+INFO:root:The training loss of the 16000-th iteration is 0.009901, accuracy  is 84.358842%
+INFO:root:The valid loss of the 16000-th iteration is 0.009901, accuracy is 73.333333%
+INFO:root:The training loss of the 16100-th iteration is 0.009901, accuracy  is 84.434947%
+INFO:root:The valid loss of the 16100-th iteration is 0.009901, accuracy is 75.611111%
+INFO:root:The training loss of the 16200-th iteration is 0.009901, accuracy  is 84.508618%
+INFO:root:The valid loss of the 16200-th iteration is 0.009901, accuracy is 74.666667%
+INFO:root:The training loss of the 16300-th iteration is 0.009901, accuracy  is 84.582127%
+INFO:root:The valid loss of the 16300-th iteration is 0.009901, accuracy is 76.000000%
+INFO:root:The training loss of the 16400-th iteration is 0.009901, accuracy  is 84.654337%
+INFO:root:The valid loss of the 16400-th iteration is 0.009901, accuracy is 75.111111%
+INFO:root:The training loss of the 16500-th iteration is 0.009901, accuracy  is 84.725739%
+INFO:root:The valid loss of the 16500-th iteration is 0.009901, accuracy is 74.166667%
+INFO:root:The training loss of the 16600-th iteration is 0.009901, accuracy  is 84.795817%
+INFO:root:The valid loss of the 16600-th iteration is 0.009901, accuracy is 74.388889%
+INFO:root:The training loss of the 16700-th iteration is 0.009901, accuracy  is 84.865978%
+INFO:root:The valid loss of the 16700-th iteration is 0.009901, accuracy is 74.944444%
+INFO:root:The training loss of the 16800-th iteration is 0.009901, accuracy  is 84.937071%
+INFO:root:The valid loss of the 16800-th iteration is 0.009901, accuracy is 74.388889%
+INFO:root:The training loss of the 16900-th iteration is 0.009901, accuracy  is 85.006542%
+INFO:root:The valid loss of the 16900-th iteration is 0.009901, accuracy is 76.666667%
+INFO:root:The training loss of the 17000-th iteration is 0.009901, accuracy  is 85.077331%
+INFO:root:The valid loss of the 17000-th iteration is 0.009901, accuracy is 75.111111%
+INFO:root:The training loss of the 17100-th iteration is 0.009901, accuracy  is 85.145491%
+INFO:root:The valid loss of the 17100-th iteration is 0.009901, accuracy is 75.722222%
+INFO:root:The training loss of the 17200-th iteration is 0.009901, accuracy  is 85.211835%
+INFO:root:The valid loss of the 17200-th iteration is 0.009901, accuracy is 74.722222%
+INFO:root:The training loss of the 17300-th iteration is 0.009901, accuracy  is 85.277221%
+INFO:root:The valid loss of the 17300-th iteration is 0.009901, accuracy is 74.444444%
+INFO:root:The training loss of the 17400-th iteration is 0.009901, accuracy  is 85.341161%
+INFO:root:The valid loss of the 17400-th iteration is 0.009901, accuracy is 73.666667%
+INFO:root:The training loss of the 17500-th iteration is 0.009901, accuracy  is 85.406569%
+INFO:root:The valid loss of the 17500-th iteration is 0.009901, accuracy is 75.388889%
+INFO:root:The training loss of the 17600-th iteration is 0.009901, accuracy  is 85.470172%
+INFO:root:The valid loss of the 17600-th iteration is 0.009901, accuracy is 76.722222%
+INFO:root:The training loss of the 17700-th iteration is 0.009901, accuracy  is 85.533553%
+INFO:root:The valid loss of the 17700-th iteration is 0.009901, accuracy is 75.611111%
+INFO:root:The training loss of the 17800-th iteration is 0.009901, accuracy  is 85.595110%
+INFO:root:The valid loss of the 17800-th iteration is 0.009901, accuracy is 75.888889%
+INFO:root:The training loss of the 17900-th iteration is 0.009901, accuracy  is 85.657085%
+INFO:root:The valid loss of the 17900-th iteration is 0.009901, accuracy is 75.111111%
+INFO:root:The training loss of the 18000-th iteration is 0.009901, accuracy  is 85.718250%
+INFO:root:The valid loss of the 18000-th iteration is 0.009901, accuracy is 75.555556%
+INFO:root:The training loss of the 18100-th iteration is 0.009901, accuracy  is 85.780318%
+INFO:root:The valid loss of the 18100-th iteration is 0.009901, accuracy is 73.388889%
+INFO:root:The training loss of the 18200-th iteration is 0.009901, accuracy  is 85.839408%
+INFO:root:The valid loss of the 18200-th iteration is 0.009901, accuracy is 73.166667%
+INFO:root:The training loss of the 18300-th iteration is 0.009901, accuracy  is 85.900136%
+INFO:root:The valid loss of the 18300-th iteration is 0.009901, accuracy is 75.444444%
+INFO:root:The training loss of the 18400-th iteration is 0.009901, accuracy  is 85.959547%
+INFO:root:The valid loss of the 18400-th iteration is 0.009901, accuracy is 74.611111%
+INFO:root:The training loss of the 18500-th iteration is 0.009901, accuracy  is 86.018256%
+INFO:root:The valid loss of the 18500-th iteration is 0.009901, accuracy is 74.555556%
+INFO:root:The training loss of the 18600-th iteration is 0.009901, accuracy  is 86.077694%
+INFO:root:The valid loss of the 18600-th iteration is 0.009901, accuracy is 75.388889%
+INFO:root:The training loss of the 18700-th iteration is 0.009901, accuracy  is 86.135967%
+INFO:root:The valid loss of the 18700-th iteration is 0.009901, accuracy is 75.111111%
+INFO:root:The training loss of the 18800-th iteration is 0.009901, accuracy  is 86.192683%
+INFO:root:The valid loss of the 18800-th iteration is 0.009901, accuracy is 74.500000%
+INFO:root:The training loss of the 18900-th iteration is 0.009901, accuracy  is 86.248567%
+INFO:root:The valid loss of the 18900-th iteration is 0.009901, accuracy is 75.833333%
+INFO:root:The training loss of the 19000-th iteration is 0.009901, accuracy  is 86.304441%
+INFO:root:The valid loss of the 19000-th iteration is 0.009901, accuracy is 75.277778%
+INFO:root:The training loss of the 19100-th iteration is 0.009901, accuracy  is 86.359327%
+INFO:root:The valid loss of the 19100-th iteration is 0.009901, accuracy is 73.555556%
+INFO:root:The training loss of the 19200-th iteration is 0.009901, accuracy  is 86.414845%
+INFO:root:The valid loss of the 19200-th iteration is 0.009901, accuracy is 77.777778%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 19300-th iteration is 0.009901, accuracy  is 86.469046%
+INFO:root:The valid loss of the 19300-th iteration is 0.009901, accuracy is 77.277778%
+INFO:root:The training loss of the 19400-th iteration is 0.009901, accuracy  is 86.523709%
+INFO:root:The valid loss of the 19400-th iteration is 0.009901, accuracy is 75.000000%
+INFO:root:The training loss of the 19500-th iteration is 0.009901, accuracy  is 86.576232%
+INFO:root:The valid loss of the 19500-th iteration is 0.009901, accuracy is 75.333333%
+INFO:root:The training loss of the 19600-th iteration is 0.009901, accuracy  is 86.629285%
+INFO:root:The valid loss of the 19600-th iteration is 0.009901, accuracy is 75.000000%
+INFO:root:The training loss of the 19700-th iteration is 0.009901, accuracy  is 86.681242%
+INFO:root:The valid loss of the 19700-th iteration is 0.009901, accuracy is 75.722222%
+INFO:root:The training loss of the 19800-th iteration is 0.009901, accuracy  is 86.735229%
+INFO:root:The valid loss of the 19800-th iteration is 0.009901, accuracy is 73.444444%
+INFO:root:The training loss of the 19900-th iteration is 0.009901, accuracy  is 86.787789%
+INFO:root:The valid loss of the 19900-th iteration is 0.009901, accuracy is 74.666667%
+INFO:root:The training loss of the 20000-th iteration is 0.009901, accuracy  is 86.836304%
+INFO:root:The valid loss of the 20000-th iteration is 0.009901, accuracy is 74.666667%
+INFO:root:Update[20001]: Change learning rate to 1.00000e-07
+INFO:root:The training loss of the 20100-th iteration is 0.009901, accuracy  is 86.885156%
+INFO:root:The valid loss of the 20100-th iteration is 0.009901, accuracy is 74.388889%
+INFO:root:The training loss of the 20200-th iteration is 0.009901, accuracy  is 86.935649%
+INFO:root:The valid loss of the 20200-th iteration is 0.009901, accuracy is 72.611111%
+INFO:root:The training loss of the 20300-th iteration is 0.009901, accuracy  is 86.984994%
+INFO:root:The valid loss of the 20300-th iteration is 0.009901, accuracy is 76.111111%
+INFO:root:The training loss of the 20400-th iteration is 0.009901, accuracy  is 87.033801%
+INFO:root:The valid loss of the 20400-th iteration is 0.009901, accuracy is 73.722222%
+INFO:root:The training loss of the 20500-th iteration is 0.009901, accuracy  is 87.079181%
+INFO:root:The valid loss of the 20500-th iteration is 0.009901, accuracy is 75.666667%
+INFO:root:The training loss of the 20600-th iteration is 0.009901, accuracy  is 87.126951%
+INFO:root:The valid loss of the 20600-th iteration is 0.009901, accuracy is 76.888889%
+INFO:root:The training loss of the 20700-th iteration is 0.009901, accuracy  is 87.174099%
+INFO:root:The valid loss of the 20700-th iteration is 0.009901, accuracy is 76.388889%
+INFO:root:The training loss of the 20800-th iteration is 0.009901, accuracy  is 87.221270%
+INFO:root:The valid loss of the 20800-th iteration is 0.009901, accuracy is 73.833333%
+INFO:root:The training loss of the 20900-th iteration is 0.009901, accuracy  is 87.267411%
+INFO:root:The valid loss of the 20900-th iteration is 0.009901, accuracy is 74.444444%
+INFO:root:The training loss of the 21000-th iteration is 0.009901, accuracy  is 87.313741%
+INFO:root:The valid loss of the 21000-th iteration is 0.009901, accuracy is 74.055556%
+INFO:root:The training loss of the 21100-th iteration is 0.009901, accuracy  is 87.359684%
+INFO:root:The valid loss of the 21100-th iteration is 0.009901, accuracy is 76.555556%
+INFO:root:The training loss of the 21200-th iteration is 0.009901, accuracy  is 87.404363%
+INFO:root:The valid loss of the 21200-th iteration is 0.009901, accuracy is 74.777778%
+INFO:root:The training loss of the 21300-th iteration is 0.009901, accuracy  is 87.447745%
+INFO:root:The valid loss of the 21300-th iteration is 0.009901, accuracy is 77.888889%
+INFO:root:Saved checkpoint to "data/pretrained_model/resnet-50-spatial-0006.params"
+INFO:root:The training loss of the 21400-th iteration is 0.009901, accuracy  is 87.492520%
+INFO:root:The valid loss of the 21400-th iteration is 0.009901, accuracy is 75.666667%
+INFO:root:The training loss of the 21500-th iteration is 0.009901, accuracy  is 87.536112%
+INFO:root:The valid loss of the 21500-th iteration is 0.009901, accuracy is 74.333333%
+INFO:root:The training loss of the 21600-th iteration is 0.009901, accuracy  is 87.579554%
+INFO:root:The valid loss of the 21600-th iteration is 0.009901, accuracy is 75.611111%
+INFO:root:The training loss of the 21700-th iteration is 0.009901, accuracy  is 87.622698%
+INFO:root:The valid loss of the 21700-th iteration is 0.009901, accuracy is 76.000000%
+INFO:root:The training loss of the 21800-th iteration is 0.009901, accuracy  is 87.666152%
+INFO:root:The valid loss of the 21800-th iteration is 0.009901, accuracy is 75.000000%
+INFO:root:The training loss of the 21900-th iteration is 0.009901, accuracy  is 87.708406%
+INFO:root:The valid loss of the 21900-th iteration is 0.009901, accuracy is 74.000000%
+INFO:root:The training loss of the 22000-th iteration is 0.009901, accuracy  is 87.750175%
+INFO:root:The valid loss of the 22000-th iteration is 0.009901, accuracy is 76.944444%
+INFO:root:The training loss of the 22100-th iteration is 0.009901, accuracy  is 87.790770%
+INFO:root:The valid loss of the 22100-th iteration is 0.009901, accuracy is 75.333333%
+INFO:root:The training loss of the 22200-th iteration is 0.009901, accuracy  is 87.831693%
+INFO:root:The valid loss of the 22200-th iteration is 0.009901, accuracy is 76.888889%
+INFO:root:The training loss of the 22300-th iteration is 0.009901, accuracy  is 87.871410%
+INFO:root:The valid loss of the 22300-th iteration is 0.009901, accuracy is 75.111111%
+INFO:root:The training loss of the 22400-th iteration is 0.009901, accuracy  is 87.911755%
+INFO:root:The valid loss of the 22400-th iteration is 0.009901, accuracy is 75.055556%
+INFO:root:The training loss of the 22500-th iteration is 0.009901, accuracy  is 87.951693%
+INFO:root:The valid loss of the 22500-th iteration is 0.009901, accuracy is 73.611111%
+INFO:root:The training loss of the 22600-th iteration is 0.009901, accuracy  is 87.990936%
+INFO:root:The valid loss of the 22600-th iteration is 0.009901, accuracy is 74.722222%
+INFO:root:The training loss of the 22700-th iteration is 0.009901, accuracy  is 88.029979%
+INFO:root:The valid loss of the 22700-th iteration is 0.009901, accuracy is 76.500000%
+INFO:root:The training loss of the 22800-th iteration is 0.009901, accuracy  is 88.067570%
+INFO:root:The valid loss of the 22800-th iteration is 0.009901, accuracy is 75.833333%
+INFO:root:The training loss of the 22900-th iteration is 0.009901, accuracy  is 88.105745%
+INFO:root:The valid loss of the 22900-th iteration is 0.009901, accuracy is 75.333333%
+INFO:root:The training loss of the 23000-th iteration is 0.009901, accuracy  is 88.143445%
+INFO:root:The valid loss of the 23000-th iteration is 0.009901, accuracy is 74.500000%
+INFO:root:The training loss of the 23100-th iteration is 0.009901, accuracy  is 88.182771%
+INFO:root:The valid loss of the 23100-th iteration is 0.009901, accuracy is 74.944444%
+INFO:root:The training loss of the 23200-th iteration is 0.009901, accuracy  is 88.222232%
+INFO:root:The valid loss of the 23200-th iteration is 0.009901, accuracy is 74.500000%
+INFO:root:Start testing image network: Fri Sep 29 00:23:30 2017
+INFO:root:The testing accuracy is 79.434311%
