@@ -250,25 +250,26 @@ class ConvNet(object):
             pred_label = np.argmax(probs)
             acc += (pred_label == label)
             count += 1
+            if count%1000==0:
+                logging.info('Have finished processing the {}-th videos'.format(count))
 
         return acc/count
 
     def test_dataset_evaluation(self):
-        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch,
-                                    context=self.ctx)
+        sym, args, auxs = mx.model.load_checkpoint(
+            self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
+        if self.test_params.remove_softmax_layer:
+            all_layers = sym.get_internals()
+            sym = all_layers['fc1_output']
+
+        mod = mx.mod.Module(symbol=sym, context=self.ctx)
+        mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
+        mod.params_initialized = True
 
         test_accuracy = self.evaluate(mod)
         logging.info("The testing accuracy is %f%%" % (test_accuracy*100))
 
-    #def refactor_resnet_50_with_new_input_shape(self, data):
-    #    w, h, c = self.data_params.shape
-    #    if self.mode == 'temporal':
-    #        c = c * self.train_params.clip_per_video * 2
-    #    bn_data = mx.symbol.BatchNorm(name='bn_data', data=data, use_global_stats=False, momentum=0.9,
-    #                                   eps=2e-05, fix_gamma=True)
-    #    conv0 = mx.symbol.Convolution(name='conv0', cudnn_tune='limited_workspace', dilate=(1,1),
-    #                                  data=bn_data, num_filter=64, pad=(3,3), kernel=(7,7), stride=(2,2),
-    #                                  num_group=1, workspace=512, no_bias=True)
+        return
 
     def freeze_mean_variance_batch_normalization_layers(self, symbol):
         pass

@@ -33,6 +33,7 @@ test_image.batch_size = 25
 test_image.clip_per_video = 25
 test_image.augmentation = [[], ['horizon_flip']]
 test_image.load_epoch = 6
+test_image.remove_softmax_layer = True
 
 
 #test_image.augmentation = [['left_top_corner_crop'], ['left_bottom_corner_crop'], ['right_top_corner_crop'],
