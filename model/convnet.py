@@ -234,11 +234,15 @@ class ConvNet(object):
             label = 0
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
+                if self.test_params.remove_softmax_layer:
+                    label_name = 'fc1'
+                else:
+                    label_name = 'softmax_label'
                 valid_iter = SpatialIter(batch_size=self.test_params.clip_per_video,
                                          data_shape=self.model_params.data_shape,
                                          data_dir=self.data_params.dir, videos_classes={video: video_class},
                                          classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                         label_name='softmax_label', mode='test',
+                                         label_name=label_name, mode='test',
                                          augmentation=aug, clip_per_video=self.test_params.clip_per_video)
                 if not mod.binded:
                     mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
