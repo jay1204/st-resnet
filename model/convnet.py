@@ -234,15 +234,11 @@ class ConvNet(object):
             label = 0
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
-                if self.test_params.remove_softmax_layer:
-                    label_name = 'fc1'
-                else:
-                    label_name = 'softmax_label'
                 valid_iter = SpatialIter(batch_size=self.test_params.clip_per_video,
                                          data_shape=self.model_params.data_shape,
                                          data_dir=self.data_params.dir, videos_classes={video: video_class},
                                          classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                         label_name=label_name, mode='test',
+                                         label_name='softmax_label', mode='test',
                                          augmentation=aug, clip_per_video=self.test_params.clip_per_video)
                 if not mod.binded:
                     mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
@@ -260,17 +256,19 @@ class ConvNet(object):
         return acc/count
 
     def test_dataset_evaluation(self):
-        sym, args, auxs = mx.model.load_checkpoint(
-            self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
-        if self.test_params.remove_softmax_layer:
-            all_layers = sym.get_internals()
-            sym = all_layers['fc1_output']
+        #sym, args, auxs = mx.model.load_checkpoint(
+        #    self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
+        #if self.test_params.remove_softmax_layer:
+        #    all_layers = sym.get_internals()
+        #    sym = all_layers['fc1_output']
 
-        mod = mx.module.Module(symbol=sym, context=self.ctx)
-        mod._arg_params = args
-        mod._aux_params = auxs
+        #mod = mx.module.Module(symbol=sym, context=self.ctx)
+        #mod._arg_params = args
+        #mod._aux_params = auxs
         #mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
-        mod.params_initialized = True
+        #mod.params_initialized = True
+        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
+                                    self.test_params.load_epoch, context=self.ctx)
 
         test_accuracy = self.evaluate(mod)
         logging.info("The testing accuracy is %f%%" % (test_accuracy*100))
