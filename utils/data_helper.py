@@ -65,10 +65,10 @@ def make_ucf_image_lst():
     """
     # create ucf_image_train.lst
     make_lst(instruction_file_path= ucf.split_dir + 'trainlist0%d'%ucf.split_id + '.txt', data_dir=ucf.image.dir,
-             label_file=os.join.path(ucf.split_dir, 'classInd.txt'),
+             label_file=os.path.join(ucf.split_dir, 'classInd.txt'),
              output_file_path=ucf.split_dir + 'train0%d'%ucf.split_id + '.lst')
     make_lst(instruction_file_path= ucf.split_dir + 'testlist0%d'%ucf.split_id + '.txt', data_dir=ucf.image.dir,
-             label_file=os.join.path(ucf.split_dir, 'classInd.txt'),
+             label_file=os.path.join(ucf.split_dir, 'classInd.txt'),
              output_file_path=ucf.split_dir + 'test0%d'%ucf.split_id + '.lst')
     return
 
