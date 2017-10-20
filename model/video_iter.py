@@ -113,7 +113,7 @@ class VideoIter(mx.io.DataIter):
         batch_data = nd.empty((self.batch_size, c, h, w))
         batch_label = nd.empty(self.batch_size)
         for i in xrange(sample_videos.shape[0]):
-            video_path = os.path.join(self.data_dir, sample_videos[i], '')
+            video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             start_frame_index = np.random.randint(len(frames_name) - self.frame_per_clip)
             sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
