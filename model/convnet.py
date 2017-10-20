@@ -34,7 +34,6 @@ class ConvNet(object):
         self.num_classes = num_classes
         self.mode = mode
 
-
     def configure_model(self):
         # load pre-trained model
         if self.train_params.resume:
@@ -140,7 +139,7 @@ class ConvNet(object):
         lst_dict = None
         if self.data_params.rec_file is not None and self.data_params.idx_file is not None \
                 and self.data_params.lst_file is not None:
-            record = mx.recordio.MXRecordIO(self.data_params.idx_file, self.data_params.rec_file, 'r')
+            record = mx.recordio.MXIndexedRecordIO(self.data_params.idx_file, self.data_params.rec_file, 'r')
             lst_dict = process_lst_file(self.data_params.lst_file)
 
         train_iter = self.create_train_iter(train=True, record=record, lst_dict=lst_dict)
