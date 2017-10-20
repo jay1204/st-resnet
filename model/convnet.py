@@ -187,7 +187,7 @@ class ConvNet(object):
         count = 1
         train_acc = []
         valid_acc = []
-        valid_accuracy = 0.778889
+        valid_accuracy = 0.0
 
         train_iter.reset()
         metric.reset()
@@ -259,7 +259,6 @@ class ConvNet(object):
         #sym, args, auxs = mx.model.load_checkpoint(
         #    self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
         #if self.test_params.remove_softmax_layer:
-        #    all_layers = sym.get_internals()
         #    sym = all_layers['fc1_output']
 
         #mod = mx.module.Module(symbol=sym, context=self.ctx)

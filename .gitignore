@@ -11,3 +11,4 @@ data/
 *.swl
 .idea/
 .DS_Store
+*.log

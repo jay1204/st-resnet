@@ -94,7 +94,7 @@ class TemporalIter(mx.io.DataIter):
 
     def read_train_frames(self, sample_videos):
         """
-        Read a series of frames by sampling one frame from each video.
+        Read a series of clips by sampling one clip from each video.
 
         :param sample_videos: numpy array of video name
         :return:

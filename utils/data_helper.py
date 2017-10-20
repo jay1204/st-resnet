@@ -1,5 +1,8 @@
 import os
 import sys
+import numpy as np
+import csv
+from config import ucf
 
 
 def get_ucf101_split(split_dir, split_id):
@@ -54,3 +57,61 @@ def read_label_file(label_file):
         classes_labels[line_list[1]] = int(line_list[0])
     return classes_labels
 
+
+def make_ucf_image_lst():
+    """
+    It creates the ucf_image_train.lst and ucf_image_test.lst
+    :return: None
+    """
+    # create ucf_image_train.lst
+    make_lst(instruction_file_path= ucf.split_dir + 'trainlist0%d'%ucf.split_id + '.txt', data_dir=ucf.image.dir,
+             output_file_path=ucf.split_dir + 'train0%d'%ucf.split_id + '.lst')
+    make_lst(instruction_file_path= ucf.split_dir + 'testlist0%d'%ucf.split_id + '.txt', data_dir=ucf.image.dir,
+             output_file_path=ucf.split_dir + 'test0%d'%ucf.split_id + '.lst')
+    return
+
+
+def make_lst(instruction_file_path, data_dir, label_file, output_file_path):
+    video_path_list, video_group_name = read_instruction_file(instruction_file_path, data_dir)
+    label_dict = read_label_file(label_file)
+
+    # given video group name and label_dict, retrieve labels for each item in video_path_list
+    labels = map(lambda x: label_dict[x], video_group_name)
+    write_success = write_to_file(output_file_path, video_path_list, labels)
+    if not write_success:
+        raise SyntaxError('Could not create {} file.'.format(output_file_path))
+    return
+
+
+
+def write_to_file(file_name, video_path_list, labels):
+    file_handler = csv.writer(open(file_name, "w"), delimiter='\t', lineterminator='\n')
+    image_list = []
+    counter = 0
+    for i, video_path in enumerate(video_path_list):
+        for img in os.listdir(video_path):
+            if img.endswith('jpg'):
+                image_list.append((counter, labels[i], os.path.join(video_path, img)))
+                counter += 1
+
+    for il in image_list:
+        file_handler.writerow(il)
+    return True
+
+def read_instruction_file(instruction_file_path, data_dir):
+    """
+    The data format in the instruction_file should be like:
+    'ApplyEyeMakeup/v_ApplyEyeMakeup_g10_c02.avi 1'
+
+    :returns:
+        - video_path_list: list of video paths, like jpegs_256/v_ApplyEyeMakeup_g10_c02
+        - video_group_name: list of video group name, like ApplyEyeMakeup
+    """
+    instruction_file = open(instruction_file_path, 'rU')
+    input_file_info = filter(lambda x: x.find('.avi') != -1, instruction_file)
+    # process conflict in InputFileInfo
+    input_file_info = map(lambda x: x.replace('HandStandPushups', 'HandstandPushups'), input_file_info)
+    video_path_list = map(lambda x: data_dir + (x.split('.')[0]).split('/')[-1], input_file_info)
+    video_group_name = map(lambda x: (x.split('.')[0]).split('/')[-2], input_file_info)
+
+    return video_path_list, video_group_name
