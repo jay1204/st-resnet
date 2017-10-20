@@ -1,5 +1,6 @@
 import numpy as np
 from easydict import EasyDict as ed
+import os
 
 ucf = ed()
 ucf.split_dir = 'data/ucfTrainTestlist/'
@@ -7,13 +8,15 @@ ucf.split_id = 1
 ucf.num_classes = 101
 
 ucf.image = ed()
-ucf.image.dir = 'data/jpegs_256/'
+ucf.image.dir = ['data/jpegs_256/']
 ucf.image.data_shape = (224, 224, 3)
+ucf.image.lst_file = ucf.split_dir, 'train0%d'%ucf.split_id + '_image.lst'
+ucf.image.rec_file = ucf.split_dir, 'train0%d'%ucf.split_id + '_image.rec'
+ucf.image.idx_file = ucf.split_dir, 'train0%d'%ucf.split_id + '_image.idx'
 
 ucf.flow = ed()
 ucf.flow.data_shape = (224, 224, 3)
-ucf.flow.dir_horizontal = 'data/tvl1_flow/u'
-ucf.flow.dir_vertical = 'data/tvl1_flow/v'
+ucf.flow.dir = ['data/tvl1_flow/u', 'data/tvl1_flow/v']
 
 train_image = ed()
 train_image.batch_size = 90
@@ -23,10 +26,11 @@ train_image.augmentation = ['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
 train_image.learning_rate = 1e-4#1e-5
 train_image.resume = False
-train_image.load_epoch = 7
+train_image.load_epoch = 8
 train_image.iteration = 30000
 train_image.schedule_steps = [10000, 20000, 30000]
 train_image.use_global_stats = True
+train_image.frame_per_clip = 1
 
 test_image = ed()
 # batch_size should be identical to frame_per_video for testing

@@ -1,6 +1,6 @@
 import mxnet as mx
-from utils import load_pretrained_model
-from spatial_iter import SpatialIter
+from utils import load_pretrained_model, process_lst_file
+from video_iter import VideoIter
 from temporal_iter import TemporalIter
 import numpy as np
 import mxnet.ndarray as nd
@@ -33,6 +33,7 @@ class ConvNet(object):
         self.classes_labels = classes_labels
         self.num_classes = num_classes
         self.mode = mode
+
 
     def configure_model(self):
         # load pre-trained model
@@ -134,34 +135,16 @@ class ConvNet(object):
 
     def train(self):
         net, arg_params, aux_params = self.configure_model()
-        if self.mode == 'spatial':
-            train_iter = SpatialIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                                     data_dir=self.data_params.dir, videos_classes=self.train_videos_classes,
-                                     classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                     label_name='softmax_label', mode='train',
-                                     augmentation=self.train_params.augmentation)
-            valid_iter = SpatialIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                                     data_dir=self.data_params.dir, videos_classes=self.test_videos_classes,
-                                     classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                     label_name='softmax_label', mode='train',
-                                     augmentation=self.train_params.augmentation)
-        elif self.mode == 'temporal':
-            train_iter = TemporalIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                                      data_dir_horizontal=self.data_params.dir_horizontal,
-                                      data_dir_vertical=self.data_params.dir_vertical,
-                                      videos_classes=self.train_videos_classes, classes_labels=self.classes_labels,
-                                      ctx=self.ctx, data_name='data', label_name='softmax_label', mode='train',
-                                      augmentation=self.train_params.augmentation,
-                                      frame_per_clip=self.train_params.frame_per_clip)
-            valid_iter = TemporalIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
-                                      data_dir_horizontal=self.data_params.dir_horizontal,
-                                      data_dir_vertical=self.data_params.dir_vertical,
-                                      videos_classes=self.test_videos_classes, classes_labels=self.classes_labels,
-                                      ctx=self.ctx, data_name='data', label_name='softmax_label', mode='train',
-                                      augmentation=self.train_params.augmentation,
-                                      frame_per_clip=self.train_params.frame_per_clip)
-        else:
-            raise NotImplementedError('The iter for {} has not been implemented'.format(self.mode))
+
+        record = None
+        lst_dict = None
+        if self.data_params.rec_file is not None and self.data_params.idx_file is not None \
+                and self.data_params.lst_file is not None:
+            record = mx.recordio.MXRecordIO(self.data_params.idx_file, self.data_params.rec_file, 'r')
+            lst_dict = process_lst_file(self.data_params.lst_file)
+
+        train_iter = self.create_train_iter(train=True, record=record, lst_dict=lst_dict)
+        valid_iter = self.create_train_iter(train=False)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx) # , fixed_params_names=net.list_auxiliary_states())
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
@@ -234,12 +217,12 @@ class ConvNet(object):
             label = 0
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
-                valid_iter = SpatialIter(batch_size=self.test_params.clip_per_video,
-                                         data_shape=self.model_params.data_shape,
-                                         data_dir=self.data_params.dir, videos_classes={video: video_class},
-                                         classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                         label_name='softmax_label', mode='test',
-                                         augmentation=aug, clip_per_video=self.test_params.clip_per_video)
+                valid_iter = VideoIter(batch_size=self.test_params.clip_per_video,
+                                       data_shape=self.model_params.data_shape,
+                                       data_dir=self.data_params.dir, videos_classes={video: video_class},
+                                       classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                                       label_name='softmax_label', mode='test',
+                                       augmentation=aug, clip_per_video=self.test_params.clip_per_video)
                 if not mod.binded:
                     mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
                 batch = valid_iter.next()
@@ -294,5 +277,26 @@ class ConvNet(object):
         with open(self.model_params.dir + self.model_params.name + '-symbol.json', 'w') as f:
             json.dump(json_file, f)
         return
+
+    def create_train_iter(self, train=True, record=None, lst_dict=None):
+        """
+        Create training and validation data iterator
+
+        :param train: bool, true means training data, false means validation data
+        :param record:
+        :param lst_dict:
+        :return: VideoIter
+        """
+        if train:
+            videos_classes = self.train_videos_classes
+        else:
+            videos_classes = self.test_videos_classes
+
+        return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                         data_dir=self.data_params.dir, videos_classes=videos_classes,
+                         classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                         label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
+                         frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record)
+
 
 

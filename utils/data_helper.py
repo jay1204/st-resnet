@@ -66,11 +66,15 @@ def make_ucf_image_lst():
     # create ucf_image_train.lst
     make_lst(instruction_file_path= ucf.split_dir + 'trainlist0%d'%ucf.split_id + '.txt', data_dir=ucf.image.dir,
              label_file=os.path.join(ucf.split_dir, 'classInd.txt'),
-             output_file_path=ucf.split_dir + 'train0%d'%ucf.split_id + '.lst')
+             output_file_path=ucf.split_dir + 'train0%d'%ucf.split_id + '_image.lst')
     make_lst(instruction_file_path= ucf.split_dir + 'testlist0%d'%ucf.split_id + '.txt', data_dir=ucf.image.dir,
              label_file=os.path.join(ucf.split_dir, 'classInd.txt'),
-             output_file_path=ucf.split_dir + 'test0%d'%ucf.split_id + '.lst')
+             output_file_path=ucf.split_dir + 'test0%d'%ucf.split_id + '_image.lst')
     return
+
+
+def make_ucf_flow_lst():
+    pass
 
 
 def make_lst(instruction_file_path, data_dir, label_file, output_file_path):
@@ -83,7 +87,6 @@ def make_lst(instruction_file_path, data_dir, label_file, output_file_path):
     if not write_success:
         raise SyntaxError('Could not create {} file.'.format(output_file_path))
     return
-
 
 
 def write_to_file(file_name, video_path_list, labels):
@@ -99,6 +102,7 @@ def write_to_file(file_name, video_path_list, labels):
     for il in image_list:
         file_handler.writerow(il)
     return True
+
 
 def read_instruction_file(instruction_file_path, data_dir):
     """
@@ -117,3 +121,14 @@ def read_instruction_file(instruction_file_path, data_dir):
     video_group_name = map(lambda x: (x.split('.')[0]).split('/')[-2], input_file_info)
 
     return video_path_list, video_group_name
+
+
+def process_lst_file(lst_file_path):
+    with open(lst_file_path) as fin:
+        lst_dict = {}
+        for line in iter(fin.readline, ''):
+            line = line.strip().split('\t')
+            key = int(line[0])
+            lst_dict[line[-1]] = key
+
+    return lst_dict

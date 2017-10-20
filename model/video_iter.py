@@ -7,17 +7,18 @@ import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
 
 
-class SpatialIter(mx.io.DataIter):
+class VideoIter(mx.io.DataIter):
     """
     This class is a wrapper of the basic mx.io.DataIter.
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
-                 label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1):
+                 label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
+                 record=None):
         """
 
         :param batch_size:
         :param data_shape: tuple of the input shape of pretrained model of format (channels, height, weight)
-        :param data_dir:
+        :param data_dir: list of strings
         :param videos_classes:
         :param classes_labels:
         :param ctx:
@@ -25,14 +26,19 @@ class SpatialIter(mx.io.DataIter):
         :param label_name:
         :param mode: string, indicating whehter it is in the training phrase or test phrase
         :param augmentation: list of list, each list has strings indicating augmentation operations
+        :param record: rec file type
+        :param lst_dict: dict of key is string of the frame directory, value is the index in .lst file
         """
-        super(SpatialIter, self).__init__()
+        super(VideoIter, self).__init__()
 
         if batch_size%clip_per_video != 0:
             raise ValueError('The batch size is not an integral multiple of (frames per video)')
 
         self.batch_size = batch_size
         self.mode = mode
+
+        if not isinstance(data_dir, list) or len(data_dir) <= 0:
+            raise SyntaxError('The data_dir should be a list and contains at least some data directory')
         self.data_dir = data_dir
         self.videos_classes = videos_classes
         self.classes_labels = classes_labels
@@ -44,7 +50,8 @@ class SpatialIter(mx.io.DataIter):
 
         if not isinstance(data_shape, tuple):
             data_shape = tuple(data_shape)
-        self.data_shape = data_shape
+        c, h, w = data_shape
+        self.data_shape = (c * len(self.data_dir) * self.frame_per_clip, h, w)
         self.ctx = ctx
         if self.ctx is None:
             self.ctx = [mx.cpu()]
@@ -59,6 +66,12 @@ class SpatialIter(mx.io.DataIter):
         self.batch_videos = batch_size / clip_per_video
 
         self.cur = 0
+        if record is not None and lst_dict is not None:
+            self.record = record
+            self.lst_dict = lst_dict
+        else:
+            self.record = None
+            self.lst_dict = None
         self.reset()
 
     def reset(self):
@@ -101,10 +114,10 @@ class SpatialIter(mx.io.DataIter):
         batch_label = nd.empty(self.batch_size)
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir, sample_videos[i], '')
-            frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
-            sample_frame_name = random.choice(frames)
-            sample_frame = self.next_clip(os.path.join(video_path, sample_frame_name))
-            batch_data[i][:] = sample_frame
+            frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
+            start_frame_index = np.random.randint(len(frames_name) - self.frame_per_clip)
+            sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
+            batch_data[i][:] = sample_clip
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
         return batch_data, batch_label
@@ -120,7 +133,7 @@ class SpatialIter(mx.io.DataIter):
         batch_data = nd.empty((self.batch_size, c, h, w))
         batch_label = nd.empty(self.batch_size)
         for i in xrange(sample_videos.shape[0]):
-            video_path = os.path.join(self.data_dir, sample_videos[i], '')
+            video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             sample_gap = float(len(frames) - 1) / self.clip_per_video
             sample_frame_names = []
@@ -143,12 +156,19 @@ class SpatialIter(mx.io.DataIter):
     def getindex(self):
         return self.cur/self.batch_videos
 
-    def next_clip(self, img_path):
-        image = load_one_image(img_path)
-        image = pre_process_image(self.data_shape, image, self.augmentation)
-        image = post_process_image(image)
+    def next_clip(self, video_name, frames_name, start_frame_index):
+        frames = []
+        for dir in self.data_dir:
+            video_path = os.path.join(dir, video_name, '')
+            for i in xrange(start_frame_index, start_frame_index+self.frame_per_clip):
+                frame_path = os.path.join(video_path, frames_name[i])
+                frames.append(load_one_image(frame_path, record = self.record, lst_dict=self.lst_dict))
 
-        return image
+        clip = mx.ndarray.concatenate(frames, axis=2)
+        clip = pre_process_image(self.data_shape, clip, self.augmentation)
+        clip = post_process_image(clip)
+
+        return clip
 
 
 
