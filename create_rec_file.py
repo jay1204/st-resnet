@@ -12,9 +12,9 @@ def parse_args():
 
 def main():
     args = parse_args()
-    if args['data'] == 'ucf-image':
+    if args.data == 'ucf-image':
         make_ucf_image_lst()
-    elif args['data'] == 'ucf-flow':
+    elif args.data == 'ucf-flow':
         pass
     else:
         raise NotImplementedError('This {} has not been supported.'.format(args['data']))
