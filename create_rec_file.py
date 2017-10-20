@@ -17,7 +17,7 @@ def main():
     elif args.data == 'ucf-flow':
         pass
     else:
-        raise NotImplementedError('This {} has not been supported.'.format(args['data']))
+        raise NotImplementedError('This {} has not been supported.'.format(args.data))
 
     return
 
