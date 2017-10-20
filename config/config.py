@@ -11,8 +11,8 @@ ucf.image = ed()
 ucf.image.dir = ['data/jpegs_256/']
 ucf.image.data_shape = (224, 224, 3)
 ucf.image.lst_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.lst'
-ucf.image.rec_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.rec'
-ucf.image.idx_file = None
+#ucf.image.rec_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.rec'
+#ucf.image.idx_file = None
 #ucf.image.idx_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.idx'
 
 ucf.flow = ed()

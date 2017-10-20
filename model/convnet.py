@@ -136,14 +136,18 @@ class ConvNet(object):
     def train(self):
         net, arg_params, aux_params = self.configure_model()
 
-        record = None
-        lst_dict = None
-        if self.data_params.rec_file is not None and self.data_params.idx_file is not None \
-                and self.data_params.lst_file is not None:
-            record = mx.recordio.MXIndexedRecordIO(self.data_params.idx_file, self.data_params.rec_file, 'r')
-            lst_dict = process_lst_file(self.data_params.lst_file)
+        #record = None
+        #lst_dict = None
+        #if self.data_params.rec_file is not None and self.data_params.idx_file is not None \
+        #        and self.data_params.lst_file is not None:
+        #    record = mx.recordio.MXIndexedRecordIO(self.data_params.idx_file, self.data_params.rec_file, 'r')
+        #    lst_dict = process_lst_file(self.data_params.lst_file)
 
-        train_iter = self.create_train_iter(train=True, record=record, lst_dict=lst_dict)
+
+        train_iter1 = self.create_train_iter(train=True)
+        train_iter2 = self.create_train_iter(train=True)
+        train_iter = mx.io.PrefetchingIter([train_iter1, train_iter2],
+                                           rename_data=[{'data': 'data_1'}, {'data': 'data_2'}])
         valid_iter = self.create_train_iter(train=False)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx) # , fixed_params_names=net.list_auxiliary_states())
