@@ -143,11 +143,8 @@ class ConvNet(object):
         #    record = mx.recordio.MXIndexedRecordIO(self.data_params.idx_file, self.data_params.rec_file, 'r')
         #    lst_dict = process_lst_file(self.data_params.lst_file)
 
-
-        train_iter1 = self.create_train_iter(train=True, id = 1)
-        train_iter2 = self.create_train_iter(train=True, id = 2)
-        train_iter = mx.io.PrefetchingIter([train_iter1, train_iter2])
-        valid_iter = self.create_train_iter(train=False, id=1)
+        train_iter = self.create_train_iter(train=True)
+        valid_iter = self.create_train_iter(train=False)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx) # , fixed_params_names=net.list_auxiliary_states())
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
@@ -283,7 +280,7 @@ class ConvNet(object):
             json.dump(json_file, f)
         return
 
-    def create_train_iter(self, id, train=True, record=None, lst_dict=None):
+    def create_train_iter(self, train=True, record=None, lst_dict=None):
         """
         Create training and validation data iterator
 
@@ -299,8 +296,8 @@ class ConvNet(object):
 
         return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                          data_dir=self.data_params.dir, videos_classes=videos_classes,
-                         classes_labels=self.classes_labels, ctx=self.ctx, data_name='data%d'%(id),
-                         label_name='softmax_label%d'%(id), mode='train', augmentation=self.train_params.augmentation,
+                         classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                         label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
                          frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record)
 
 

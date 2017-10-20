@@ -5,6 +5,8 @@ import mxnet as mx
 from mxnet.executor_manager import _split_input_slice
 import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
+import multiprocessing
+import logging
 
 
 class VideoIter(mx.io.DataIter):
@@ -72,7 +74,19 @@ class VideoIter(mx.io.DataIter):
         else:
             self.record = None
             self.lst_dict = None
+
+        # create a queue object
+        self.q = multiprocessing.Queue(maxsize=2)
+        self.pws = [multiprocessing.Process(target=self.write) for _ in range(4)]
+        for pw in self.pws:
+            pw.daemon = True
+            pw.start()
+
         self.reset()
+
+    def write(self):
+        while True:
+            self.q.put(obj=self.get_batch(), block=True, timeout=None)
 
     def reset(self):
         self.cur = 0
@@ -84,10 +98,11 @@ class VideoIter(mx.io.DataIter):
             return self.cur + self.batch_videos <= self.video_size
 
     def next(self):
+        if self.q.empty():
+            logging.debug("waiting for data")
         if self.iter_next():
-            batch_data, batch_label = self.get_batch()
             self.cur += self.batch_videos
-            return mx.io.DataBatch(data=[batch_data], label=[batch_label], pad=self.getpad(), index=self.getindex())
+            return self.q.get(block=True, timeout=None)
         else:
             raise StopIteration
 
@@ -100,7 +115,7 @@ class VideoIter(mx.io.DataIter):
             sample_videos = self.videos[self.cur:(self.cur+self.batch_videos)]
             batch_data, batch_label = self.read_test_frames(sample_videos)
 
-        return batch_data, batch_label
+        return mx.io.DataBatch(data=[batch_data], label=[batch_label], pad=self.getpad(), index=self.getindex())
 
     def read_train_frames(self, sample_videos):
         """
