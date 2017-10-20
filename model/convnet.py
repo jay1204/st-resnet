@@ -8,6 +8,7 @@ from utils import load_one_image, post_process_image, pre_process_image
 import os
 import logging
 import json
+import time
 
 
 class ConvNet(object):
@@ -203,6 +204,8 @@ class ConvNet(object):
                     valid_accuracy = valid_acc[-1]
                     mod.save_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
                                         self.train_params.load_epoch)
+
+                logging.info("Time: {}".format(time.asctime(time.localtime(time.time()))))
             count += 1
             if count > self.train_params.iteration:
                 break

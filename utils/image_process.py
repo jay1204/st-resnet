@@ -3,18 +3,15 @@ import mxnet.ndarray as nd
 from augmentation import *
 
 
-def load_one_image(img_path, record=None, lst_dict=None, ctx=None):
-    if ctx is None:
-        ctx = [mx.cpu()]
-
+def load_one_image(img_path, record=None, lst_dict=None):
     if record is not None and lst_dict is not None:
         _, img = mx.recordio.unpack_img(record.read_idx(lst_dict[img_path]))
-        return mx.nd.array(img, ctx=ctx)
+        return mx.nd.array(img)
     else:
         with open(img_path, 'rb') as fp:
             image_info = fp.read()
 
-        return mx.img.imdecode(image_info, ctx=ctx)
+        return mx.img.imdecode(image_info)
 
 
 def post_process_image(image):
