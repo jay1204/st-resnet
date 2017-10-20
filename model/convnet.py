@@ -147,7 +147,7 @@ class ConvNet(object):
         train_iter1 = self.create_train_iter(train=True, id = 1)
         train_iter2 = self.create_train_iter(train=True, id = 2)
         train_iter = mx.io.PrefetchingIter([train_iter1, train_iter2])
-        valid_iter = self.create_train_iter(train=False)
+        valid_iter = self.create_train_iter(train=False, id=1)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx) # , fixed_params_names=net.list_auxiliary_states())
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
