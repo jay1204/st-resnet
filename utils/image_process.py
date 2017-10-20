@@ -6,7 +6,7 @@ from augmentation import *
 def load_one_image(img_path, record=None, lst_dict=None):
     if record is not None and lst_dict is not None:
         _, img = mx.recordio.unpack_img(record.read_idx(lst_dict[img_path]))
-        return img
+        return mx.nd.array(img)
     else:
         with open(img_path, 'rb') as fp:
             image_info = fp.read()
