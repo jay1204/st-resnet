@@ -15,7 +15,7 @@ class VideoIter(mx.io.DataIter):
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
                  label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
-                 record=None):
+                 record=None, multiple_thread=16):
         """
 
         :param batch_size:
@@ -75,14 +75,13 @@ class VideoIter(mx.io.DataIter):
             self.record = None
             self.lst_dict = None
 
+        self.reset()
         # create a queue object
-        self.q = multiprocessing.Queue(maxsize=2)
-        self.pws = [multiprocessing.Process(target=self.write) for _ in range(4)]
+        self.q = multiprocessing.Queue(maxsize=multiple_thread)
+        self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_thread)]
         for pw in self.pws:
             pw.daemon = True
             pw.start()
-
-        self.reset()
 
     def write(self):
         while True:
