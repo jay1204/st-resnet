@@ -146,8 +146,7 @@ class ConvNet(object):
 
         train_iter1 = self.create_train_iter(train=True)
         train_iter2 = self.create_train_iter(train=True)
-        train_iter = mx.io.PrefetchingIter([train_iter1, train_iter2],
-                                           rename_data=[{'data': 'data_1'}, {'data': 'data_2'}])
+        train_iter = mx.io.PrefetchingIter([train_iter1, train_iter2])
         valid_iter = self.create_train_iter(train=False)
 
         mod = mx.mod.Module(symbol=net, context=self.ctx) # , fixed_params_names=net.list_auxiliary_states())
