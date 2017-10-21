@@ -77,7 +77,7 @@ class VideoIter(mx.io.DataIter):
 
         self.reset()
         # create a queue object
-        self.q = multiprocessing.Queue(maxsize=multiple_thread)
+        self.q = multiprocessing.Queue(maxsize=4 * multiple_thread)
         self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_thread)]
         for pw in self.pws:
             pw.daemon = True
