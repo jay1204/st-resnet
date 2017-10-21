@@ -21,7 +21,7 @@ def main():
 
     cm = ConvNet(model_params=resnet_50, data_params=ucf.flow, train_params=train_flow, test_params=test_flow,
                  train_videos_classes=train_videos_classes, test_videos_classes=test_videos_classes,
-                 classes_labels=classes_labels, num_classes=ucf.num_classes, ctx=ctx, mode='spatial')
+                 classes_labels=classes_labels, num_classes=ucf.num_classes, ctx=ctx, mode='temporal')
     cm.train()
     return
 
