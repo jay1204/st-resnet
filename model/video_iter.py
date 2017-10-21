@@ -86,7 +86,7 @@ class VideoIter(mx.io.DataIter):
 
     def write(self):
         while True:
-            self.q.put(obj=self.get_batch(), block=True, timeout=None)
+            self.q.put(self.get_batch(), block=True, timeout=None)
 
     def reset(self):
         self.cur = 0
