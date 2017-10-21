@@ -85,7 +85,7 @@ class VideoIter(mx.io.DataIter):
             pw.start()
         print "Succeed in initializing multiprocesses"
 
-    def write(self, ):
+    def write(self):
         random.seed(self.seed)
         self.seed+=1
         while True:
