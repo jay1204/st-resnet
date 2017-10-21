@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91a9948f-cac9-47d2-8635-65c5f0e0bba6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/video_iter.py" afterPath="$PROJECT_DIR$/model/video_iter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train_image.py" afterPath="$PROJECT_DIR$/train_image.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,12 +61,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_image.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="train_image.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train_image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="345">
+              <caret line="23" column="100" lean-forward="false" selection-start-line="23" selection-start-column="100" selection-end-line="23" selection-end-column="100" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,7 +107,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/video_iter.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="339">
@@ -143,8 +145,8 @@
       <find>args</find>
       <find>read_image</find>
       <find>to</find>
-      <find>ctx</find>
       <find>temporal</find>
+      <find>ctx</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,11 +175,11 @@
         <option value="$PROJECT_DIR$/utils/data_helper.py" />
         <option value="$PROJECT_DIR$/utils/__init__.py" />
         <option value="$PROJECT_DIR$/utils/image_process.py" />
-        <option value="$PROJECT_DIR$/train_image.py" />
         <option value="$PROJECT_DIR$/model/convnet.py" />
         <option value="$PROJECT_DIR$/config/config.py" />
         <option value="$PROJECT_DIR$/train_flow.py" />
         <option value="$PROJECT_DIR$/model/video_iter.py" />
+        <option value="$PROJECT_DIR$/train_image.py" />
       </list>
     </option>
   </component>
@@ -411,7 +413,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -655,24 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_flow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
@@ -717,6 +703,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="79" column="48" lean-forward="false" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_flow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="100" lean-forward="false" selection-start-line="23" selection-start-column="100" selection-end-line="23" selection-end-column="100" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
