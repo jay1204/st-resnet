@@ -61,7 +61,7 @@ class VideoIter(mx.io.DataIter):
         self.data_name = data_name
         self.label_name = label_name
 
-        self.provide_data = [(data_name, (batch_size, ) + data_shape)]
+        self.provide_data = [(data_name, (batch_size, ) + self.data_shape)]
         self.provide_label = [(label_name, (batch_size, ))]
 
         self.video_size = self.videos.shape[0]
