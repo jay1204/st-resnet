@@ -119,10 +119,10 @@ class ConvNet(object):
                 axis=1)
             new_aux_params = dict({k: aux_params[k] for k in aux_params})
 
-            #new_aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(
-            #    new_aux_params['bn_data_moving_mean'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
-            #new_aux_params['bn_data_moving_var'] = mx.ndarray.repeat(
-            #    new_aux_params['bn_data_moving_var'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+            new_aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(
+                new_aux_params['bn_data_moving_mean'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+            new_aux_params['bn_data_moving_var'] = mx.ndarray.repeat(
+                new_aux_params['bn_data_moving_var'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
         else:
             raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
@@ -134,7 +134,6 @@ class ConvNet(object):
                                         self.train_params.load_epoch)
 
     def train(self):
-        net, arg_params, aux_params = self.configure_model()
 
         #record = None
         #lst_dict = None
@@ -145,6 +144,8 @@ class ConvNet(object):
 
         train_iter = self.create_train_iter(train=True)
         valid_iter = self.create_train_iter(train=False)
+
+        net, arg_params, aux_params = self.configure_model()
 
         mod = mx.mod.Module(symbol=net, context=self.ctx) # , fixed_params_names=net.list_auxiliary_states())
         mod.bind(data_shapes=train_iter.provide_data, label_shapes=train_iter.provide_label)
