@@ -181,7 +181,7 @@ class ConvNet(object):
                     format(self.train_params.drop_out, self.train_params.learning_rate, self.train_params.load_epoch))
         for batch in train_iter:
             mod.forward(batch, is_train=True)
-            print 'get the {}-th batch successfully'.format(count)
+            #print 'get the {}-th batch successfully'.format(count)
             mod.update_metric(metric, batch.label)
             mod.backward()
             #print mod.get_input_grads()[0].asnumpy()
