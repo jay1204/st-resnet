@@ -61,6 +61,7 @@ train_flow.iteration = 30000
 train_flow.frame_per_clip = 10
 train_flow.schedule_steps = [10000, 20000, 30000]
 train_flow.use_global_stats = True
+train_flow.epsilon = 1e-6
 
 test_flow = ed()
 test_flow.batch_size = 25
@@ -68,7 +69,7 @@ test_flow.clip_per_video = 25
 test_flow.augmentation = [[], ['horizon_flip']]
 test_flow.load_epoch = 1
 test_flow.frame_per_clip = 10
-test_flow.epsilon = 1e-6
+
 
 resnet_50 = ed()
 resnet_50.dir = 'data/pretrained_model/'
