@@ -17,7 +17,7 @@ ucf.image.lst_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.lst'
 
 ucf.flow = ed()
 ucf.flow.data_shape = (224, 224, 3)
-ucf.flow.dir = ['data/tvl1_flow/u', 'data/tvl1_flow/v']
+ucf.flow.dir = ['data/tvl1_flow/u/', 'data/tvl1_flow/v/']
 
 train_image = ed()
 train_image.batch_size = 90
