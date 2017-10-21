@@ -119,10 +119,9 @@ class ConvNet(object):
             new_aux_params = dict({k: aux_params[k] for k in aux_params})
 
             new_aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(new_aux_params['bn_data_moving_mean'],
-                                                                repeats=self.train_params.frame_per_clip * 2)
+                                                                      repeats=self.train_params.frame_per_clip * 2)
             new_aux_params['bn_data_moving_var'] = mx.ndarray.repeat(new_aux_params['bn_data_moving_var'],
-                                                                repeats=self.train_params.frame_per_clip * 2)
-
+                                                                     repeats=self.train_params.frame_per_clip * 2)
 
         else:
             raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
@@ -165,7 +164,8 @@ class ConvNet(object):
         #                                                      ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
         mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                               ('lr_scheduler', lr_sch)))
+                                                               ('lr_scheduler', lr_sch),
+                                                               ('epsilon', self.train_params.epsilon)))
         metric = mx.metric.create(['loss','acc'])
         count = 1
         train_acc = []

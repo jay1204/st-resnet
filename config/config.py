@@ -32,6 +32,7 @@ train_image.iteration = 30000
 train_image.schedule_steps = [10000, 20000, 30000]
 train_image.use_global_stats = True
 train_image.frame_per_clip = 1
+train_image.epsilon = 1e-6
 
 test_image = ed()
 # batch_size should be identical to frame_per_video for testing
@@ -56,9 +57,9 @@ train_flow.clip_per_video = 1
 train_flow.learning_rate = 0.01
 train_flow.resume = False
 train_flow.load_epoch = 1
-train_flow.iteration = 20000
+train_flow.iteration = 30000
 train_flow.frame_per_clip = 10
-train_flow.schedule_steps = [10000, 15000, 20000]
+train_flow.schedule_steps = [10000, 20000, 30000]
 train_flow.use_global_stats = True
 
 test_flow = ed()
