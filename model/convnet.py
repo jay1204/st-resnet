@@ -109,10 +109,10 @@ class ConvNet(object):
             net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
             new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
             new_arg_params = dict({k: arg_params[k] for k in arg_params if 'fc1' not in k})
-            #new_arg_params['bn_data_gamma'] = mx.ndarray.repeat(
-            #    new_arg_params['bn_data_gamma'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
-            #new_arg_params['bn_data_beta'] = mx.ndarray.repeat(
-            #    new_arg_params['bn_data_beta'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+            new_arg_params['bn_data_gamma'] = mx.ndarray.repeat(
+                new_arg_params['bn_data_gamma'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+            new_arg_params['bn_data_beta'] = mx.ndarray.repeat(
+                new_arg_params['bn_data_beta'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
                 new_arg_params['conv0_weight'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir),
