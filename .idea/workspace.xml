@@ -40,7 +40,7 @@
       <file leaf-file-name="convnet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/convnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="96">
               <caret line="161" column="16" lean-forward="true" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -110,8 +110,8 @@
       <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/video_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="179" column="34" lean-forward="false" selection-start-line="179" selection-start-column="34" selection-end-line="179" selection-end-column="34" />
+            <state relative-caret-position="327">
+              <caret line="102" column="35" lean-forward="false" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -122,7 +122,7 @@
       <file leaf-file-name="temporal_iter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/temporal_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
+            <state relative-caret-position="1100">
               <caret line="108" column="89" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="89" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -683,9 +683,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="29" lean-forward="true" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/temporal_iter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
+        <state relative-caret-position="1100">
           <caret line="108" column="89" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="89" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -703,19 +713,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="29" lean-forward="true" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/convnet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="96">
           <caret line="161" column="16" lean-forward="true" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -725,8 +725,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/video_iter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="179" column="34" lean-forward="false" selection-start-line="179" selection-start-column="34" selection-end-line="179" selection-end-column="34" />
+        <state relative-caret-position="327">
+          <caret line="102" column="35" lean-forward="false" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

@@ -82,6 +82,7 @@ class VideoIter(mx.io.DataIter):
         for pw in self.pws:
             pw.daemon = True
             pw.start()
+        print "Succeed in initializing multiprocesses"
 
     def write(self):
         while True:
@@ -99,6 +100,7 @@ class VideoIter(mx.io.DataIter):
     def next(self):
         if self.q.empty():
             logging.debug("waiting for data")
+            print 'waiting for data'
         if self.iter_next():
             self.cur += self.batch_videos
             return self.q.get(block=True, timeout=None)
