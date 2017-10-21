@@ -17,8 +17,8 @@ ucf.image.lst_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.lst'
 
 ucf.flow = ed()
 ucf.flow.data_shape = (224, 224, 3)
-#ucf.flow.dir = ['data/tvl1_flow/u/', 'data/tvl1_flow/v/']
-ucf.flow.dir = ['data/jpegs_256/']
+ucf.flow.dir = ['data/tvl1_flow/u/', 'data/tvl1_flow/v/']
+#ucf.flow.dir = ['data/jpegs_256/']
 
 train_image = ed()
 train_image.batch_size = 90
@@ -50,7 +50,7 @@ test_image.remove_softmax_layer = True
 #                           ['right_bottom_corner_crop', 'horizon_flip'], ['centre_crop', 'horizon_flip']]
 
 train_flow = ed()
-train_flow.batch_size = 50
+train_flow.batch_size = 70
 #train_flow.epoch = 10
 train_flow.drop_out = 0.8
 train_flow.augmentation = ['random_horizon_flip', 'random_corner_crop']
