@@ -19,9 +19,9 @@ def main():
     #for video in sample_videos:
     #    test_videos_classes_samples[video] = test_videos_classes[video]
 
-    cm = ConvNet(model_params=resnet_50, data_params=ucf.image, train_params=train_image, test_params=test_flow,
+    cm = ConvNet(model_params=resnet_50, data_params=ucf.flow, train_params=train_flow, test_params=test_flow,
                  train_videos_classes=train_videos_classes, test_videos_classes=test_videos_classes,
-                 classes_labels=classes_labels, num_classes=ucf.num_classes, ctx=ctx, mode='temporal')
+                 classes_labels=classes_labels, num_classes=ucf.num_classes, ctx=ctx, mode='spatial')
     cm.train()
     return
 
