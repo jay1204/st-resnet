@@ -66,7 +66,6 @@ class VideoIter(mx.io.DataIter):
 
         self.video_size = self.videos.shape[0]
         self.batch_videos = batch_size / clip_per_video
-        self.seed=0
 
         self.cur = 0
         if record is not None and lst_dict is not None:
@@ -86,8 +85,6 @@ class VideoIter(mx.io.DataIter):
         print "Succeed in initializing multiprocesses"
 
     def write(self):
-        random.seed(self.seed)
-        self.seed+=1
         while True:
             self.q.put(obj=self.get_batch(), block=True, timeout=None)
 
@@ -111,6 +108,7 @@ class VideoIter(mx.io.DataIter):
             raise StopIteration
 
     def get_batch(self):
+        np.random.seed()
         if self.mode == 'train':
             video_indices = np.random.choice(self.videos.shape[0], size=self.batch_size, replace=False)
             sample_videos = self.videos[video_indices]
