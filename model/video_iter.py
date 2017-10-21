@@ -98,9 +98,6 @@ class VideoIter(mx.io.DataIter):
             return self.cur + self.batch_videos <= self.video_size
 
     def next(self):
-        if self.q.empty():
-            logging.debug("waiting for data")
-            print 'waiting for data'
         if self.iter_next():
             self.cur += self.batch_videos
             return self.q.get(block=True, timeout=None)
