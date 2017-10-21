@@ -180,6 +180,8 @@ class VideoIter(mx.io.DataIter):
             for i in xrange(start_frame_index, start_frame_index+self.frame_per_clip):
                 frame_path = os.path.join(video_path, frames_name[i])
                 print 'frame path: '+frame_path
+                img = load_one_image(frame_path)
+                print 'Surprise'
                 frames.append(load_one_image(frame_path, record = self.record, lst_dict=self.lst_dict))
                 print 'load frame:'+frame_path
 
@@ -188,8 +190,4 @@ class VideoIter(mx.io.DataIter):
         clip = post_process_image(clip)
 
         return clip
-
-
-
-
 
