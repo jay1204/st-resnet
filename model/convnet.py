@@ -298,11 +298,20 @@ class ConvNet(object):
         else:
             videos_classes = self.test_videos_classes
 
-        return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+        if train:
+            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                          data_dir=self.data_params.dir, videos_classes=videos_classes,
                          classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                          label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
-                         frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record)
+                         frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record,
+                             multiple_thread=1)
+        else:
+            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                             data_dir=self.data_params.dir, videos_classes=videos_classes,
+                             classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                             label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
+                             frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record,
+                             multiple_thread=3)
 
 
 
