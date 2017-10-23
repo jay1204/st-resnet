@@ -66,26 +66,13 @@ class PrefetchingIter(mx.io.DataIter):
     @property
     def provide_data(self):
         """The name and shape of data provided by this iterator"""
-        if self.rename_data is None:
-            return sum([i.provide_data for i in self.iters], [])
-        else:
-            return sum([[
-                DataDesc(r[x.name], x.shape, x.dtype)
-                if isinstance(x, DataDesc) else DataDesc(*x)
-                for x in i.provide_data
-            ] for r, i in zip(self.rename_data, self.iters)], [])
+        return sum([i.provide_data for i in self.iters], [])
 
     @property
     def provide_label(self):
         """The name and shape of label provided by this iterator"""
-        if self.rename_label is None:
-            return sum([i.provide_label for i in self.iters], [])
-        else:
-            return sum([[
-                DataDesc(r[x.name], x.shape, x.dtype)
-                if isinstance(x, DataDesc) else DataDesc(*x)
-                for x in i.provide_label
-            ] for r, i in zip(self.rename_label, self.iters)], [])
+        return sum([i.provide_label for i in self.iters], [])
+
 
     def reset(self):
         for e in self.data_ready:
