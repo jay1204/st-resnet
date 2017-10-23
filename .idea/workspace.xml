@@ -96,7 +96,7 @@
       <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/video_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="32">
               <caret line="18" column="70" lean-forward="false" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -722,7 +722,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/video_iter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="32">
           <caret line="18" column="70" lean-forward="false" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
