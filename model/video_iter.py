@@ -5,7 +5,7 @@ import mxnet as mx
 from mxnet.executor_manager import _split_input_slice
 import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
-import multiprocessing
+import multiprocessing, threading
 import logging
 
 
@@ -15,7 +15,7 @@ class VideoIter(mx.io.DataIter):
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
                  label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
-                 record=None, multiple_thread=6):
+                 record=None, multiple_processes=1, multiple_threads=8):
         """
 
         :param batch_size:
@@ -76,9 +76,10 @@ class VideoIter(mx.io.DataIter):
             self.lst_dict = None
 
         self.reset()
+        self.multiple_threads = multiple_threads
         # create a queue object
-        self.q = multiprocessing.Queue(maxsize=multiple_thread)
-        self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_thread)]
+        self.q = multiprocessing.Queue(maxsize=multiple_processes)
+        self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_processes)]
         for pw in self.pws:
             pw.daemon = True
             pw.start()
@@ -110,24 +111,33 @@ class VideoIter(mx.io.DataIter):
         if self.mode == 'train':
             video_indices = np.random.choice(self.videos.shape[0], size=self.batch_size, replace=False)
             sample_videos = self.videos[video_indices]
-            batch_data, batch_label = self.read_train_frames(sample_videos)
+            c, h, w = self.data_shape
+            batch_data = nd.empty((self.batch_size, c, h, w))
+            batch_label = nd.empty(self.batch_size)
+            split_sample_indices = np.array_split(np.arange(self.batch_size), self.multiple_threads)
+            prefetch_threads = []
+            for sub_sample_indices in split_sample_indices:
+                t = threading.Thread(target=self.read_train_frames,
+                                     args=[self, batch_data, batch_label, sample_videos, sub_sample_indices])
+                prefetch_threads.append(t)
+                t.setDaemon(True)
+                t.start()
+            for t in prefetch_threads:
+                t.join()
         else:
             sample_videos = self.videos[self.cur:(self.cur+self.batch_videos)]
             batch_data, batch_label = self.read_test_frames(sample_videos)
 
         return mx.io.DataBatch(data=[batch_data], label=[batch_label], pad=self.getpad(), index=self.getindex())
 
-    def read_train_frames(self, sample_videos):
+    def read_train_frames(self, batch_data, batch_label, sample_videos, sub_sample_indices):
         """
         Read a series of frames by sampling one frame from each video.
 
         :param sample_videos: numpy array of video name
         :return:
         """
-        c, h, w = self.data_shape
-        batch_data = nd.empty((self.batch_size, c, h, w))
-        batch_label = nd.empty(self.batch_size)
-        for i in xrange(sample_videos.shape[0]):
+        for i in sub_sample_indices:
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             start_frame_index = np.random.randint(len(frames_name) - self.frame_per_clip)
@@ -135,7 +145,7 @@ class VideoIter(mx.io.DataIter):
             batch_data[i][:] = sample_clip
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
-        return batch_data, batch_label
+        return
 
     def read_test_frames(self, sample_videos):
         """
