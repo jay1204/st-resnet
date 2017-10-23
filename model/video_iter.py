@@ -118,7 +118,7 @@ class VideoIter(mx.io.DataIter):
             prefetch_threads = []
             for sub_sample_indices in split_sample_indices:
                 t = threading.Thread(target=self.read_train_frames,
-                                     args=[self, batch_data, batch_label, sample_videos, sub_sample_indices])
+                                     args=[batch_data, batch_label, sample_videos, sub_sample_indices])
                 prefetch_threads.append(t)
                 t.setDaemon(True)
                 t.start()
