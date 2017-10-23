@@ -147,8 +147,10 @@ class VideoIter(mx.io.DataIter):
             frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             start_frame_index = np.random.randint(len(frames_name) - self.frame_per_clip)
             sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
+            logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
             batch_data[i][:] = sample_clip
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
+            logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
         logging.debug("The end of current thread {}".format(time.asctime(time.localtime(time.time()))))
 
         return
@@ -195,11 +197,11 @@ class VideoIter(mx.io.DataIter):
                 frame_path = os.path.join(video_path, frames_name[i])
                 frames.append(load_one_image(frame_path, record = self.record, lst_dict=self.lst_dict))
 
-        logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
+        #logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
         clip = mx.ndarray.concatenate(frames, axis=2)
         clip = pre_process_image(self.data_shape, clip, self.augmentation)
         clip = post_process_image(clip)
-        logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
+        #logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
 
         return clip
 
