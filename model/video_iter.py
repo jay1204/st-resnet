@@ -197,9 +197,9 @@ class VideoIter(mx.io.DataIter):
 
         logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
         clip = mx.ndarray.concatenate(frames, axis=2)
-        logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
         clip = pre_process_image(self.data_shape, clip, self.augmentation)
         clip = post_process_image(clip)
+        logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
 
         return clip
 
