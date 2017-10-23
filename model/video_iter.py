@@ -79,11 +79,11 @@ class VideoIter(mx.io.DataIter):
         self.reset()
         self.multiple_threads = multiple_threads
         # create a queue object
-        #self.q = multiprocessing.Queue(maxsize=multiple_processes)
-        #self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_processes)]
-        #for pw in self.pws:
-        #    pw.daemon = True
-        #    pw.start()
+        self.q = multiprocessing.Queue(maxsize=multiple_processes)
+        self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_processes)]
+        for pw in self.pws:
+            pw.daemon = True
+            pw.start()
 
     def write(self):
         while True:
@@ -99,14 +99,14 @@ class VideoIter(mx.io.DataIter):
             return self.cur + self.batch_videos <= self.video_size
 
     def next(self):
-        #if self.q.empty():
-        #    logging.debug("waiting for data")
-        #if self.iter_next():
-        #    self.cur += self.batch_videos
-        #    return self.q.get(block=True, timeout=None)
+        if self.q.empty():
+            logging.debug("waiting for data")
         if self.iter_next():
             self.cur += self.batch_videos
-            return self.get_batch()
+            return self.q.get(block=True, timeout=None)
+        #if self.iter_next():
+        #    self.cur += self.batch_videos
+        #    return self.get_batch()
         else:
             raise StopIteration
 
@@ -141,17 +141,17 @@ class VideoIter(mx.io.DataIter):
         :param sample_videos: numpy array of video name
         :return:
         """
-        logging.debug("The start of current thread {}".format(time.asctime(time.localtime(time.time()))))
+        #logging.debug("The start of current thread {}".format(time.asctime(time.localtime(time.time()))))
         for i in sub_sample_indices:
-            logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
+            #logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             start_frame_index = np.random.randint(len(frames_name) - self.frame_per_clip)
             sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
             batch_data[i][:] = sample_clip
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
-            logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
-        logging.debug("The end of current thread {}".format(time.asctime(time.localtime(time.time()))))
+            #logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
+        #logging.debug("The end of current thread {}".format(time.asctime(time.localtime(time.time()))))
 
         return
 
