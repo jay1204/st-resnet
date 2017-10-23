@@ -9,6 +9,7 @@ import os
 import logging
 import json
 import time
+from PrefetchingIter import PrefetchingIter
 
 
 class ConvNet(object):
@@ -145,7 +146,7 @@ class ConvNet(object):
         train_iter1 = self.create_train_iter(train=True)
         train_iter2 = self.create_train_iter(train=True)
 
-        train_iter = mx.io.PrefetchingIter([train_iter1, train_iter2], rename_data = None)
+        train_iter = PrefetchingIter([train_iter1, train_iter2], rename_data = None)
 
         valid_iter = self.create_train_iter(train=False)
 
