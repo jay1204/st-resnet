@@ -7,6 +7,7 @@ import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
 import multiprocessing, threading
 import logging
+import time
 
 
 class VideoIter(mx.io.DataIter):
@@ -137,6 +138,7 @@ class VideoIter(mx.io.DataIter):
         :param sample_videos: numpy array of video name
         :return:
         """
+        logging.info("The start of current thread {}".format(time.asctime(time.localtime(time.time()))))
         for i in sub_sample_indices:
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
@@ -144,6 +146,7 @@ class VideoIter(mx.io.DataIter):
             sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
             batch_data[i][:] = sample_clip
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
+        logging.info("The end of current thread {}".format(time.asctime(time.localtime(time.time()))))
 
         return
 
