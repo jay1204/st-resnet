@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="91a9948f-cac9-47d2-8635-65c5f0e0bba6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/video_iter.py" afterPath="$PROJECT_DIR$/model/video_iter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train_flow.py" afterPath="$PROJECT_DIR$/train_flow.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +28,7 @@
       <file leaf-file-name="convnet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/convnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2324">
+            <state relative-caret-position="-1670">
               <caret line="167" column="80" lean-forward="true" selection-start-line="167" selection-start-column="80" selection-end-line="167" selection-end-column="80" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -50,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_flow.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="train_flow.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_flow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="83" lean-forward="false" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
+            <state relative-caret-position="435">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -94,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/video_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+            <state relative-caret-position="1518">
+              <caret line="195" column="103" lean-forward="false" selection-start-line="195" selection-start-column="103" selection-end-line="195" selection-end-column="103" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -119,7 +118,7 @@
       <file leaf-file-name="temporal_iter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/temporal_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="773">
+            <state relative-caret-position="-306">
               <caret line="108" column="89" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="89" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -142,8 +141,8 @@
       <find>args</find>
       <find>read_image</find>
       <find>to</find>
-      <find>temporal</find>
       <find>ctx</find>
+      <find>temporal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,8 +174,8 @@
         <option value="$PROJECT_DIR$/train_image.py" />
         <option value="$PROJECT_DIR$/config/config.py" />
         <option value="$PROJECT_DIR$/model/convnet.py" />
-        <option value="$PROJECT_DIR$/model/video_iter.py" />
         <option value="$PROJECT_DIR$/train_flow.py" />
+        <option value="$PROJECT_DIR$/model/video_iter.py" />
       </list>
     </option>
   </component>
@@ -679,36 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/temporal_iter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="773">
-          <caret line="108" column="89" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="89" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/convnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2324">
-          <caret line="167" column="80" lean-forward="true" selection-start-line="167" selection-start-column="80" selection-end-line="167" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/video_iter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_image.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -719,8 +688,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train_flow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="83" lean-forward="false" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/convnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1670">
+          <caret line="167" column="80" lean-forward="true" selection-start-line="167" selection-start-column="80" selection-end-line="167" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/temporal_iter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="108" column="89" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="89" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/video_iter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="195" column="103" lean-forward="false" selection-start-line="195" selection-start-column="103" selection-end-line="195" selection-end-column="103" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

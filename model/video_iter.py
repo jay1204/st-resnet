@@ -188,18 +188,14 @@ class VideoIter(mx.io.DataIter):
         return self.cur/self.batch_videos
 
     def next_clip(self, video_name, frames_name, start_frame_index):
-        c, h, w = self.data_shape
-        sub_c = c / (len(self.data_dir) * self.frame_per_clip)
-        clip = nd.empty((c, h, w))
-        j = 0
+        frames = []
         for dir in self.data_dir:
             video_path = os.path.join(dir, video_name, '')
             for i in xrange(start_frame_index, start_frame_index+self.frame_per_clip):
                 frame_path = os.path.join(video_path, frames_name[i])
-                clip[j:(j + sub_c)][:] = load_one_image(frame_path, record = self.record, lst_dict=self.lst_dict)
-                j += sub_c
+                frames.append(load_one_image(frame_path, record = self.record, lst_dict=self.lst_dict))
 
-        #clip = mx.ndarray.concatenate(frames, axis=2)
+        clip = mx.ndarray.concatenate(frames, axis=2)
         clip = pre_process_image(self.data_shape, clip, self.augmentation)
         clip = post_process_image(clip)
 
