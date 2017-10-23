@@ -16,7 +16,7 @@ class VideoIter(mx.io.DataIter):
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
                  label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
-                 record=None, multiple_processes=4, multiple_threads=8):
+                 record=None, multiple_processes=4, multiple_threads=1):
         """
 
         :param batch_size:
