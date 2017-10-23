@@ -16,7 +16,7 @@ class VideoIter(mx.io.DataIter):
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
                  label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
-                 record=None, multiple_processes=4, multiple_threads=32):
+                 record=None, multiple_processes=2, multiple_threads=32):
         """
 
         :param batch_size:
@@ -141,7 +141,7 @@ class VideoIter(mx.io.DataIter):
         :param sample_videos: numpy array of video name
         :return:
         """
-        logging.info("The start of current thread {}".format(time.asctime(time.localtime(time.time()))))
+        logging.debug("The start of current thread {}".format(time.asctime(time.localtime(time.time()))))
         for i in sub_sample_indices:
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
@@ -149,7 +149,7 @@ class VideoIter(mx.io.DataIter):
             sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
             batch_data[i][:] = sample_clip
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
-        logging.info("The end of current thread {}".format(time.asctime(time.localtime(time.time()))))
+        logging.debug("The end of current thread {}".format(time.asctime(time.localtime(time.time()))))
 
         return
 
