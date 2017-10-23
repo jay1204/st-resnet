@@ -79,11 +79,11 @@ class VideoIter(mx.io.DataIter):
         self.reset()
         self.multiple_threads = multiple_threads
         # create a queue object
-        self.q = multiprocessing.Queue(maxsize=multiple_processes)
-        self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_processes)]
-        for pw in self.pws:
-            pw.daemon = True
-            pw.start()
+        #self.q = multiprocessing.Queue(maxsize=multiple_processes)
+        #self.pws = [multiprocessing.Process(target=self.write) for _ in range(multiple_processes)]
+        #for pw in self.pws:
+        #    pw.daemon = True
+        #    pw.start()
 
     def write(self):
         while True:
@@ -99,14 +99,14 @@ class VideoIter(mx.io.DataIter):
             return self.cur + self.batch_videos <= self.video_size
 
     def next(self):
-        if self.q.empty():
-            logging.debug("waiting for data")
-        if self.iter_next():
-            self.cur += self.batch_videos
-            return self.q.get(block=True, timeout=None)
+        #if self.q.empty():
+        #    logging.debug("waiting for data")
         #if self.iter_next():
         #    self.cur += self.batch_videos
-        #    return self.get_batch()
+        #    return self.q.get(block=True, timeout=None)
+        if self.iter_next():
+            self.cur += self.batch_videos
+            return self.get_batch()
         else:
             raise StopIteration
 

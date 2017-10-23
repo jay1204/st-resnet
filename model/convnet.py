@@ -142,7 +142,11 @@ class ConvNet(object):
         #    record = mx.recordio.MXIndexedRecordIO(self.data_params.idx_file, self.data_params.rec_file, 'r')
         #    lst_dict = process_lst_file(self.data_params.lst_file)
 
-        train_iter = self.create_train_iter(train=True)
+        train_iter1 = self.create_train_iter(train=True)
+        train_iter2 = sel.create_train_iter(train=True)
+
+        train_iter = mx.io.PrefetchingIter([train_iter1, train_iter2], rename_data = None)
+
         valid_iter = self.create_train_iter(train=False)
 
         net, arg_params, aux_params = self.configure_model()
