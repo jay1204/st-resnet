@@ -311,14 +311,14 @@ class ConvNet(object):
                              classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                              label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
                              frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record,
-                             multiple_processes=1)
+                             multiple_processes=3)
         else:
             return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
                              data_dir=self.data_params.dir, videos_classes=videos_classes,
                              classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                              label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
                              frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record,
-                             multiple_processes=3)
+                             multiple_processes=1)
 
 
 
