@@ -16,7 +16,7 @@ class VideoIter(mx.io.DataIter):
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
                  label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
-                 record=None, multiple_processes=4, multiple_threads=1):
+                 record=None, multiple_processes=4, multiple_threads=16):
         """
 
         :param batch_size:
@@ -195,9 +195,9 @@ class VideoIter(mx.io.DataIter):
                 frame_path = os.path.join(video_path, frames_name[i])
                 frames.append(load_one_image(frame_path, record = self.record, lst_dict=self.lst_dict))
 
-        logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
+        #logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
         clip = mx.ndarray.concatenate(frames, axis=2)
-        logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
+        #logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
         clip = pre_process_image(self.data_shape, clip, self.augmentation)
         clip = post_process_image(clip)
 
