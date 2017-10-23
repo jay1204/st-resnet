@@ -143,11 +143,11 @@ class VideoIter(mx.io.DataIter):
         """
         logging.debug("The start of current thread {}".format(time.asctime(time.localtime(time.time()))))
         for i in sub_sample_indices:
+            logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
             start_frame_index = np.random.randint(len(frames_name) - self.frame_per_clip)
             sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
-            logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
             batch_data[i][:] = sample_clip
             batch_label[i][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
             logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
