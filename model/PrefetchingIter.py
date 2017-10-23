@@ -30,7 +30,7 @@ class PrefetchingIter(mx.io.DataIter):
         self.iters = iters
         self.rename_data = rename_data
         self.rename_label = rename_label
-        self.batch_size = len(self.provide_data) * self.provide_data[0][0][1][0]
+        self.batch_size = len(self.provide_data) * self.provide_data[0][1][0]
         self.data_ready = [threading.Event() for i in range(self.n_iter)]
         self.data_taken = [threading.Event() for i in range(self.n_iter)]
         for e in self.data_taken:
