@@ -148,6 +148,7 @@ class ConvNet(object):
         print train_iter1.provide_data, train_iter2.provide_data
 
         train_iter = PrefetchingIter([train_iter1, train_iter2], rename_data = None)
+        print train_iter.provide_data
 
         valid_iter = self.create_train_iter(train=False)
 
