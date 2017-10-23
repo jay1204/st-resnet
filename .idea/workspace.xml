@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91a9948f-cac9-47d2-8635-65c5f0e0bba6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/PrefetchingIter.py" afterPath="$PROJECT_DIR$/model/PrefetchingIter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/convnet.py" afterPath="$PROJECT_DIR$/model/convnet.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/video_iter.py" afterPath="$PROJECT_DIR$/model/video_iter.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="convnet.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="convnet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/convnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="150" column="37" lean-forward="true" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+            <state relative-caret-position="2065">
+              <caret line="159" column="46" lean-forward="true" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -41,7 +40,7 @@
       <file leaf-file-name="PrefetchingIter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/PrefetchingIter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
+            <state relative-caret-position="1275">
               <caret line="85" column="66" lean-forward="false" selection-start-line="85" selection-start-column="66" selection-end-line="85" selection-end-column="66" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -94,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="video_iter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/video_iter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-662">
-              <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+            <state relative-caret-position="586">
+              <caret line="142" column="11" lean-forward="true" selection-start-line="142" selection-start-column="11" selection-end-line="142" selection-end-column="11" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -175,9 +174,9 @@
         <option value="$PROJECT_DIR$/train_image.py" />
         <option value="$PROJECT_DIR$/config/config.py" />
         <option value="$PROJECT_DIR$/train_flow.py" />
-        <option value="$PROJECT_DIR$/model/video_iter.py" />
         <option value="$PROJECT_DIR$/model/PrefetchingIter.py" />
         <option value="$PROJECT_DIR$/model/convnet.py" />
+        <option value="$PROJECT_DIR$/model/video_iter.py" />
       </list>
     </option>
   </component>
@@ -701,9 +700,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/convnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2065">
+          <caret line="159" column="46" lean-forward="true" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/PrefetchingIter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
+        <state relative-caret-position="1275">
           <caret line="85" column="66" lean-forward="false" selection-start-line="85" selection-start-column="66" selection-end-line="85" selection-end-column="66" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -713,18 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/video_iter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-662">
-          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/convnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="150" column="37" lean-forward="true" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+        <state relative-caret-position="586">
+          <caret line="142" column="11" lean-forward="true" selection-start-line="142" selection-start-column="11" selection-end-line="142" selection-end-column="11" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
