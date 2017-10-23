@@ -27,7 +27,6 @@ class PrefetchingIter(mx.io.DataIter):
         if not isinstance(iters, list):
             iters = [iters]
         self.n_iter = len(iters)
-        assert self.n_iter ==1, "Our prefetching iter only support 1 DataIter"
         self.iters = iters
         self.rename_data = rename_data
         self.rename_label = rename_label
