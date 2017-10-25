@@ -145,7 +145,7 @@ class VideoIter(mx.io.DataIter):
         for i in sub_sample_indices:
             #logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
-            frames_name = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
+            frames_name = [f for f in sorted(os.listdir(video_path)) if f.endswith('.jpg')]
             start_frame_index = np.random.randint(len(frames_name) - self.frame_per_clip)
             sample_clip = self.next_clip(sample_videos[i], frames_name, start_frame_index)
             batch_data[i][:] = sample_clip
@@ -167,7 +167,7 @@ class VideoIter(mx.io.DataIter):
         batch_label = nd.empty(self.batch_size)
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
-            frames = [f for f in os.listdir(video_path) if f.endswith('.jpg')]
+            frames = [f for f in sorted(os.listdir(video_path)) if f.endswith('.jpg')]
             sample_gap = float(len(frames) - 1) / self.clip_per_video
             sample_frame_names = []
             for k in xrange(self.clip_per_video):
