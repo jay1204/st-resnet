@@ -117,7 +117,6 @@ class ConvNet(object):
 
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
                 new_arg_params['conv0_weight'][:, 0:2, :, :],repeats=self.train_params.frame_per_clip, axis=1)
-            print new_arg_params['conv0_weight']
 
             new_aux_params = dict({k: aux_params[k] for k in aux_params})
 
