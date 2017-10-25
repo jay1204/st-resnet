@@ -110,20 +110,21 @@ class ConvNet(object):
             net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
             new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
             new_arg_params = dict({k: arg_params[k] for k in arg_params if 'fc1' not in k})
+            print new_arg_params['bn_data_gamma'].shape
             new_arg_params['bn_data_gamma'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_gamma'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_arg_params['bn_data_gamma'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_arg_params['bn_data_beta'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_beta'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_arg_params['bn_data_beta'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
-                new_arg_params['conv0_weight'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir),
+                new_arg_params['conv0_weight'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir),
                 axis=1)
             new_aux_params = dict({k: aux_params[k] for k in aux_params})
 
             new_aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_mean'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_mean'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_aux_params['bn_data_moving_var'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_var'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_var'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
         else:
             raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
@@ -144,7 +145,6 @@ class ConvNet(object):
         #    lst_dict = process_lst_file(self.data_params.lst_file)
 
         train_iter = self.create_train_iter(train=True)
-        print train_iter.provide_data
         #train_iter2 = self.create_train_iter(train=True)
         #print train_iter1.provide_data, train_iter2.provide_data
 
