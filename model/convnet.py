@@ -116,17 +116,16 @@ class ConvNet(object):
                 new_arg_params['bn_data_beta'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
-                new_arg_params['conv0_weight'][:, 0, :, :],repeats=self.train_params.frame_per_clip * len(self.data_params.dir),
+                new_arg_params['conv0_weight'][:, 0:2, :, :],repeats=self.train_params.frame_per_clip * len(self.data_params.dir),
                 axis=1)
             print new_arg_params['conv0_weight']
 
             new_aux_params = dict({k: aux_params[k] for k in aux_params})
 
-            print new_aux_params['bn_data_moving_mean']
             new_aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_mean'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_mean'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_aux_params['bn_data_moving_var'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_var'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_var'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
         else:
             raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
