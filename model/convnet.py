@@ -111,19 +111,19 @@ class ConvNet(object):
             new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
             new_arg_params = dict({k: arg_params[k] for k in arg_params if 'fc1' not in k})
             new_arg_params['bn_data_gamma'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_gamma'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_arg_params['bn_data_gamma'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_arg_params['bn_data_beta'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_beta'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_arg_params['bn_data_beta'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
-                new_arg_params['conv0_weight'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir),
+                new_arg_params['conv0_weight'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir),
                 axis=1)
             new_aux_params = dict({k: aux_params[k] for k in aux_params})
 
             new_aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_mean'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_mean'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_aux_params['bn_data_moving_var'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_var'],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_var'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
         else:
             raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
@@ -308,19 +308,25 @@ class ConvNet(object):
         else:
             videos_classes = self.test_videos_classes
 
+        greyscale = False
+        if self.mode == 'temporal':
+            greyscale = True
+
         if train:
-            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.data_params.data_shape,
                              data_dir=self.data_params.dir, videos_classes=videos_classes,
                              classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                              label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
-                             frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record,
-                             multiple_processes=3)
+                             frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
+                             lst_dict=lst_dict, record=record,
+                             multiple_processes=6)
         else:
-            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.data_params.data_shape,
                              data_dir=self.data_params.dir, videos_classes=videos_classes,
                              classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
                              label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
-                             frame_per_clip=self.train_params.frame_per_clip, lst_dict=lst_dict, record=record,
+                             frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
+                             lst_dict=lst_dict, record=record,
                              multiple_processes=1)
 
 

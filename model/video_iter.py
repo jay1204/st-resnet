@@ -16,7 +16,7 @@ class VideoIter(mx.io.DataIter):
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
                  label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
-                 record=None, multiple_processes=4, multiple_threads=8):
+                 record=None, greyscale=False, multiple_processes=4, multiple_threads=8):
         """
 
         :param batch_size:
@@ -53,7 +53,7 @@ class VideoIter(mx.io.DataIter):
 
         if not isinstance(data_shape, tuple):
             data_shape = tuple(data_shape)
-        c, h, w = data_shape
+        h, w, c = data_shape
         self.data_shape = (c * len(self.data_dir) * self.frame_per_clip, h, w)
         self.ctx = ctx
         if self.ctx is None:
@@ -67,6 +67,7 @@ class VideoIter(mx.io.DataIter):
 
         self.video_size = self.videos.shape[0]
         self.batch_videos = batch_size / clip_per_video
+        self.greyscale = greyscale
 
         self.cur = 0
         if record is not None and lst_dict is not None:
@@ -195,7 +196,7 @@ class VideoIter(mx.io.DataIter):
             video_path = os.path.join(dir, video_name, '')
             for i in xrange(start_frame_index, start_frame_index+self.frame_per_clip):
                 frame_path = os.path.join(video_path, frames_name[i])
-                frames.append(load_one_image(frame_path, record = self.record, lst_dict=self.lst_dict))
+                frames.append(load_one_image(frame_path, greyscale=self.greyscale, record = self.record, lst_dict=self.lst_dict))
 
         #logging.debug("Start: {}".format(time.asctime(time.localtime(time.time()))))
         clip = mx.ndarray.concatenate(frames, axis=2)

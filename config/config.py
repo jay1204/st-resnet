@@ -16,7 +16,7 @@ ucf.image.lst_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.lst'
 #ucf.image.idx_file = ucf.split_dir + 'train0%d'%ucf.split_id + '_image.idx'
 
 ucf.flow = ed()
-ucf.flow.data_shape = (224, 224, 3)
+ucf.flow.data_shape = (224, 224, 1)
 ucf.flow.dir = ['data/tvl1_flow/u/', 'data/tvl1_flow/v/']
 #ucf.flow.dir = ['data/jpegs_256/']
 
