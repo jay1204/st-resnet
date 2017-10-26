@@ -319,7 +319,7 @@ class ConvNet(object):
                              label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
                              frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
                              lst_dict=lst_dict, record=record,
-                             multiple_processes=9)
+                             multiple_processes=10)
         else:
             return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.data_params.data_shape,
                              data_dir=self.data_params.dir, videos_classes=videos_classes,
@@ -327,7 +327,7 @@ class ConvNet(object):
                              label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
                              frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
                              lst_dict=lst_dict, record=record,
-                             multiple_processes=1)
+                             multiple_processes=3)
 
 
 
