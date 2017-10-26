@@ -216,7 +216,6 @@ class ConvNet(object):
                     mod.save_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
                                         self.train_params.load_epoch)
 
-                logging.info("Time: {}".format(time.asctime(time.localtime(time.time()))))
             count += 1
             if count > self.train_params.iteration:
                 break
