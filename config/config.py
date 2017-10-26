@@ -55,14 +55,14 @@ train_flow.batch_size = 64
 train_flow.drop_out = 0.8
 train_flow.augmentation = ['random_horizon_flip', 'random_corner_crop']
 train_flow.clip_per_video = 1
-train_flow.learning_rate = 1e-7
+train_flow.learning_rate = 1e-4
 train_flow.resume = True
 train_flow.load_epoch = 1
 train_flow.iteration = 30000
 train_flow.frame_per_clip = 10
 train_flow.schedule_steps = [10000, 20000, 30000]
 train_flow.use_global_stats = True
-train_flow.epsilon = 1e-8
+train_flow.epsilon = 1e-6
 
 test_flow = ed()
 test_flow.batch_size = 25
