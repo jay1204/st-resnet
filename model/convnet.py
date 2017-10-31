@@ -111,19 +111,23 @@ class ConvNet(object):
             new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
             new_arg_params = dict({k: arg_params[k] for k in arg_params if 'fc1' not in k})
             new_arg_params['bn_data_gamma'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_gamma'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_arg_params['bn_data_gamma'].mean(),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_arg_params['bn_data_beta'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_beta'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_arg_params['bn_data_beta'].mean(),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
+            print new_arg_params['conv0_weight'].mean(axis=1, keepdims=True).shape
+            print new_arg_params['conv0_weight'][0,:,:,:]
+            print (new_arg_params['conv0_weight'].mean(axis=1, keepdims=True))[0,:,:,:]
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
-                new_arg_params['conv0_weight'][:, 0:2, :, :],repeats=self.train_params.frame_per_clip, axis=1)
+                new_arg_params['conv0_weight'].mean(axis=1, keepdims=True),repeats=self.train_params.frame_per_clip *
+                                                                                   len(self.data_params.dir), axis=1)
 
             new_aux_params = dict({k: aux_params[k] for k in aux_params})
 
             new_aux_params['bn_data_moving_mean'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_mean'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_mean'].mean(),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_aux_params['bn_data_moving_var'] = mx.ndarray.repeat(
-                new_aux_params['bn_data_moving_var'][0],repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                new_aux_params['bn_data_moving_var'].mean(),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
         else:
             raise NotImplementedError('This model-{} has not been refactored!'.format(self.model_params.name))
