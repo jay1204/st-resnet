@@ -120,6 +120,7 @@ class ConvNet(object):
 
             print mx.ndarray.mean(new_arg_params['conv0_weight'], axis=1, keepdims=True).asnumpy().shape
             print mx.ndarray.mean(new_arg_params['conv0_weight'], axis=1, keepdims=True).asnumpy()[0,:,:,:]
+            print new_arg_params['conv0_weight'].asnumpy()[0,:,:,:]
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
                 new_arg_params['conv0_weight'].mean(axis=1, keepdims=True),repeats=self.train_params.frame_per_clip *
                                                                                    len(self.data_params.dir), axis=1)
