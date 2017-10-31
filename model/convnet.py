@@ -110,17 +110,16 @@ class ConvNet(object):
             net = mx.symbol.FullyConnected(data=net, num_hidden=self.num_classes, name='fc1')
             new_symbol = mx.symbol.SoftmaxOutput(data=net, name='softmax')
             new_arg_params = dict({k: arg_params[k] for k in arg_params if 'fc1' not in k})
-            print mx.ndarray.mean(new_arg_params['bn_data_gamma']).asnumpy()
+            print
 
             new_arg_params['bn_data_gamma'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_gamma'].mean(),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                mx.ndarray.mean(new_arg_params['bn_data_gamma']),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
             new_arg_params['bn_data_beta'] = mx.ndarray.repeat(
-                new_arg_params['bn_data_beta'].mean(),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
+                mx.ndarray.mean(new_arg_params['bn_data_beta']),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
 
-            print new_arg_params['conv0_weight'].mean(axis=1, keepdims=True).asnumpy().shape
-            print new_arg_params['conv0_weight'][0,:,:,:].asnumpy()
-            print (new_arg_params['conv0_weight'].mean(axis=1, keepdims=True))[0,:,:,:].asnumpy()
+            print mx.ndarray.mean(new_arg_params['conv0_weight'], axis=1, keepdims=True).asnumpy().shape
+            print mx.ndarray.mean(new_arg_params['conv0_weight'], axis=1, keepdims=True).asnumpy()[0,:,:,:]
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
                 new_arg_params['conv0_weight'].mean(axis=1, keepdims=True),repeats=self.train_params.frame_per_clip *
                                                                                    len(self.data_params.dir), axis=1)
