@@ -191,8 +191,6 @@ class VideoIter(mx.io.DataIter):
         return self.cur/self.batch_videos
 
     def next_clip(self, video_name, frames_name, start_frame_index):
-        print frames_name
-        print start_frame_index
         frames = []
         for dir in self.data_dir:
             video_path = os.path.join(dir, video_name, '')
