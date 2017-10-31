@@ -115,9 +115,9 @@ class ConvNet(object):
             new_arg_params['bn_data_beta'] = mx.ndarray.repeat(
                 new_arg_params['bn_data_beta'].mean(),repeats=self.train_params.frame_per_clip * len(self.data_params.dir))
 
-            print new_arg_params['conv0_weight'].mean(axis=1, keepdims=True).shape
-            print new_arg_params['conv0_weight'][0,:,:,:]
-            print (new_arg_params['conv0_weight'].mean(axis=1, keepdims=True))[0,:,:,:]
+            print new_arg_params['conv0_weight'].mean(axis=1, keepdims=True).asnumpy().shape
+            print new_arg_params['conv0_weight'][0,:,:,:].asnumpy()
+            print (new_arg_params['conv0_weight'].mean(axis=1, keepdims=True))[0,:,:,:].asnumpy()
             new_arg_params['conv0_weight'] = mx.ndarray.repeat(
                 new_arg_params['conv0_weight'].mean(axis=1, keepdims=True),repeats=self.train_params.frame_per_clip *
                                                                                    len(self.data_params.dir), axis=1)
