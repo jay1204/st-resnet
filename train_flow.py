@@ -19,7 +19,7 @@ def main():
     #test_videos_classes_samples = {}
     #for video in sample_videos:
     #    test_videos_classes_samples[video] = test_videos_classes[video]
-    for i in range(10):
+    for i in range(1,10):
         lr = math.pow(0.1, i)
         train_flow.learning_rate = lr
         train_flow.iteration = 1000
