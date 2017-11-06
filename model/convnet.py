@@ -9,7 +9,6 @@ import os
 import logging
 import json
 import time
-from PrefetchingIter import PrefetchingIter
 
 
 class ConvNet(object):

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="91a9948f-cac9-47d2-8635-65c5f0e0bba6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.py" afterPath="$PROJECT_DIR$/config/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/convnet.py" afterPath="$PROJECT_DIR$/model/convnet.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="convnet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/convnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="186" column="29" lean-forward="false" selection-start-line="186" selection-start-column="29" selection-end-line="186" selection-end-column="29" />
+            <state relative-caret-position="511">
+              <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -78,8 +79,8 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+            <state relative-caret-position="527">
+              <caret line="54" column="25" lean-forward="false" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -179,6 +180,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="179" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="842" />
@@ -271,7 +273,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="842" extended-state="0" />
+    <frame x="179" y="23" width="1440" height="842" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16597222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -647,16 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/video_iter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="192" column="68" lean-forward="false" selection-start-line="192" selection-start-column="68" selection-end-line="192" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/augmentation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -697,10 +689,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/video_iter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="192" column="68" lean-forward="false" selection-start-line="192" selection-start-column="68" selection-end-line="192" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/convnet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="186" column="29" lean-forward="false" selection-start-line="186" selection-start-column="29" selection-end-line="186" selection-end-column="29" />
+        <state relative-caret-position="511">
+          <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -709,8 +711,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+        <state relative-caret-position="527">
+          <caret line="54" column="25" lean-forward="false" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
