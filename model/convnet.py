@@ -183,7 +183,7 @@ class ConvNet(object):
         count = 1
         train_acc = []
         valid_acc = []
-        valid_accuracy = 0.65875
+        valid_accuracy = 0.67962963
 
         train_iter.reset()
         metric.reset()
