@@ -50,12 +50,12 @@ test_image.remove_softmax_layer = True
 #                           ['right_bottom_corner_crop', 'horizon_flip'], ['centre_crop', 'horizon_flip']]
 
 train_flow = ed()
-train_flow.batch_size = 54
+train_flow.batch_size = 80
 #train_flow.epoch = 10
 train_flow.drop_out = 0.8
 train_flow.augmentation = ['random_horizon_flip', 'random_corner_crop']
 train_flow.clip_per_video = 1
-train_flow.learning_rate = 1e-6
+train_flow.learning_rate = 1e-4
 train_flow.resume = True
 train_flow.load_epoch = 2
 train_flow.iteration = 30000
