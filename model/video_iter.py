@@ -16,7 +16,7 @@ class VideoIter(mx.io.DataIter):
     """
     def __init__(self, batch_size, data_shape, data_dir, videos_classes, classes_labels, ctx=None, data_name='data',
                  label_name='label', mode='train', augmentation=None, clip_per_video=1, frame_per_clip=1, lst_dict=None,
-                 record=None, greyscale=False, multiple_processes=4, multiple_threads=1):
+                 record=None, greyscale=False, multiple_processes=8, multiple_threads=1):
         """
 
         :param batch_size:
@@ -203,7 +203,7 @@ class VideoIter(mx.io.DataIter):
         clip = pre_process_image(self.data_shape, clip, self.augmentation)
         clip = post_process_image(clip)
         #logging.debug("End: {}".format(time.asctime(time.localtime(time.time()))))
-        logging.debug('The clip shape is {}'.format(clip.shape))
+        #logging.debug('The clip shape is {}'.format(clip.shape))
 
         return clip
 
