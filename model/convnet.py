@@ -172,8 +172,8 @@ class ConvNet(object):
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('momentum', 0.9), ('wd',0.0005),
-                                                               ('rescale_grad', 1.0/self.train_params.batch_size),
+                                                              ('momentum', 0.9), ('wd', 0.0001),
+                                                              ('rescale_grad', 1.0/self.train_params.batch_size),
                                                               ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
         #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
@@ -207,7 +207,7 @@ class ConvNet(object):
                 train_acc.append(metric.get()[1][1])
                 logging.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
                       (count, metric.get()[1][0], metric.get()[1][1]*100))
-                score = mod.score(valid_iter, ['loss','acc'], num_batch=10)
+                score = mod.score(valid_iter, ['loss','acc'], num_batch=20)
                 valid_acc.append(score[1][1])
             #if count%100==0:
             #    va = self.evaluate(mod)
@@ -286,7 +286,7 @@ class ConvNet(object):
             momentum = "0.9"
 
         for param in json_file['nodes']:
-            if param['op'] == 'BatchNorm' and self.mode == 'temporal' and param['name']=='bn_data':
+            if param['op'] == 'BatchNorm' and self.mode == 'temporal' and param['name'] == 'bn_data':
                 param['param']['use_global_stats'] = "False"
                 param['param']['momentum'] = "0.9"
             elif param['op'] == 'BatchNorm':
