@@ -99,6 +99,10 @@ class VideoIter(mx.io.DataIter):
         else:
             return self.cur + self.batch_videos <= self.video_size
 
+    def __del__(self):
+        for pw in self.pws:
+            pw.join()
+
     def next(self):
         if self.q.empty():
             logging.debug("waiting for data")
