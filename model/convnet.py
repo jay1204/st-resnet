@@ -191,18 +191,18 @@ class ConvNet(object):
         logging.info("The dropout rate is {}, learning rate is {} and saving epoch is {}".
                     format(self.train_params.drop_out, self.train_params.learning_rate, self.train_params.load_epoch))
         for batch in train_iter:
-            mod.forward(batch, is_train=True)
             logging.debug('The time when I get the {}-th batch: {}'.format(count, time.asctime(time.localtime(time.time()))))
+            mod.forward(batch, is_train=True)
             #print 'get the {}-th batch successfully'.format(count)
-            mod.update_metric(metric, batch.label)
             mod.backward()
             #print mod.get_input_grads()[0].asnumpy()
             mod.update()
+            mod.update_metric(metric, batch.label)
             #logging.info('The current iteration is %d'%(count))
             if count%100==0:
                 #logger.info('Current optimizer parameters: ')
-                mod.forward(batch, is_train=False)
-                mod.update_metric(metric, batch.label)
+                #mod.forward(batch, is_train=False)
+                #mod.update_metric(metric, batch.label)
                 #print mod.get_outputs()
                 train_acc.append(metric.get()[1][1])
                 logging.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
@@ -219,6 +219,8 @@ class ConvNet(object):
                     valid_accuracy = valid_acc[-1]
                     mod.save_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
                                         self.train_params.load_epoch)
+                # reset the metric for measuring the next 100 training batches
+                metric.reset()
 
             count += 1
             if count > self.train_params.iteration:
