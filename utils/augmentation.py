@@ -4,9 +4,17 @@ import mxnet as mx
 import numpy as np
 
 
-def random_crop(image, w, h):
+def random_fix_crop(image, w, h):
     image, _ = mx.img.random_crop(image, (w, h))
     return image
+
+
+def random_crop(image, w, h):
+    image_h, image_w, _ = image.shape
+    rh = min(int(h * (0.75 + 0.5 * random.random())), image_h)
+    rw = min(int(w * (0.75 + 0.5 * random.random())), image_w)
+    image, _ = mx.img.random_crop(image, (rw, rh))
+    return mx.img.imresize(image, w, h)
 
 
 def random_horizon_flip(image, p=0.5):

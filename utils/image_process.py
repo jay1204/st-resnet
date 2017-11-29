@@ -1,6 +1,7 @@
 import mxnet as mx
 import mxnet.ndarray as nd
 from augmentation import *
+import numpy
 
 
 def load_one_image(img_path, greyscale = False, record=None, lst_dict=None):
@@ -28,29 +29,24 @@ def pre_process_image(data_shape, image, augmentation):
     Transforms input data with specified augmentation.
     """
     c, h, w = data_shape
-    for process in augmentation:
-        if process == 'random_crop':
+    if 'horizon_flip' in augmentation:
+        image = horizon_flip(image)
+
+    random_crop_list = ['random_crop', 'random_border25_crop', 'random_corner_crop']
+
+    aug_random_crop_list = []
+    for aug in augmentation:
+        if aug in random_crop_list:
+            aug_random_crop_list.append(aug)
+
+    if len(aug_random_crop_list) > 0:
+        selected = np.random.randint(len(aug_random_crop_list))
+        if aug_random_crop_list[selected] == 'random_crop':
             image = random_crop(image, w, h)
-        elif process == 'random_horizon_flip':
-            image = random_horizon_flip(image)
-        elif process == 'random_corner_crop':
-            image = random_corner_crop(image, w, h)
-        elif process == 'left_top_corner_crop':
-            image = left_top_corner_crop(image, w, h)
-        elif process == 'left_bottom_corner_crop':
-            image = left_bottom_corner_crop(image, w, h)
-        elif process == 'right_top_corner_crop':
-            image = right_top_corner_crop(image, w, h)
-        elif process == 'right_bottom_corner_crop':
-            image = right_bottom_corner_crop(image, w, h)
-        elif process == 'centre_crop':
-            image = centre_crop(image, w, h)
-        elif process == 'random_border25_crop':
+        elif aug_random_crop_list[selected] == 'random_border25_crop':
             image = random_border25_crop(image, w, h)
-        elif process == 'horizon_flip':
-            image = horizon_flip(image)
-        else:
-            raise NotImplementedError("This augmentation operation has not been implemented!")
+        elif aug_random_crop_list[selected] == 'random_corner_crop':
+            image = random_corner_crop(image, w, h)
 
     image_h, image_w, _ = image.shape
     if image_h != h or image_w != w:
