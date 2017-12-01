@@ -26,8 +26,8 @@ def residual_unit(data, num_filter, stride, dim_match, name, drop_out):
     bn3   = mx.sym.BatchNorm(data=conv2, fix_gamma=False, eps=eps, use_global_stats=use_global_stats, name=name + '_bn3',
                              momentum=momentum)
     act3  = mx.sym.Activation(data=bn3, act_type='relu', name=name + '_relu3')
-    drop3 = mx.sym.Dropout(act3, p=drop_out, name=name + '_relu3' + '_dropout')
-    conv3 = mx.sym.Convolution(data=drop3, num_filter=num_filter, kernel=(1, 1), stride=(1, 1), pad=(0, 0), no_bias=True,
+    #drop3 = mx.sym.Dropout(act3, p=drop_out, name=name + '_relu3' + '_dropout')
+    conv3 = mx.sym.Convolution(data=act3, num_filter=num_filter, kernel=(1, 1), stride=(1, 1), pad=(0, 0), no_bias=True,
                                workspace=workspace, name=name + '_conv3')
     if dim_match:
         shortcut = data

@@ -11,8 +11,8 @@ import math
 def main():
     logging.basicConfig(filename='log/experiment_temporal.log', level=logging.INFO)
     logging.info("Start training flow network: {}".format(time.asctime(time.localtime(time.time()))))
-    #ctx = [mx.gpu(0), mx.gpu(1)]
-    ctx = [mx.gpu(0)]
+    ctx = [mx.gpu(0), mx.gpu(1)]
+    #ctx = [mx.gpu(0)]
     classes_labels, train_videos_classes, test_videos_classes = get_ucf101_split(ucf.split_dir, ucf.split_id)
 
     #videos = list(test_videos_classes.keys())
