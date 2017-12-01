@@ -44,8 +44,8 @@ class ConvNet(object):
             symbol, arg_params, aux_params = load_pretrained_model(self.model_params.url_prefix, self.model_params.name,
                                                                    self.model_params.model_epoch, self.model_params.dir,
                                                                    ctx=self.ctx)
-            self.set_use_global_stats_json()
-            symbol = mx.symbol.load(self.model_params.dir + self.model_params.name + '-symbol.json')
+            #self.set_use_global_stats_json()
+            #symbol = mx.symbol.load(self.model_params.dir + self.model_params.name + '-symbol.json')
             # adjust the network to satisfy the required input
             if self.mode == 'spatial':
                 new_symbol, new_arg_params = self.refactor_model_spatial(symbol, arg_params)
@@ -56,6 +56,9 @@ class ConvNet(object):
                 raise NotImplementedError('The refactoring method-{} for the model has not be implemented yet'.format(self.mode))
 
             new_symbol.save(self.model_params.dir + self.model_params.name + '-' + self.mode + '-symbol.json')
+            self.set_use_global_stats_json()
+            new_symbol = mx.symbol.load(self.model_params.dir +
+                                        self.model_params.name + '-' + self.mode + '-symbol.json')
             return new_symbol, new_arg_params, new_aux_params
 
     def refactor_model_spatial(self, symbol, arg_params):
@@ -283,7 +286,7 @@ class ConvNet(object):
         pass
 
     def set_use_global_stats_json(self):
-        json_file = json.loads(open(self.model_params.dir+self.model_params.name+'-symbol.json').read())
+        json_file = json.loads(open(self.model_params.dir + self.model_params.name + '-' + self.mode + '-symbol.json').read())
         if self.train_params.use_global_stats:
             operator = "True"
             momentum = "1.0"
@@ -299,7 +302,7 @@ class ConvNet(object):
                 param['attr']['use_global_stats'] = operator
                 param['attr']['momentum'] = momentum
 
-        with open(self.model_params.dir + self.model_params.name + '-symbol.json', 'w') as f:
+        with open(self.model_params.dir + self.model_params.name + '-' + self.mode + '-symbol.json', 'w') as f:
             json.dump(json_file, f)
         return
 
