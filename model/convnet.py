@@ -293,11 +293,11 @@ class ConvNet(object):
 
         for param in json_file['nodes']:
             if param['op'] == 'BatchNorm' and self.mode == 'temporal' and param['name'] == 'bn_data':
-                param['param']['use_global_stats'] = "False"
-                param['param']['momentum'] = "0.9"
+                param['attr']['use_global_stats'] = "False"
+                param['attr']['momentum'] = "0.9"
             elif param['op'] == 'BatchNorm':
-                param['param']['use_global_stats'] = operator
-                param['param']['momentum'] = momentum
+                param['attr']['use_global_stats'] = operator
+                param['attr']['momentum'] = momentum
 
         with open(self.model_params.dir + self.model_params.name + '-symbol.json', 'w') as f:
             json.dump(json_file, f)
