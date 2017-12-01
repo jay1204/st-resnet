@@ -44,7 +44,8 @@ def get_resnet(data, drop_out):
     pool0 = mx.symbol.Pooling(data=relu0, kernel=(3, 3), stride=(2, 2), pad=(1, 1), pool_type='max', name='pool0')
 
     # res2
-    unit = residual_unit(data=pool0, num_filter=filter_list[0], stride=(1, 1), dim_match=False, name='stage1_unit1')
+    unit = residual_unit(data=pool0, num_filter=filter_list[0], stride=(1, 1), dim_match=False, name='stage1_unit1',
+                         drop_out=drop_out)
     for i in range(2, units[0] + 1):
         unit = residual_unit(data=unit, num_filter=filter_list[0], stride=(1, 1), dim_match=True,
                              name='stage1_unit%s' % i, drop_out=drop_out)
