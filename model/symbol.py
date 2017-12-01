@@ -52,21 +52,24 @@ def get_resnet(data, drop_out):
     conv_C2 = unit
 
     # res3
-    unit = residual_unit(data=unit, num_filter=filter_list[1], stride=(2, 2), dim_match=False, name='stage2_unit1')
+    unit = residual_unit(data=unit, num_filter=filter_list[1], stride=(2, 2), dim_match=False, name='stage2_unit1',
+                         drop_out=drop_out)
     for i in range(2, units[1] + 1):
         unit = residual_unit(data=unit, num_filter=filter_list[1], stride=(1, 1), dim_match=True,
                              name='stage2_unit%s' % i, drop_out=drop_out)
     conv_C3 = unit
 
     # res4
-    unit = residual_unit(data=unit, num_filter=filter_list[2], stride=(2, 2), dim_match=False, name='stage3_unit1')
+    unit = residual_unit(data=unit, num_filter=filter_list[2], stride=(2, 2), dim_match=False, name='stage3_unit1',
+                         drop_out=drop_out)
     for i in range(2, units[2] + 1):
         unit = residual_unit(data=unit, num_filter=filter_list[2], stride=(1, 1), dim_match=True,
                              name='stage3_unit%s' % i, drop_out=drop_out)
     conv_C4 = unit
 
     # res5
-    unit = residual_unit(data=unit, num_filter=filter_list[3], stride=(2, 2), dim_match=False, name='stage4_unit1')
+    unit = residual_unit(data=unit, num_filter=filter_list[3], stride=(2, 2), dim_match=False, name='stage4_unit1',
+                         drop_out=drop_out)
     for i in range(2, units[3] + 1):
         unit = residual_unit(data=unit, num_filter=filter_list[3], stride=(1, 1), dim_match=True,
                              name='stage4_unit%s' % i, drop_out=drop_out)
