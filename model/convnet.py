@@ -246,7 +246,7 @@ class ConvNet(object):
                                        data_shape=self.model_params.data_shape,
                                        data_dir=self.data_params.dir, videos_classes={video: video_class},
                                        classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                       label_name='softmax_label', mode='test',
+                                       label_name='fc1_label', mode='test',
                                        augmentation=aug, clip_per_video=self.test_params.clip_per_video)
                 if not mod.binded:
                     mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
