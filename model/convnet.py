@@ -275,25 +275,19 @@ class ConvNet(object):
         #mod._aux_params = auxs
         #mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
         #mod.params_initialized = True
-        #mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
-        #                            self.test_params.load_epoch, context=self.ctx)
+        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
+                                    self.test_params.load_epoch, context=self.ctx, data_names='data',
+                                    label_names='fc1_label')
 
-        net, arg_params, aux_params = mx.model.load_checkpoint(
-            self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
+        #net, arg_params, aux_params = mx.model.load_checkpoint(
+        #    self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
 
-        all_layers = net.get_internals()
-        net = all_layers['fc1_output']
-        mod = mx.mod.Module(symbol=net, context=self.ctx)
-
-        valid_iter = VideoIter(batch_size=self.test_params.clip_per_video,
-                               data_shape=self.model_params.data_shape,
-                               data_dir=self.data_params.dir, videos_classes=None,
-                               classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                               label_name='fc1_label', mode='test',
-                               augmentation=None, clip_per_video=self.test_params.clip_per_video)
-        mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
-        mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
-        mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
+        #all_layers = net.get_internals()
+        #net = all_layers['fc1_output']
+        #mod = mx.mod.Module(symbol=net, context=self.ctx)
+        #mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
+        #mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
+        #mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         test_accuracy = self.evaluate(mod)
         logging.info("The testing accuracy is %f%%" % (test_accuracy*100))
