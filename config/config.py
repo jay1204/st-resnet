@@ -39,31 +39,31 @@ test_image = ed()
 # batch_size should be identical to frame_per_video for testing
 test_image.batch_size = 25
 test_image.clip_per_video = 25
-test_image.augmentation = [[], ['horizon_flip']]
+#test_image.augmentation = [[], ['horizon_flip']]
 test_image.load_epoch = 6
 test_image.remove_softmax_layer = True
 
 
-#test_image.augmentation = [['left_top_corner_crop'], ['left_bottom_corner_crop'], ['right_top_corner_crop'],
-#                           ['right_bottom_corner_crop'], ['centre_crop'], ['left_top_corner_crop', 'horizon_flip'],
-#                           ['left_bottom_corner_crop', 'horizon_flip'], ['right_top_corner_crop', 'horizon_flip'],
-#                           ['right_bottom_corner_crop', 'horizon_flip'], ['centre_crop', 'horizon_flip']]
+test_image.augmentation = [['left_top_corner_crop'], ['left_bottom_corner_crop'], ['right_top_corner_crop'],
+                           ['right_bottom_corner_crop'], ['centre_crop'], ['left_top_corner_crop', 'horizon_flip'],
+                           ['left_bottom_corner_crop', 'horizon_flip'], ['right_top_corner_crop', 'horizon_flip'],
+                           ['right_bottom_corner_crop', 'horizon_flip'], ['centre_crop', 'horizon_flip']]
 
 train_flow = ed()
 train_flow.batch_size = 150
 #train_flow.epoch = 10
 train_flow.drop_out = 0.8
-train_flow.augmentation = ['random_horizon_flip', 'random_corner_crop', 'random_crop']
+train_flow.augmentation = ['random_horizon_flip', 'random_corner_crop', 'random_crop'] # add frame_resize as an augmentation
 train_flow.clip_per_video = 1
 # for batch size 150, use 5e-4
-train_flow.learning_rate = 5e-4
+train_flow.learning_rate = 5e-5
 train_flow.resume = False
 train_flow.load_epoch = 5
 train_flow.iteration = 40000
 train_flow.frame_per_clip = 10
 train_flow.schedule_steps = [20000, 30000, 40000]
 train_flow.use_global_stats = True
-train_flow.epsilon = 1e-6
+train_flow.epsilon = 1e-8
 
 test_flow = ed()
 test_flow.batch_size = 25

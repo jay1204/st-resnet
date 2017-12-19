@@ -253,6 +253,7 @@ class ConvNet(object):
                 batch = valid_iter.next()
                 label = batch.label[0].asnumpy().astype(int)[0]
                 mod.forward(batch, is_train=False)
+                print mod.get_outputs()[0].asnumpy()
                 probs += mod.get_outputs()[0].asnumpy().sum(axis=0)
 
             pred_label = np.argmax(probs)
@@ -274,8 +275,16 @@ class ConvNet(object):
         #mod._aux_params = auxs
         #mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
         #mod.params_initialized = True
-        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
-                                    self.test_params.load_epoch, context=self.ctx)
+        #mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
+        #                            self.test_params.load_epoch, context=self.ctx)
+
+        net, arg_params, aux_params = mx.model.load_checkpoint(
+            self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
+
+        all_layers = net.get_internals()
+        net = all_layers['fc1_output']
+        mod = mx.mod.Module(symbol=net, context=self.ctx)
+        mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         test_accuracy = self.evaluate(mod)
         logging.info("The testing accuracy is %f%%" % (test_accuracy*100))
@@ -296,7 +305,7 @@ class ConvNet(object):
 
         for param in json_file['nodes']:
             if param['op'] == 'BatchNorm' and self.mode == 'temporal' and param['name'] == 'bn_data':
-                param['attr']['use_global_stats'] = "True"
+                param['attr']['use_global_stats'] = "False"
                 param['attr']['momentum'] = "0.9"
             elif param['op'] == 'BatchNorm':
                 param['attr']['use_global_stats'] = operator
@@ -341,8 +350,6 @@ class ConvNet(object):
                              lst_dict=lst_dict, record=record,
                              multiple_processes=3)
 
-    def get_sym(self):
-        data = mx.sym.Variable(name="data")
 
 
 
