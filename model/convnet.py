@@ -276,8 +276,8 @@ class ConvNet(object):
         #mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
         #mod.params_initialized = True
         mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
-                                    self.test_params.load_epoch, context=self.ctx, data_names='data',
-                                    label_names='fc1_label')
+                                    self.test_params.load_epoch, context=self.ctx, data_names=['data'],
+                                    label_names=['fc1_label'])
 
         #net, arg_params, aux_params = mx.model.load_checkpoint(
         #    self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
