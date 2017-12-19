@@ -172,16 +172,12 @@ class VideoIter(mx.io.DataIter):
         batch_label = nd.empty(self.batch_size)
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
-            frames = [f for f in sorted(os.listdir(video_path)) if f.endswith('.jpg')]
-            sample_gap = float(len(frames) - 1) / self.clip_per_video
-            sample_frame_names = []
+            frames_name = [f for f in sorted(os.listdir(video_path)) if f.endswith('.jpg')]
+            sample_gap = float(len(frames_name) - 1) / self.clip_per_video
             for k in xrange(self.clip_per_video):
-                sample_frame_names.append(frames[int(round(k * sample_gap))])
-
-            for j, sample_frame_name in enumerate(sample_frame_names):
-                sample_frame = self.next_clip(os.path.join(video_path, sample_frame_name))
-                batch_data[i * self.clip_per_video + j][:] = sample_frame
-                batch_label[i * self.clip_per_video + j][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
+                batch_data[i * self.clip_per_video + k][:] = self.next_clip(sample_videos[i], frames_name,
+                                                                            int(round(k * sample_gap)))
+                batch_label[i * self.clip_per_video + k][:] = self.classes_labels[self.videos_classes[sample_videos[i]]]
 
         return batch_data, batch_label
 
