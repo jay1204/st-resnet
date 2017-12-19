@@ -275,18 +275,19 @@ class ConvNet(object):
         #mod._aux_params = auxs
         #mod.set_params(arg_params=args, aux_params=auxs, allow_missing=True)
         #mod.params_initialized = True
-        #mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
-        #                            self.test_params.load_epoch, context=self.ctx)
+        mod = mx.module.Module.load(self.model_params.dir + self.model_params.name + '-' + self.mode,
+                                    self.test_params.load_epoch, context=self.ctx)
 
-        net, arg_params, aux_params = mx.model.load_checkpoint(
-            self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
+        #net, arg_params, aux_params = mx.model.load_checkpoint(
+        #    self.model_params.dir + self.model_params.name + '-' + self.mode, self.test_params.load_epoch)
 
-        all_layers = net.get_internals()
-        net = all_layers['fc1_output']
-        mod = mx.mod.Module(symbol=net, context=self.ctx)
-        mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
-        mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
+        #all_layers = net.get_internals()
+        #net = all_layers['fc1_output']
+        #mod = mx.mod.Module(symbol=net, context=self.ctx)
+        #mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
+        #mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
+        print mod
         test_accuracy = self.evaluate(mod)
         logging.info("The testing accuracy is %f%%" % (test_accuracy*100))
 
