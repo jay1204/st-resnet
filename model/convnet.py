@@ -284,6 +284,7 @@ class ConvNet(object):
         all_layers = net.get_internals()
         net = all_layers['fc1_output']
         mod = mx.mod.Module(symbol=net, context=self.ctx)
+        mod.init_params(initializer=mx.init.Xavier(rnd_type='gaussian', factor_type='in', magnitude=2))
         mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True)
 
         test_accuracy = self.evaluate(mod)
