@@ -173,7 +173,7 @@ class VideoIter(mx.io.DataIter):
         for i in xrange(sample_videos.shape[0]):
             video_path = os.path.join(self.data_dir[0], sample_videos[i], '')
             frames_name = [f for f in sorted(os.listdir(video_path)) if f.endswith('.jpg')]
-            sample_gap = float(len(frames_name) - 1) / self.clip_per_video
+            sample_gap = float(len(frames_name) - self.frame_per_clip) / self.clip_per_video
             for k in xrange(self.clip_per_video):
                 batch_data[i * self.clip_per_video + k][:] = self.next_clip(sample_videos[i], frames_name,
                                                                             int(round(k * sample_gap)))
