@@ -31,7 +31,7 @@ train_image.resume = True
 train_image.load_epoch = 8
 train_image.iteration = 30000
 train_image.schedule_steps = [10000, 20000, 30000]
-train_image.use_global_stats = True
+train_image.use_global_stats = False
 train_image.frame_per_clip = 1
 train_image.epsilon = 1e-6
 
