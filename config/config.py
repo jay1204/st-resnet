@@ -27,11 +27,11 @@ train_image.drop_out = 0.9
 train_image.augmentation = ['random_horizon_flip', 'random_corner_crop']#['random_horizon_flip', 'random_border25_crop']
 train_image.clip_per_video = 1
 train_image.learning_rate = 1e-5#1e-5
-train_image.resume = True
+train_image.resume = False
 train_image.load_epoch = 8
 train_image.iteration = 30000
 train_image.schedule_steps = [10000, 20000, 30000]
-train_image.use_global_stats = False
+train_image.use_global_stats = True
 train_image.frame_per_clip = 1
 train_image.epsilon = 1e-6
 
