@@ -73,7 +73,7 @@ class ConvNet(object):
         """
         if self.model_params.name=='resnet-50':
             data = mx.sym.Variable(name="data")
-            symbol = get_resnet(data, drop_out=self.train_params.drop_out)
+            #symbol = get_resnet(data, drop_out=self.train_params.drop_out)
             all_layers = symbol.get_internals()
             net = all_layers['flatten0_output']
             net = mx.symbol.Dropout(net, p=self.train_params.drop_out, name='flatten0_dropout')
