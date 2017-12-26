@@ -21,7 +21,7 @@ ucf.flow.dir = ['data/tvl1_flow/u/', 'data/tvl1_flow/v/']
 #ucf.flow.dir = ['data/jpegs_256/']
 
 train_image = ed()
-train_image.batch_size = 90
+train_image.batch_size = 60
 #train_image.epoch = 10
 train_image.drop_out = 0.9
 train_image.augmentation = ['random_horizon_flip', 'random_corner_crop']#['random_horizon_flip', 'random_border25_crop']
