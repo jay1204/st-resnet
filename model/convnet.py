@@ -179,7 +179,7 @@ class ConvNet(object):
         #sgd = mx.optimizer.Optimizer.create_optimizer('sgd', learning_rate = self.train_params.learning_rate,
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
-                                                              ('momentum', 0.9), ('wd', 0.0001),
+                                                              ('momentum', 0.9), ('wd', 0.00005),
                                                               ('rescale_grad', 1.0/self.train_params.batch_size),
                                                               ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)

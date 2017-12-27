@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91a9948f-cac9-47d2-8635-65c5f0e0bba6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.py" afterPath="$PROJECT_DIR$/config/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/convnet.py" afterPath="$PROJECT_DIR$/model/convnet.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="convnet.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="convnet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/convnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1859">
-              <caret line="309" column="106" lean-forward="false" selection-start-line="309" selection-start-column="106" selection-end-line="309" selection-end-column="106" />
+            <state relative-caret-position="607">
+              <caret line="209" column="62" lean-forward="true" selection-start-line="209" selection-start-column="62" selection-end-line="209" selection-end-column="62" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -65,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state relative-caret-position="660">
+              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -172,8 +172,8 @@
         <option value="$PROJECT_DIR$/train_flow.py" />
         <option value="$PROJECT_DIR$/model/symbol.py" />
         <option value="$PROJECT_DIR$/model/video_iter.py" />
-        <option value="$PROJECT_DIR$/model/convnet.py" />
         <option value="$PROJECT_DIR$/config/config.py" />
+        <option value="$PROJECT_DIR$/model/convnet.py" />
       </list>
     </option>
   </component>
@@ -625,14 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/PrefetchingIter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="63" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/symbol.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -667,16 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/convnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1859">
-          <caret line="309" column="106" lean-forward="false" selection-start-line="309" selection-start-column="106" selection-end-line="309" selection-end-column="106" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/augmentation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="695">
@@ -705,8 +687,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="660">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/PrefetchingIter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="63" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/convnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="209" column="62" lean-forward="true" selection-start-line="209" selection-start-column="62" selection-end-line="209" selection-end-column="62" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
