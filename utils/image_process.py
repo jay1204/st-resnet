@@ -17,6 +17,7 @@ def load_one_image(img_path, greyscale = False, record=None, lst_dict=None):
             flag = 1
         return mx.img.imdecode(image_info, flag=flag)
 
+
 def post_process_image(image):
     """
     Transform the image to make it shape as (channel, height, width)
