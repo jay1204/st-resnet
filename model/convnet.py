@@ -307,7 +307,7 @@ class ConvNet(object):
             momentum = "0.9"
 
         for param in json_file['nodes']:
-            if param['op'] == 'BatchNorm' and self.mode == 'temporal' and param['name'] == 'bn_data':
+            if (param['op'] == 'BatchNorm') and (self.mode == 'temporal') and (param['name'] == 'bn_data'):
                 param['attr']['use_global_stats'] = "False"
                 param['attr']['momentum'] = "0.9"
             elif param['op'] == 'BatchNorm':
