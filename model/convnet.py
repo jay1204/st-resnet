@@ -180,7 +180,6 @@ class ConvNet(object):
         #                                              momentum=0.9, wd=0.0005, lr_scheduler=lr_sch)
         mod.init_optimizer(optimizer='sgd', optimizer_params=(('learning_rate', self.train_params.learning_rate),
                                                               ('momentum', 0.9), ('wd', 0.0005),
-                                                              ('rescale_grad', 1.0/self.train_params.batch_size),
                                                               ('lr_scheduler', lr_sch)))
         #mod.init_optimizer(optimizer=sgd)
         #mod.init_optimizer(optimizer='adam', optimizer_params=(('learning_rate', self.train_params.learning_rate),
@@ -195,8 +194,7 @@ class ConvNet(object):
         train_iter.reset()
         metric.reset()
 
-        logging.info("The dropout rate is {}, learning rate is {} and saving epoch is {}".
-                    format(self.train_params.drop_out, self.train_params.learning_rate, self.train_params.load_epoch))
+        logging.info("The training parameters are {}".format(self.train_params))
         for batch in train_iter:
             logging.debug('The time when I get the {}-th batch: {}'.format(count, time.asctime(time.localtime(time.time()))))
             mod.forward(batch, is_train=True)
