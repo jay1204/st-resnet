@@ -212,7 +212,7 @@ class ConvNet(object):
                 train_acc.append(metric.get()[1][1])
                 logging.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
                       (count, metric.get()[1][0], metric.get()[1][1]*100))
-                score = mod.score(valid_iter, ['loss','acc'], num_batch=20)
+                score = mod.score(valid_iter, ['loss','acc'], num_batch=100)
                 valid_acc.append(score[1][1])
             #if count%100==0:
             #    va = self.evaluate(mod)
