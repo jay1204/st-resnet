@@ -38,7 +38,7 @@ def residual_unit(data, num_filter, stride, dim_match, name, drop_out):
     return sum
 
 
-def get_resnet(data, drop_out):
+def get_resnet(data, drop_out=0.0):
     # res1
     data_bn = mx.sym.BatchNorm(data=data, fix_gamma=True, eps=eps, use_global_stats=use_global_stats, name='bn_data')
     conv0   = mx.sym.Convolution(data=data_bn, num_filter=64, kernel=(7, 7), stride=(2, 2), pad=(3, 3),

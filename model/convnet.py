@@ -1,7 +1,8 @@
 import mxnet as mx
 from utils import load_pretrained_model, process_lst_file
-from video_iter import VideoIter
+#from video_iter import VideoIter
 from temporal_iter import TemporalIter
+from loader import VideoIter
 import numpy as np
 import mxnet.ndarray as nd
 from utils import load_one_image, post_process_image, pre_process_image
@@ -73,7 +74,7 @@ class ConvNet(object):
         """
         if self.model_params.name=='resnet-50':
             data = mx.sym.Variable(name="data")
-            symbol = get_resnet(data, drop_out=self.train_params.drop_out)
+            symbol = get_resnet(data)
             all_layers = symbol.get_internals()
             net = all_layers['flatten0_output']
             net = mx.symbol.Dropout(net, p=self.train_params.drop_out, name='flatten0_dropout')
@@ -195,41 +196,44 @@ class ConvNet(object):
         metric.reset()
 
         logging.info("The training parameters are {}".format(self.train_params))
-        for batch in train_iter:
-            logging.debug('The time when I get the {}-th batch: {}'.format(count, time.asctime(time.localtime(time.time()))))
-            mod.forward(batch, is_train=True)
-            #print 'get the {}-th batch successfully'.format(count)
-            mod.backward()
-            #print mod.get_input_grads()[0].asnumpy()
-            mod.update()
-            mod.update_metric(metric, batch.label)
-            #logging.info('The current iteration is %d'%(count))
-            if count%100==0:
-                #logger.info('Current optimizer parameters: ')
-                #mod.forward(batch, is_train=False)
-                #mod.update_metric(metric, batch.label)
-                #print mod.get_outputs()
-                train_acc.append(metric.get()[1][1])
-                logging.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
-                      (count, metric.get()[1][0], metric.get()[1][1]*100))
-                score = mod.score(valid_iter, ['loss','acc'], num_batch=100)
-                valid_acc.append(score[1][1])
-            #if count%100==0:
-            #    va = self.evaluate(mod)
-            #    valid_acc.append(va)
-            #    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
-                logging.info("The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
-                     (count, score[0][1], score[1][1]*100))
-                if valid_acc[-1] > valid_accuracy:
-                    valid_accuracy = valid_acc[-1]
-                    mod.save_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
-                                        self.train_params.load_epoch)
-                # reset the metric for measuring the next 100 training batches
-                metric.reset()
+        # the while loop: debug use
+        while 1:
+            train_iter.reset()
+            for batch in train_iter:
+                logging.debug('The time when I get the {}-th batch: {}'.format(count, time.asctime(time.localtime(time.time()))))
+                mod.forward(batch, is_train=True)
+                #print 'get the {}-th batch successfully'.format(count)
+                mod.backward()
+                #print mod.get_input_grads()[0].asnumpy()
+                mod.update()
+                mod.update_metric(metric, batch.label)
+                #logging.info('The current iteration is %d'%(count))
+                if count%100==0:
+                    #logger.info('Current optimizer parameters: ')
+                    #mod.forward(batch, is_train=False)
+                    #mod.update_metric(metric, batch.label)
+                    #print mod.get_outputs()
+                    train_acc.append(metric.get()[1][1])
+                    logging.info("The training loss of the %d-th iteration is %f, accuracy  is %f%%" %\
+                          (count, metric.get()[1][0], metric.get()[1][1]*100))
+                    score = mod.score(valid_iter, ['loss','acc'], num_batch=100)
+                    valid_acc.append(score[1][1])
+                #if count%100==0:
+                #    va = self.evaluate(mod)
+                #    valid_acc.append(va)
+                #    print "The validation accuracy of the %d-th iteration is %f%%"%(count, valid_acc[-1] * 100)
+                    logging.info("The valid loss of the %d-th iteration is %f, accuracy is %f%%"%\
+                         (count, score[0][1], score[1][1]*100))
+                    if valid_acc[-1] > valid_accuracy:
+                        valid_accuracy = valid_acc[-1]
+                        mod.save_checkpoint(self.model_params.dir + self.model_params.name + '-' + self.mode,
+                                            self.train_params.load_epoch)
+                    # reset the metric for measuring the next 100 training batches
+                    metric.reset()
 
-            count += 1
-            if count > self.train_params.iteration:
-                break
+                count += 1
+                if count > self.train_params.iteration:
+                    break
 
         return train_acc, valid_acc
 
@@ -240,12 +244,12 @@ class ConvNet(object):
             label = 0
             probs = np.zeros(self.num_classes)
             for aug in self.test_params.augmentation:
-                valid_iter = VideoIter(batch_size=self.test_params.clip_per_video,
-                                       data_shape=self.model_params.data_shape,
-                                       data_dir=self.data_params.dir, videos_classes={video: video_class},
-                                       classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                                       label_name='fc1_label', mode='test',
-                                       augmentation=aug, clip_per_video=self.test_params.clip_per_video)
+                #valid_iter = VideoIter(batch_size=self.test_params.clip_per_video,
+                #                       data_shape=self.model_params.data_shape,
+                #                       data_dir=self.data_params.dir, videos_classes={video: video_class},
+                #                       classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+                #                       label_name='fc1_label', mode='test',
+                #                       augmentation=aug, clip_per_video=self.test_params.clip_per_video)
                 if not mod.binded:
                     mod.bind(data_shapes=valid_iter.provide_data, label_shapes=valid_iter.provide_label)
                 batch = valid_iter.next()
@@ -335,21 +339,31 @@ class ConvNet(object):
             greyscale = True
 
         if train:
-            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.data_params.data_shape,
-                             data_dir=self.data_params.dir, videos_classes=videos_classes,
-                             classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                             label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
-                             frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
-                             lst_dict=lst_dict, record=record,
-                             multiple_processes=10)
+            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                           data_dir=self.data_params.dir, videos_classes=self.train_videos_classes, classes_labels=self.classes_labels,
+                           ctx=None, data_name='data', label_name='softmax_label',
+                           augmentation=self.train_params.augmentation, frame_per_clip=self.train_params.frame_per_clip,
+                           shuffle=True)
+            #return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.data_params.data_shape,
+            #                 data_dir=self.data_params.dir, videos_classes=videos_classes,
+            #                 classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+            #                 label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
+            #                 frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
+            #                lst_dict=lst_dict, record=record,
+            #                multiple_processes=10)
         else:
-            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.data_params.data_shape,
-                             data_dir=self.data_params.dir, videos_classes=videos_classes,
-                             classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
-                             label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
-                             frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
-                             lst_dict=lst_dict, record=record,
-                             multiple_processes=3)
+            return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.model_params.data_shape,
+                           data_dir=self.data_params.dir, videos_classes=self.test_videos_classes, classes_labels=self.classes_labels,
+                           ctx=None, data_name='data', label_name='softmax_label',
+                           augmentation=self.train_params.augmentation, frame_per_clip=self.train_params.frame_per_clip,
+                           shuffle=True)
+            #return VideoIter(batch_size=self.train_params.batch_size, data_shape=self.data_params.data_shape,
+            #                 data_dir=self.data_params.dir, videos_classes=videos_classes,
+            #                 classes_labels=self.classes_labels, ctx=self.ctx, data_name='data',
+            #                 label_name='softmax_label', mode='train', augmentation=self.train_params.augmentation,
+            #                 frame_per_clip=self.train_params.frame_per_clip, greyscale=greyscale,
+            #                 lst_dict=lst_dict, record=record,
+            #                 multiple_processes=3)
 
 
 
